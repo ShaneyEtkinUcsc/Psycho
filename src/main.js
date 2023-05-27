@@ -5,12 +5,12 @@
 //import Preload from './src/prefabs/PreloadScene.js'
 
 // Aspect Ratio 16:9 - Portrait
-const MAX_SIZE_WIDTH_SCREEN = 1920
-const MAX_SIZE_HEIGHT_SCREEN = 1080
-const MIN_SIZE_WIDTH_SCREEN = 270
-const MIN_SIZE_HEIGHT_SCREEN = 480
-const SIZE_WIDTH_SCREEN = 540
-const SIZE_HEIGHT_SCREEN = 960
+const MAX_SIZE_WIDTH_SCREEN = 2560
+const MAX_SIZE_HEIGHT_SCREEN = 1440
+const MIN_SIZE_WIDTH_SCREEN = 1280
+const MIN_SIZE_HEIGHT_SCREEN = 720
+const SIZE_WIDTH_SCREEN = 1280
+const SIZE_HEIGHT_SCREEN = 720
 
 console.log("in main");
 
@@ -47,6 +47,7 @@ let config = {
     },
     scene: [ Handler, Preload, Load, /*Menu, Play, Credits, End */]
 }
+
 
 let game = new Phaser.Game(config)
 

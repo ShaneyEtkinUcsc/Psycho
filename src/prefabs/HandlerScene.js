@@ -1,6 +1,8 @@
 // a solution to handle screen scaling, I got this from:
 // https://stackoverflow.com/questions/66191191/how-to-create-a-responsive-game-for-any-screen-size-with-phaser-3
 
+console.log("in handler");
+
 class Handler extends Phaser.Scene {
 
     // Vars

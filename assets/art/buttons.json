@@ -1,0 +1,419 @@
+{
+	"textures": [
+		{
+			"image": "buttons.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1022,
+				"h": 720
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "help_psycho6.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 415,
+						"h": 126
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 415,
+						"h": 126
+					}
+				},
+				{
+					"filename": "play_psycho7.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 415,
+						"h": 126
+					},
+					"frame": {
+						"x": 418,
+						"y": 1,
+						"w": 415,
+						"h": 126
+					}
+				},
+				{
+					"filename": "credits_psycho6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 415,
+						"h": 117
+					},
+					"frame": {
+						"x": 1,
+						"y": 129,
+						"w": 415,
+						"h": 117
+					}
+				},
+				{
+					"filename": "play_psycho6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 11,
+						"w": 415,
+						"h": 115
+					},
+					"frame": {
+						"x": 418,
+						"y": 129,
+						"w": 415,
+						"h": 115
+					}
+				},
+				{
+					"filename": "credits_psycho5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 2,
+						"w": 413,
+						"h": 113
+					},
+					"frame": {
+						"x": 418,
+						"y": 246,
+						"w": 413,
+						"h": 113
+					}
+				},
+				{
+					"filename": "help_psycho5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 12,
+						"w": 396,
+						"h": 111
+					},
+					"frame": {
+						"x": 1,
+						"y": 248,
+						"w": 396,
+						"h": 111
+					}
+				},
+				{
+					"filename": "play_psycho5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 13,
+						"w": 398,
+						"h": 105
+					},
+					"frame": {
+						"x": 1,
+						"y": 361,
+						"w": 398,
+						"h": 105
+					}
+				},
+				{
+					"filename": "credits_psycho4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 22,
+						"y": 9,
+						"w": 392,
+						"h": 102
+					},
+					"frame": {
+						"x": 401,
+						"y": 361,
+						"w": 392,
+						"h": 102
+					}
+				},
+				{
+					"filename": "help_psycho1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 95,
+						"y": 31,
+						"w": 226,
+						"h": 66
+					},
+					"frame": {
+						"x": 795,
+						"y": 361,
+						"w": 226,
+						"h": 66
+					}
+				},
+				{
+					"filename": "play_psycho1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 95,
+						"y": 31,
+						"w": 226,
+						"h": 66
+					},
+					"frame": {
+						"x": 795,
+						"y": 429,
+						"w": 226,
+						"h": 66
+					}
+				},
+				{
+					"filename": "play_psycho4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 17,
+						"w": 357,
+						"h": 94
+					},
+					"frame": {
+						"x": 401,
+						"y": 465,
+						"w": 357,
+						"h": 94
+					}
+				},
+				{
+					"filename": "play_psycho2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 72,
+						"y": 27,
+						"w": 253,
+						"h": 72
+					},
+					"frame": {
+						"x": 760,
+						"y": 497,
+						"w": 253,
+						"h": 72
+					}
+				},
+				{
+					"filename": "credits_psycho3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 40,
+						"y": 18,
+						"w": 358,
+						"h": 89
+					},
+					"frame": {
+						"x": 1,
+						"y": 468,
+						"w": 358,
+						"h": 89
+					}
+				},
+				{
+					"filename": "help_psycho4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 33,
+						"y": 19,
+						"w": 346,
+						"h": 92
+					},
+					"frame": {
+						"x": 1,
+						"y": 559,
+						"w": 346,
+						"h": 92
+					}
+				},
+				{
+					"filename": "play_psycho3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 45,
+						"y": 22,
+						"w": 307,
+						"h": 82
+					},
+					"frame": {
+						"x": 349,
+						"y": 561,
+						"w": 307,
+						"h": 82
+					}
+				},
+				{
+					"filename": "credits_psycho2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 56,
+						"y": 25,
+						"w": 312,
+						"h": 74
+					},
+					"frame": {
+						"x": 349,
+						"y": 645,
+						"w": 312,
+						"h": 74
+					}
+				},
+				{
+					"filename": "credits_psycho1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 79,
+						"y": 31,
+						"w": 258,
+						"h": 66
+					},
+					"frame": {
+						"x": 1,
+						"y": 653,
+						"w": 258,
+						"h": 66
+					}
+				},
+				{
+					"filename": "help_psycho2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 86,
+						"y": 30,
+						"w": 251,
+						"h": 68
+					},
+					"frame": {
+						"x": 658,
+						"y": 571,
+						"w": 251,
+						"h": 68
+					}
+				},
+				{
+					"filename": "help_psycho3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 415,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 58,
+						"y": 27,
+						"w": 302,
+						"h": 75
+					},
+					"frame": {
+						"x": 663,
+						"y": 641,
+						"w": 302,
+						"h": 75
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:4051415942f972ac9e2986b8f541e5b1:c5a9147f4331e3226247ba556f3217ae:b34c8670b11bb20cb1751a70d3683e22$"
+	}
+}

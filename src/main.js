@@ -17,14 +17,14 @@ let config = {
     physics: {
         default: "arcade",
         arcade: {
-            //debug: true,
+            debug: true,
             gravity: {
                 x: 0,
                 y: 0
             }
         }
     },
-    scene: [ Load ]
+    scene: [ Load, Menu, Drive ]
 }
 
 let game = new Phaser.Game(config)
@@ -38,4 +38,4 @@ let centerY = game.config.height/2;
 let highScore = 0;
 let jumpFinished = true;
 let dead = false;
-let keySPACE, keyF, keyR, keyQ;
+let keySPACE, keyA, keyD, keyLEFT, keyRIGHT;

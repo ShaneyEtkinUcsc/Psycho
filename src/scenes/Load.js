@@ -10,6 +10,7 @@ class Load extends Phaser.Scene {
     preload() {
         
         //loading bar
+        //I'm thinking we have a preload scene for a cooler loading bar at some point
         let loadingBar = this.add.graphics();
         this.load.on("progress", (value) => {
             loadingBar.clear();
@@ -24,11 +25,16 @@ class Load extends Phaser.Scene {
     }
 
     create() {
-        //this.temp = this.physics.add.sprite(600, 275, "cartemp");
-        //this.temp.setSize(20,70,true);
-        //this.temp.setGravityY(20);
-        
+     // check for local storage browser support
+     if(window.localStorage) {
+        console.log("Local storage supported");
+    } else {
+        console.log("Local storage not supported");
     }
+
+    // go to Menu scene
+    this.scene.start("menuScene");
+}
 
 }
 

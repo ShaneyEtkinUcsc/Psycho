@@ -24,9 +24,9 @@ class Load extends Phaser.Scene {
     }
 
     create() {
-        this.temp = this.physics.add.sprite(600, 275, "cartemp");
-        this.temp.setSize(20,70,true);
-        this.temp.setGravityY(20);
+        //this.temp = this.physics.add.sprite(600, 275, "cartemp");
+        //this.temp.setSize(20,70,true);
+        //this.temp.setGravityY(20);
         
     }
 

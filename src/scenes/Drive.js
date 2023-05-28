@@ -77,23 +77,46 @@ class Drive extends Phaser.Scene {
     redraw(directionLeft) {
         //this.graphics.clear();
         //this.graphics2.clear();
-        this.lineLeft.destroy();
-        this.lineRight.destroy();
+ 
 
         if (directionLeft == true){
             //if moving left
-            scootch_countL += 1;
-            scootch_countR -= 1;
-            //console.log("L: " + scootch_countL + " R: " + scootch_countR);
-            this.lineLeft.add(new Phaser.Curves.Line([centerX - 100 - 2 * scootch_countL, centerY, 0 - 2 * scootch_countL, 720 ]));
-            this.lineRight.add(new Phaser.Curves.Line([centerX + 100 - scootch_countL/2, centerY, 1280 - scootch_countL/2, 720 ]));
+            if(scootch_countL <= 25){
+                scootch_countL += 1;
+                scootch_countR -= 1;
+            }
+            console.log("L: " + scootch_countL + " R: " + scootch_countR);
+            if(scootch_countL % 5 == 0 && scootch_countL <= 25 && scootch_countL != -25 && scootch_countL != -20){
+                console.log("i moved left");
+                this.lineLeft.destroy();
+                this.lineLeft.add(new Phaser.Curves.Line([centerX - 100 * scootch_countL/5, centerY, 0, 720 - scootch_countL/5 ]));
+                if(scootch_countR <= -10 ){
+                    this.lineRight.destroy();
+                    this.lineRight.add(new Phaser.Curves.Line([centerX + 100 * (scootch_countR + 10)/5, centerY, 1280, 720 - (scootch_countR + 10)/5 ]));
+                }
+            }
         } else {
             //if moving right
-            scootch_countL -= 1;
-            scootch_countR += 1;
+            if(scootch_countR <= 25){
+                scootch_countL -= 1;
+                scootch_countR += 1;
+            }
+            console.log("L: " + scootch_countL + " R: " + scootch_countR);
+            if(scootch_countR % 5 == 0 && scootch_countR <= 25 && scootch_countR != -25 && scootch_countR != -20){
+                console.log("i moved right");
+                this.lineRight.destroy();
+                this.lineRight.add(new Phaser.Curves.Line([centerX + 100 * scootch_countR/5, centerY, 1280, 720 - scootch_countR/5 ]));
+                if(scootch_countL <= -10 ){
+                    this.lineLeft.destroy();
+                    this.lineLeft.add(new Phaser.Curves.Line([centerX - 100 * (scootch_countL + 10)/5, centerY, 0, 720 - (scootch_countL + 10)/5 ]));
+                }
+            }
+      
             //console.log("L: " + scootch_countL + " R: " + scootch_countR);
-            this.lineLeft.add(new Phaser.Curves.Line([centerX - 100 + scootch_countR/2, centerY, 0 + scootch_countR/2, 720 ]));
-            this.lineRight.add(new Phaser.Curves.Line([centerX + 100 + 2*scootch_countR, centerY, 1280 + 2*scootch_countR, 720 ]));
+         
+
+            //this.lineLeft.add(new Phaser.Curves.Line([centerX - 100 + scootch_countR/2, centerY, 0 + scootch_countR/2, 720 ]));
+            //this.lineRight.add(new Phaser.Curves.Line([centerX + 100 + 2*scootch_countR, centerY, 1280 + 2*scootch_countR, 720 ]));
         }
 
 

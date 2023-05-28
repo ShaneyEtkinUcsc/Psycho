@@ -21,6 +21,7 @@ class Load extends Phaser.Scene {
             loadingBar.destroy();
         });
         this.load.image("cartemp", "./assets/temps/car_temp.png");
+        this.load.image("roadline", "./assets/temps/roadlineTemp.png");
        
     }
 

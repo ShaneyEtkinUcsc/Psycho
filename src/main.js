@@ -6,14 +6,14 @@ let config = {
     mode: Phaser.Scale.FIT,
     scale: {
         // screen scalling
+        width: 1280,
+        height: 720,
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
         // I learned this from phaser examples and stack overflow
         // https://stackoverflow.com/questions/53873534/phaser-3-scaling-the-game-to-full-websites-width-and-height
         
     },
-    width: 1280,
-    height: 720,
     physics: {
         default: "arcade",
         arcade: {

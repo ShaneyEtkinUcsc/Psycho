@@ -6,6 +6,7 @@ class Drive extends Phaser.Scene {
     create() {
         console.log("in driving");
 
+
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
@@ -73,7 +74,33 @@ class Drive extends Phaser.Scene {
 
     }
 
-    update(time, delta) {
+    redraw(directionLeft) {
+        this.graphics.clear();
+        //this.graphics2.clear();
+        this.lineLeft.destroy();
+        this.lineRight.destroy();
+
+        if (directionLeft == true){
+            //if moving left
+            scootch_countL += 1;
+            scootch_countR -= 1;
+            //console.log("L: " + scootch_countL + " R: " + scootch_countR);
+            this.lineLeft.add(new Phaser.Curves.Line([centerX - 100 - 2 * scootch_countL, centerY, 0 - 2 * scootch_countL, 720 + 2 * scootch_countL]));
+            this.lineRight.add(new Phaser.Curves.Line([centerX + 100 - scootch_countL/2, centerY, 1280 - scootch_countL/2, 720 + scootch_countL/2]));
+        } else {
+            //if moving right
+            scootch_countL -= 1;
+            scootch_countR += 1;
+            //console.log("L: " + scootch_countL + " R: " + scootch_countR);
+            this.lineLeft.add(new Phaser.Curves.Line([centerX - 100 + scootch_countR/2, centerY, 0 + scootch_countR/2, 720 - scootch_countR/2]));
+            this.lineRight.add(new Phaser.Curves.Line([centerX + 100 + 2*scootch_countR, centerY, 1280 + 2*scootch_countR, 720 - 2*scootch_countR]));
+        }
+
+
+    }
+    
+
+    update() {
         
         this.graphics.clear();
         this.graphics.lineStyle(5, 0xFDFD32, 1);
@@ -97,17 +124,17 @@ class Drive extends Phaser.Scene {
             //console.log("left down");
             //this.car.setAccelerationX(-20);
             this.car.x -= 5;
-            console.log("Line left: " + this.lineLeft.path);
-            this.lineLeft.path -= 2;
-            this.lineRight.path += 2;
             this.roadCenter.x -= 2;
+            this.redraw(true);
         } 
         else if (this.input.keyboard.checkDown(keyD) || this.input.keyboard.checkDown(keyRIGHT)){
             //console.log("right down");
             this.car.x += 5;
             this.roadCenter.x += 2;
+            this.redraw(false);
             //this.car.setAccelerationX(20);
         }
     }
+    
 
 }

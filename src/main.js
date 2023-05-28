@@ -36,6 +36,7 @@ let height = game.config.height;
 let centerX = game.config.width/2;
 let centerY = game.config.height/2;
 let highScore = 0;
-let jumpFinished = true;
+let scootch_countL = 0;
+let scootch_countR = 0;
 let dead = false;
 let keySPACE, keyA, keyD, keyLEFT, keyRIGHT;

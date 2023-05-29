@@ -22,6 +22,11 @@ class Load extends Phaser.Scene {
         });
         this.load.image("cartemp", "./assets/temps/car_temp.png");
         this.load.image("roadline", "./assets/temps/roadlineTemp.png");
+        this.load.image("rearview", "./assets/art/rearview_frame.png");
+        this.load.image("cop", "./assets/art/car_glare.png");
+        this.load.image("top", "./assets/art/texttop.png");
+        this.load.image("bottom", "./assets/art/textbottom.png");
+        this.load.image("skyline", "./assets/art/skyline.png")
        
     }
 

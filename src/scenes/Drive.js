@@ -6,6 +6,8 @@ class Drive extends Phaser.Scene {
     create() {
         console.log("in driving");
 
+       
+
 
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -18,14 +20,27 @@ class Drive extends Phaser.Scene {
         this.physics.world.setBoundsCollision(true, true, false, false); // check left and right, not up or down
 
 
+        
+
+
         this.back1 = this.add.rectangle(0, 0, 1280, 720, 0xFFFFFF).setOrigin(0);
         this.back2 = this.add.rectangle(0, 0, 1280, 360, 0xDC3C28).setOrigin(0);
+
+        this.mirror = this.add.sprite(0, 0, "skyline").setOrigin(0);
+
         this.roadbase = this.add.rectangle(0, centerY, 1280, 720, 0x2B2B2B).setOrigin(0);
+
+       
+
+
         this.car = this.physics.add.sprite(centerX, 650, "cartemp");
-        this.roadCenter = this.physics.add.sprite(centerX, centerY, "cartemp");
-        this.roadCenter.setAlpha(0);
-        this.roadCenter.setSize(200, 30, true);
+        this.roadCenter = this.physics.add.sprite(centerX, 340, "cop");
+        this.roadCenter.setScale(2.5);
+        this.roadCenter.setSize(45, 30, true);
         this.roadCenter.setCollideWorldBounds(true);
+
+        //this.texttop = this.add.sprite(0, 0, "top").setOrigin(0);
+        //this.textbot = this.add.sprite(0, 0, "bottom").setOrigin(0);
 
         this.car.setSize(200, 30, true);
         this.car.setCollideWorldBounds(true);
@@ -62,7 +77,9 @@ class Drive extends Phaser.Scene {
         this.graphics3.lineStyle(6, 0x000000, 1);
 
         //  32px radius on the corners
-        this.graphics3.strokeRoundedRect(centerX - 300, 50, 600, 200, 48);
+        //this.graphics3.strokeRoundedRect(centerX - 300, 50, 600, 200, 48);
+        this.mirror = this.add.sprite(centerX, 250, "rearview");
+        this.mirror.setScale(0.75);
 
         // configure main camera 
         this.cameras.main.setBounds(0, 0, game.config.width, game.config.height);
@@ -86,31 +103,31 @@ class Drive extends Phaser.Scene {
                 scootch_countR -= 1;
             }
             console.log("L: " + scootch_countL + " R: " + scootch_countR);
-            if(scootch_countL % 5 == 0 && scootch_countL <= 25 && scootch_countL != -25 && scootch_countL != -20){
+            //if(scootch_countL % 5 == 0 ){
                 console.log("i moved left");
                 this.lineLeft.destroy();
-                this.lineLeft.add(new Phaser.Curves.Line([centerX - 100 * scootch_countL/5, centerY, 0, 720 - scootch_countL/5 ]));
+                this.lineLeft.add(new Phaser.Curves.Line([centerX - 100 - scootch_countL, centerY, 0  - scootch_countL, 720 ]));
                 if(scootch_countR <= -10 ){
                     this.lineRight.destroy();
-                    this.lineRight.add(new Phaser.Curves.Line([centerX + 100 * (scootch_countR + 10)/5, centerY, 1280, 720 - (scootch_countR + 10)/5 ]));
+                    this.lineRight.add(new Phaser.Curves.Line([centerX + 100 + scootch_countR, centerY, 1280 + scootch_countR, 720 ]));
                 }
-            }
+           // }
         } else {
             //if moving right
             if(scootch_countR <= 25){
-                scootch_countL -= 1;
-                scootch_countR += 1;
+                scootch_countL -= 0.5;
+                scootch_countR += 0.5;
             }
             console.log("L: " + scootch_countL + " R: " + scootch_countR);
-            if(scootch_countR % 5 == 0 && scootch_countR <= 25 && scootch_countR != -25 && scootch_countR != -20){
+            //if(scootch_countR % 5 == 0 ){
                 console.log("i moved right");
                 this.lineRight.destroy();
-                this.lineRight.add(new Phaser.Curves.Line([centerX + 100 * scootch_countR/5, centerY, 1280, 720 - scootch_countR/5 ]));
+                this.lineRight.add(new Phaser.Curves.Line([centerX + 100 - scootch_countR, centerY, 1280 - scootch_countR , 720 ]));
                 if(scootch_countL <= -10 ){
                     this.lineLeft.destroy();
-                    this.lineLeft.add(new Phaser.Curves.Line([centerX - 100 * (scootch_countL + 10)/5, centerY, 0, 720 - (scootch_countL + 10)/5 ]));
+                    this.lineLeft.add(new Phaser.Curves.Line([centerX - 100 + scootch_countL, centerY, 0 + scootch_countL, 720 ]));
                 }
-            }
+            //}
       
             //console.log("L: " + scootch_countL + " R: " + scootch_countR);
          
@@ -147,13 +164,13 @@ class Drive extends Phaser.Scene {
             //console.log("left down");
             //this.car.setAccelerationX(-20);
             this.car.x -= 5;
-            this.roadCenter.x -= 2;
+            this.roadCenter.x -= 5;
             this.redraw(true);
         } 
         else if (this.input.keyboard.checkDown(keyD) || this.input.keyboard.checkDown(keyRIGHT)){
             //console.log("right down");
             this.car.x += 5;
-            this.roadCenter.x += 2;
+            this.roadCenter.x += 5;
             this.redraw(false);
             //this.car.setAccelerationX(20);
         }

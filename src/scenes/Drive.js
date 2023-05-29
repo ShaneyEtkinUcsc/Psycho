@@ -6,7 +6,18 @@ class Drive extends Phaser.Scene {
     create() {
         console.log("in driving");
 
-       
+        this.menuMusic = this.sound.add("menuMusic");
+        
+        var musicConfig = {
+            mute: false,
+            volume: 0.1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 0
+         }
+
+         this.menuMusic.play(musicConfig);
 
 
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);

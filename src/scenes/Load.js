@@ -26,7 +26,10 @@ class Load extends Phaser.Scene {
         this.load.image("cop", "./assets/art/car_glare.png");
         this.load.image("top", "./assets/art/texttop.png");
         this.load.image("bottom", "./assets/art/textbottom.png");
-        this.load.image("skyline", "./assets/art/skyline.png")
+        this.load.image("skyline", "./assets/art/skyline.png");
+        this.load.image("road", "./assets/art/ ")
+
+        this.load.audio("menuMusic", "./assets/sound/Psycho_8bit.wav");
        
     }
 

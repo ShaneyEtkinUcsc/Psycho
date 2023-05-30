@@ -10,7 +10,7 @@ class Credits extends Phaser.Scene {
         let credConfig = {
             fontFamily: 'SanJose',
             fontSize: '40px',
-            backgroundColor: '#ffffff',
+            //backgroundColor: '#ffffff',
             color: '#eb4034',
             align: 'right',
             padding: {
@@ -27,7 +27,7 @@ class Credits extends Phaser.Scene {
         credConfig.fontFamily = 'Gothic';
         this.add.text(centerX, centerY - 200, 'CREDITS', credConfig).setOrigin(0.5);
 
-        this.backButton = this.add.text(centerX, 500, 'BACK', { fill: '#dea918', fontSize: '30px' }).setInteractive()
+        this.backButton = this.add.text(centerX - 60, 500, 'BACK', { fill: '#dea918', fontSize: '50px' }).setInteractive()
         .on('pointerdown', () => this.returnToMenu() )
         .on('pointerover', () => this.hoverState() )
         .on('pointerout', () => this.restState() );

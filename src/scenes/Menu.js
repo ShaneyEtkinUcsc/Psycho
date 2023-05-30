@@ -130,6 +130,7 @@ class Menu extends Phaser.Scene {
     }
     
     nextScene() {
+        this.menuMusic.stop();
         this.scene.start("driveScene");
     }
     playHoverState() {

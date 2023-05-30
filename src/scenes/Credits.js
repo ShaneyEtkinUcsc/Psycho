@@ -4,8 +4,6 @@ class Credits extends Phaser.Scene {
     }
 
     create() {
-        //credits text
-        this.add.text()
         //#F3B141
         let credConfig = {
             fontFamily: 'SanJose',

@@ -4,8 +4,6 @@ class Help extends Phaser.Scene {
     }
 
     create() {
-        //credits text
-        this.add.text()
         //#F3B141
         let helpConfig = {
             fontFamily: 'SanJose',
@@ -23,9 +21,9 @@ class Help extends Phaser.Scene {
         this.add.text(centerX, centerY + 50, "INSERT INSTRUCTIONS HERE", helpConfig).setOrigin(0.5);
         this.add.text(centerX, centerY, 'INSERT MORE INSTRUCTIONS', helpConfig).setOrigin(0.5);
         //change size and font
-        credConfig.fontSize = '50px';
-        credConfig.fontFamily = 'Gothic';
-        this.add.text(centerX, centerY - 200, 'HELP', credConfig).setOrigin(0.5);
+        helpConfig.fontSize = '50px';
+        helpConfig.fontFamily = 'Gothic';
+        this.add.text(centerX, centerY - 200, 'HELP', helpConfig).setOrigin(0.5);
 
         this.backButton = this.add.text(centerX - 60, 500, 'BACK', { fill: '#dea918', fontSize: '50px' }).setInteractive()
         .on('pointerdown', () => this.returnToMenu() )

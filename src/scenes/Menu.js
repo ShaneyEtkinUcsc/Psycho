@@ -39,7 +39,7 @@ class Menu extends Phaser.Scene {
                 {key: 'buttons', frame: "play_psycho6.png"},
                 {key: 'buttons', frame: "play_psycho7.png"}
             ],
-            frameRate: 12,
+            frameRate: 14,
             repeat: 0
         });
         this.anims.create({
@@ -53,7 +53,7 @@ class Menu extends Phaser.Scene {
                 {key: 'buttons', frame: "play_psycho2.png"},
                 {key: 'buttons', frame: "play_psycho1.png"}
             ],
-            frameRate: 12,
+            frameRate: 14,
             repeat: 0
         });
         //Help button animations
@@ -67,7 +67,7 @@ class Menu extends Phaser.Scene {
                 {key: 'buttons', frame: "help_psycho5.png"},
                 {key: 'buttons', frame: "help_psycho6.png"}
             ],
-            frameRate: 12,
+            frameRate: 14,
             repeat: 0
         });
         this.anims.create({
@@ -80,7 +80,7 @@ class Menu extends Phaser.Scene {
                 {key: 'buttons', frame: "help_psycho2.png"},
                 {key: 'buttons', frame: "help_psycho1.png"}
             ],
-            frameRate: 12,
+            frameRate: 14,
             repeat: 0
         });
         //Credits button animations
@@ -94,7 +94,7 @@ class Menu extends Phaser.Scene {
                 {key: 'buttons', frame: "credits_psycho5.png"},
                 {key: 'buttons', frame: "credits_psycho6.png"}
             ],
-            frameRate: 12,
+            frameRate: 14,
             repeat: 0
         });
         this.anims.create({
@@ -107,7 +107,7 @@ class Menu extends Phaser.Scene {
                 {key: 'buttons', frame: "credits_psycho2.png"},
                 {key: 'buttons', frame: "credits_psycho1.png"}
             ],
-            frameRate: 12,
+            frameRate: 14,
             repeat: 0
         });
 

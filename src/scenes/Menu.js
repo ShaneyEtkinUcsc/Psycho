@@ -38,7 +38,7 @@ class Menu extends Phaser.Scene {
                 {key: 'buttons', frame: "play_psycho6.png"},
                 {key: 'buttons', frame: "play_psycho7.png"}
             ],
-            frameRate: 10,
+            frameRate: 12,
             repeat: 0
         });
         this.anims.create({
@@ -52,7 +52,7 @@ class Menu extends Phaser.Scene {
                 {key: 'buttons', frame: "play_psycho2.png"},
                 {key: 'buttons', frame: "play_psycho1.png"}
             ],
-            frameRate: 10,
+            frameRate: 12,
             repeat: 0
         });
         //Help button animations
@@ -66,7 +66,7 @@ class Menu extends Phaser.Scene {
                 {key: 'buttons', frame: "help_psycho5.png"},
                 {key: 'buttons', frame: "help_psycho6.png"}
             ],
-            frameRate: 10,
+            frameRate: 12,
             repeat: 0
         });
         this.anims.create({
@@ -79,7 +79,7 @@ class Menu extends Phaser.Scene {
                 {key: 'buttons', frame: "help_psycho2.png"},
                 {key: 'buttons', frame: "help_psycho1.png"}
             ],
-            frameRate: 10,
+            frameRate: 12,
             repeat: 0
         });
         //Credits button animations
@@ -93,7 +93,7 @@ class Menu extends Phaser.Scene {
                 {key: 'buttons', frame: "credits_psycho5.png"},
                 {key: 'buttons', frame: "credits_psycho6.png"}
             ],
-            frameRate: 10,
+            frameRate: 12,
             repeat: 0
         });
         this.anims.create({
@@ -106,7 +106,7 @@ class Menu extends Phaser.Scene {
                 {key: 'buttons', frame: "credits_psycho2.png"},
                 {key: 'buttons', frame: "credits_psycho1.png"}
             ],
-            frameRate: 10,
+            frameRate: 12,
             repeat: 0
         });
 
@@ -119,7 +119,7 @@ class Menu extends Phaser.Scene {
         .on('pointerout', () => this.playRestState() );
 
         this.helpButton = this.add.sprite(centerX+325, centerY+100, 'buttons', 'help_psycho6.png').setInteractive()
-        .on('pointerdown', () => this.nextScene() )
+        .on('pointerdown', () => this.toHelp() )
         .on('pointerover', () => this.helpHoverState() )
         .on('pointerout', () => this.helpRestState());
 
@@ -132,7 +132,7 @@ class Menu extends Phaser.Scene {
     //PLAY BUTTON FUNCTIONS
     nextScene() {
         this.menuMusic.stop();
-        this.scene.start("driveScene");
+        this.scene.start('driveScene');
     }
     playHoverState() {
         this.playButton.play('playform');
@@ -142,6 +142,10 @@ class Menu extends Phaser.Scene {
     }
 
     //HELP BUTTON FUNCTIONS
+    toHelp(){
+        this.menuMusic.stop();
+        this.scene.start('helpScene');
+    }
     helpHoverState() {
         this.helpButton.play('helpform');
     }
@@ -152,7 +156,7 @@ class Menu extends Phaser.Scene {
     //CREDITS BUTTON FUNCTIONS
     toCredits(){
         this.menuMusic.stop();
-        this.scene.start("creditsScene");
+        this.scene.start('creditsScene');
     }
     credHoverState() {
         this.creditsButton.play('creditsform');

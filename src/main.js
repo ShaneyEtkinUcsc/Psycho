@@ -38,5 +38,6 @@ let centerY = game.config.height/2;
 let highScore = 0;
 let scootch_countL = 0;
 let scootch_countR = 0;
+let menuMusicPlaying = false;
 let dead = false;
 let keySPACE, keyA, keyD, keyLEFT, keyRIGHT;

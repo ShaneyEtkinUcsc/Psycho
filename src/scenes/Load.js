@@ -34,15 +34,30 @@ class Load extends Phaser.Scene {
     }
 
     create() {
-     // check for local storage browser support
-     if(window.localStorage) {
-        console.log("Local storage supported");
-    } else {
-        console.log("Local storage not supported");
-    }
+        /*
+        this.menuMusic = this.sound.add("menuMusic");
+        
+        var musicConfig = {
+            mute: false,
+            volume: 0.1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 0
+         }
 
-    // go to Menu scene
-    this.scene.start("menuScene");
+         this.menuMusic.play(musicConfig);
+         */
+
+        // check for local storage browser support
+        if(window.localStorage) {
+            console.log("Local storage supported");
+        } else {
+            console.log("Local storage not supported");
+        }
+
+        // go to Menu scene
+        this.scene.start("menuScene");
 }
 
 }

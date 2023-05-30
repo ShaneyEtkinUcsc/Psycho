@@ -8,11 +8,8 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
-        //console.log("in menu");
-        //this.scene.start("driveScene");
-
         this.menuMusic = this.sound.add("menuMusic");
-        
+
         var musicConfig = {
             mute: false,
             volume: 0.1,
@@ -20,9 +17,13 @@ class Menu extends Phaser.Scene {
             seek: 0,
             loop: true,
             delay: 0
-         }
-
-         this.menuMusic.play(musicConfig);
+        }
+        if (!menuMusicPlaying){
+            this.menuMusic.play(musicConfig);
+            menuMusicPlaying = true;
+        }
+        //console.log("in menu");
+        //this.scene.start("driveScene");
 
         //ANIMATION CONFIGS
         this.frameNames = this.textures.get('buttons').getFrameNames();
@@ -131,7 +132,8 @@ class Menu extends Phaser.Scene {
     
     //PLAY BUTTON FUNCTIONS
     nextScene() {
-        this.menuMusic.stop();
+        this.menuMusic.destroy();
+        menuMusicPlaying = false;
         this.scene.start('driveScene');
     }
     playHoverState() {
@@ -143,7 +145,7 @@ class Menu extends Phaser.Scene {
 
     //HELP BUTTON FUNCTIONS
     toHelp(){
-        this.menuMusic.stop();
+        //this.menuMusic.stop();
         this.scene.start('helpScene');
     }
     helpHoverState() {
@@ -155,7 +157,7 @@ class Menu extends Phaser.Scene {
 
     //CREDITS BUTTON FUNCTIONS
     toCredits(){
-        this.menuMusic.stop();
+        //this.menuMusic.stop();
         this.scene.start('creditsScene');
     }
     credHoverState() {

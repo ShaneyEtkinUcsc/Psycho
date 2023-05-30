@@ -24,7 +24,7 @@ let config = {
             }
         }
     },
-    scene: [ Load, Menu, Drive ]
+    scene: [ Load, Menu, Credits, Drive ]
 }
 
 let game = new Phaser.Game(config)

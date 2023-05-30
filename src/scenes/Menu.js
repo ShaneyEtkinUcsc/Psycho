@@ -124,11 +124,12 @@ class Menu extends Phaser.Scene {
         .on('pointerout', () => this.helpRestState());
 
         this.creditsButton = this.add.sprite(centerX, centerY+275, 'buttons', 'credits_psycho6.png').setInteractive()
-        .on('pointerdown', () => this.nextScene() )
+        .on('pointerdown', () => this.toCredits() )
         .on('pointerover', () => this.credHoverState() )
         .on('pointerout', () => this.credRestState() );
     }
     
+    //PLAY BUTTON FUNCTIONS
     nextScene() {
         this.menuMusic.stop();
         this.scene.start("driveScene");
@@ -140,6 +141,7 @@ class Menu extends Phaser.Scene {
         this.playButton.play('playdeform');
     }
 
+    //HELP BUTTON FUNCTIONS
     helpHoverState() {
         this.helpButton.play('helpform');
     }
@@ -147,6 +149,11 @@ class Menu extends Phaser.Scene {
         this.helpButton.play('helpdeform');
     }
 
+    //CREDITS BUTTON FUNCTIONS
+    toCredits(){
+        this.menuMusic.stop();
+        this.scene.start("creditsScene");
+    }
     credHoverState() {
         this.creditsButton.play('creditsform');
     }

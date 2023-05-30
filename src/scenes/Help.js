@@ -18,8 +18,8 @@ class Help extends Phaser.Scene {
             fixedWidth: 0
         }
 
-        this.add.text(centerX, centerY + 50, "INSERT INSTRUCTIONS HERE", helpConfig).setOrigin(0.5);
         this.add.text(centerX, centerY, 'INSERT MORE INSTRUCTIONS', helpConfig).setOrigin(0.5);
+        this.add.text(centerX, centerY + 50, "INSERT INSTRUCTIONS HERE", helpConfig).setOrigin(0.5);
         //change size and font
         helpConfig.fontSize = '50px';
         helpConfig.fontFamily = 'Gothic';

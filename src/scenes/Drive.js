@@ -39,23 +39,35 @@ class Drive extends Phaser.Scene {
         this.back1 = this.add.rectangle(0, 0, 1280, 720, 0xFFFFFF).setOrigin(0);
         this.back2 = this.add.rectangle(0, 0, 1280, 360, 0xDC3C28).setOrigin(0);
 
-        this.mirror = this.add.sprite(0, 0, "skyline").setOrigin(0);
+        this.mirrorBack = this.add.sprite(0, 0, "skyline").setOrigin(0);
+        this.frontSky = this.add.sprite(0, 0, "frontview").setOrigin(0);
+        this.frontSky.setScale(0.5);
+      
+
+
 
         this.roadbase = this.add.rectangle(0, centerY, 1280, 720, 0x2B2B2B).setOrigin(0);
+        this.road = this.add.tileSprite(0, centerY, 1280, 360, "road").setOrigin(0);
+        this.roadBack = this.add.tileSprite(220, centerY, 840, 90, "road").setOrigin(0);
 
-       
+
+        this.car = this.physics.add.sprite(centerX, 650, "carFront");
+        this.car.setScale(1.45);
+
+        this.rainOverlay = this.add.sprite(0, 0, "rainOverlay").setOrigin(0);
+        this.rainOverlay.setScale(0.5);
 
 
-        this.car = this.physics.add.sprite(centerX, 650, "cartemp");
         this.roadCenter = this.physics.add.sprite(centerX, 340, "cop");
         this.roadCenter.setScale(2.5);
         this.roadCenter.setSize(45, 30, true);
         this.roadCenter.setCollideWorldBounds(true);
 
+
         //this.texttop = this.add.sprite(0, 0, "top").setOrigin(0);
         //this.textbot = this.add.sprite(0, 0, "bottom").setOrigin(0);
 
-        this.car.setSize(200, 30, true);
+        this.car.setSize(640, 30, true);
         this.car.setCollideWorldBounds(true);
         this.car.setImmovable(true);
         //this.car.body.setDragX(375);
@@ -89,17 +101,17 @@ class Drive extends Phaser.Scene {
         this.graphics3 = this.add.graphics();
         this.graphics3.lineStyle(6, 0x000000, 1);*/
 
-        this.roadline = this.add.sprite(300, centerY, "roadline");
-        this.roadline2 = this.add.sprite(300, centerY, "roadline");
-        this.roadline.setRotation(10);
-        this.roadline2.setRotation(10);
+        this.roadline = this.add.sprite(100, centerY, "roadline");
+        //this.roadline2 = this.add.sprite(300, centerY, "roadline");
+        //this.roadline.setRotation(10);
+        //this.roadline2.setRotation(10);
 
         let roadleftB = this.add.group({
             key: "roadline",
             setXY: {
                 x: 300,
                 y: centerY,
-                //stepY: -24
+                stepY: -24
             },
         });
 
@@ -107,29 +119,30 @@ class Drive extends Phaser.Scene {
             targets: this.roadline,
             ease: "Quint.easeIn",
             duration: 2000,
-            repeat: -1,
+            repeat: 1,
             tweens: [{
-                x: centerY - 400,
-                y: centerX + 200,
+                x: 0,
+                y: 720,
+                //stepY: 40,
                 duration: 1000,
                 scale: { from: 0.1, to: 5},
         }]
         
         })
 
-        let roadleftBTween2 = this.tweens.chain({
+       /* let roadleftBTween2 = this.tweens.chain({
             targets: this.roadline2,
             ease: "Quint.easeIn",
             duration: 2000,
             repeat: -1,
             tweens: [{
-                x: centerY - 400,
-                y: centerX + 200,
+                x: centerY - 300,
+                y: centerX + 300,
                 duration: 2000,
                 scale: { from: 0.1, to: 5},
         }]
 
-    })
+    })*/
 
 
         //  32px radius on the corners
@@ -198,6 +211,9 @@ class Drive extends Phaser.Scene {
     
 
     update() {
+
+        this.road.tilePositionY -= 5;
+        this.roadBack.tilePositionY += 5;
         
         //this.graphics.clear();
         //this.graphics.lineStyle(5, 0xFDFD32, 1);

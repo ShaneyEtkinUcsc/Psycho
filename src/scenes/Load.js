@@ -14,20 +14,22 @@ class Load extends Phaser.Scene {
         let loadingBar = this.add.graphics();
         this.load.on("progress", (value) => {
             loadingBar.clear();
-            loadingBar.fillStyle(0xFFFFFF, 1);
+            loadingBar.fillStyle(0xac2f1e, 1);
             loadingBar.fillRect(0, centerY, width * value, 5);
         });
         this.load.on("complete", () => {
             loadingBar.destroy();
         });
-        this.load.image("cartemp", "./assets/temps/car_temp.png");
+        this.load.image("carFront", "./assets/art/carfront.png");
         this.load.image("roadline", "./assets/temps/roadlineTemp.png");
         this.load.image("rearview", "./assets/art/rearview_frame.png");
         this.load.image("cop", "./assets/art/car_glare.png");
         this.load.image("top", "./assets/art/texttop.png");
         this.load.image("bottom", "./assets/art/textbottom.png");
         this.load.image("skyline", "./assets/art/skyline.png");
-        this.load.image("road", "./assets/art/road4.jpeg")
+        this.load.image("frontview", "./assets/art/background2.png");
+        this.load.image("rainOverlay", "./assets/art/rainoverlay.png");
+        this.load.image("road", "./assets/art/ROADS.png")
         this.load.image("lines","./assets/art/whitelines.png");
 
         this.load.audio("menuMusic", "./assets/sound/Psycho_8bit.wav");

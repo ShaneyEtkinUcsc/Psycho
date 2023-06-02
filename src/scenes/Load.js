@@ -27,37 +27,23 @@ class Load extends Phaser.Scene {
         this.load.image("top", "./assets/art/texttop.png");
         this.load.image("bottom", "./assets/art/textbottom.png");
         this.load.image("skyline", "./assets/art/skyline.png");
-        this.load.image("road", "./assets/art/ ")
+        this.load.image("road", "./assets/art/road4.jpeg")
+        this.load.image("lines","./assets/art/whitelines.png");
 
         this.load.audio("menuMusic", "./assets/sound/Psycho_8bit.wav");
        
     }
 
     create() {
-        /*
-        this.menuMusic = this.sound.add("menuMusic");
-        
-        var musicConfig = {
-            mute: false,
-            volume: 0.1,
-            detune: 0,
-            seek: 0,
-            loop: true,
-            delay: 0
-         }
+     // check for local storage browser support
+     if(window.localStorage) {
+        console.log("Local storage supported");
+    } else {
+        console.log("Local storage not supported");
+    }
 
-         this.menuMusic.play(musicConfig);
-         */
-
-        // check for local storage browser support
-        if(window.localStorage) {
-            console.log("Local storage supported");
-        } else {
-            console.log("Local storage not supported");
-        }
-
-        // go to Menu scene
-        this.scene.start("menuScene");
+    // go to Menu scene
+    this.scene.start("menuScene");
 }
 
 }

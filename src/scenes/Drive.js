@@ -6,7 +6,7 @@ class Drive extends Phaser.Scene {
     create() {
         console.log("in driving");
 
-        this.menuMusic = this.sound.add("menuMusic");
+        this.gameMusic = this.sound.add("menuMusic");
         
         var musicConfig = {
             mute: false,
@@ -17,10 +17,10 @@ class Drive extends Phaser.Scene {
             delay: 0
          }
 
-        if (!menuMusicPlaying){
-            this.menuMusic.play(musicConfig);
-            menuMusicPlaying = true;
-        }
+        //if (!menuMusicPlaying){
+            this.gameMusic.play(musicConfig);
+            //menuMusicPlaying = true;
+        //}
 
 
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -34,9 +34,7 @@ class Drive extends Phaser.Scene {
         this.physics.world.setBoundsCollision(true, true, false, false); // check left and right, not up or down
 
 
-        
-
-
+    
         this.back1 = this.add.rectangle(0, 0, 1280, 720, 0xFFFFFF).setOrigin(0);
         this.back2 = this.add.rectangle(0, 0, 1280, 360, 0xDC3C28).setOrigin(0);
 
@@ -63,7 +61,7 @@ class Drive extends Phaser.Scene {
 
         const zone = this.add.zone(centerX, centerY, 200, 30);
         
-        this.graphics = this.add.graphics();
+       /* this.graphics = this.add.graphics();
         this.graphics2 = this.add.graphics();
         this.follower = { t: 0, vec: new Phaser.Math.Vector2() };
         this.follower2 = { t: 0, vec: new Phaser.Math.Vector2() };
@@ -88,7 +86,50 @@ class Drive extends Phaser.Scene {
             repeat: -1
         });
         this.graphics3 = this.add.graphics();
-        this.graphics3.lineStyle(6, 0x000000, 1);
+        this.graphics3.lineStyle(6, 0x000000, 1);*/
+
+        this.roadline = this.add.sprite(300, centerY, "roadline");
+        this.roadline2 = this.add.sprite(300, centerY, "roadline");
+        this.roadline.setRotation(10);
+        this.roadline2.setRotation(10);
+
+        let roadleftB = this.add.group({
+            key: "roadline",
+            setXY: {
+                x: 300,
+                y: centerY,
+                //stepY: -24
+            },
+        });
+
+        let roadleftBTween = this.tweens.chain({
+            targets: this.roadline,
+            ease: "Quint.easeIn",
+            duration: 2000,
+            repeat: -1,
+            tweens: [{
+                x: centerY - 400,
+                y: centerX + 200,
+                duration: 1000,
+                scale: { from: 0.1, to: 5},
+        }]
+        
+        })
+
+        let roadleftBTween2 = this.tweens.chain({
+            targets: this.roadline2,
+            ease: "Quint.easeIn",
+            duration: 2000,
+            repeat: -1,
+            tweens: [{
+                x: centerY - 400,
+                y: centerX + 200,
+                duration: 2000,
+                scale: { from: 0.1, to: 5},
+        }]
+
+    })
+
 
         //  32px radius on the corners
         //this.graphics3.strokeRoundedRect(centerX - 300, 50, 600, 200, 48);
@@ -98,6 +139,7 @@ class Drive extends Phaser.Scene {
         // configure main camera 
         this.cameras.main.setBounds(0, 0, game.config.width, game.config.height);
         this.cameras.main.setZoom(0.99);
+
         // have camera follow copter
         // startFollow(target [, roundPixels] [, lerpX] [, lerpY] [, offsetX] [, offsetY])
         this.cameras.main.startFollow(this.roadCenter, true, 0.1, 0.1);
@@ -156,36 +198,36 @@ class Drive extends Phaser.Scene {
 
     update() {
         
-        this.graphics.clear();
-        this.graphics.lineStyle(5, 0xFDFD32, 1);
+        //this.graphics.clear();
+        //this.graphics.lineStyle(5, 0xFDFD32, 1);
 
-        this.graphics2.clear();
-        this.graphics2.lineStyle(5, 0xffffff, 1);
+        //this.graphics2.clear();
+        //this.graphics2.lineStyle(5, 0xffffff, 1);
 
-        this.lineLeft.draw(this.graphics);
-        this.lineRight.draw(this.graphics2);
+        //this.lineLeft.draw(this.graphics);
+        //this.lineRight.draw(this.graphics2);
 
-        this.lineLeft.getPoint(this.follower.t, this.follower.vec);
-        this.lineRight.getPoint(this.follower2.t, this.follower2.vec);
+        //this.lineLeft.getPoint(this.follower.t, this.follower.vec);
+        //this.lineRight.getPoint(this.follower2.t, this.follower2.vec);
 
-        this.graphics.fillStyle(0xFDFD32, 1);
-        this.graphics.fillRect(this.follower.vec.x - 8, this.follower.vec.y - 8, 16, 16);
+        //this.graphics.fillStyle(0xFDFD32, 1);
+        //this.graphics.fillRect(this.follower.vec.x - 8, this.follower.vec.y - 8, 16, 16);
 
-        this.graphics2.fillStyle(0xffffff, 1);
-        this.graphics2.fillRect(this.follower2.vec.x - 8, this.follower2.vec.y - 8, 16, 16);
+        //this.graphics2.fillStyle(0xffffff, 1);
+        //this.graphics2.fillRect(this.follower2.vec.x - 8, this.follower2.vec.y - 8, 16, 16);
 
         if(this.input.keyboard.checkDown(keyA) || this.input.keyboard.checkDown(keyLEFT)){
             //console.log("left down");
             //this.car.setAccelerationX(-20);
             this.car.x -= 5;
             this.roadCenter.x -= 5;
-            this.redraw(true);
+            //this.redraw(true);
         } 
         else if (this.input.keyboard.checkDown(keyD) || this.input.keyboard.checkDown(keyRIGHT)){
             //console.log("right down");
             this.car.x += 5;
             this.roadCenter.x += 5;
-            this.redraw(false);
+            //this.redraw(false);
             //this.car.setAccelerationX(20);
         }
     }

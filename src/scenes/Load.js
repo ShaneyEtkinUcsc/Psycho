@@ -15,7 +15,7 @@ class Load extends Phaser.Scene {
         this.load.on("progress", (value) => {
             loadingBar.clear();
             loadingBar.fillStyle(0xac2f1e, 1);
-            loadingBar.fillRect(0, centerY, width * value, 5);
+            loadingBar.fillRect(0, centerY, width * value, 30);
         });
         this.load.on("complete", () => {
             loadingBar.destroy();
@@ -36,6 +36,7 @@ class Load extends Phaser.Scene {
        
     }
 
+
     create() {
      // check for local storage browser support
      if(window.localStorage) {
@@ -44,10 +45,29 @@ class Load extends Phaser.Scene {
         console.log("Local storage not supported");
     }
 
+    let beginConfig = {
+        fontFamily: 'SanJose',
+        fontSize: '40px',
+        //backgroundColor: '#ffffff',
+        color: '#eb4034',
+        align: 'right',
+        padding: {
+            top: 5,
+            bottom: 5,
+        },
+        fixedWidth: 0
+    }
+
+    this.add.text(centerX, centerY, "Click Here to Begin", beginConfig).setOrigin(0.5);
+
     // go to Menu scene
-    this.scene.start("menuScene");
+    this.input.on('pointerdown', () => {this.scene.start("menuScene");});
+    
 }
 
 }
+
+
+
 
 console.log("reached the bottom of load");

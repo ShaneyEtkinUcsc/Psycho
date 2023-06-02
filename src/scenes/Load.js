@@ -33,6 +33,8 @@ class Load extends Phaser.Scene {
         this.load.image("lines","./assets/art/whitelines.png");
 
         this.load.audio("menuMusic", "./assets/sound/Psycho_8bit.wav");
+
+        this.load.bitmapFont("SanJoseB", "./assets/fonts/NHLSanJose.png", "./assets/fonts/NHLSanJose.xml");
        
     }
 
@@ -45,29 +47,28 @@ class Load extends Phaser.Scene {
         console.log("Local storage not supported");
     }
 
-    let beginConfig = {
-        fontFamily: 'SanJose',
-        fontSize: '40px',
-        //backgroundColor: '#ffffff',
-        color: '#eb4034',
-        align: 'right',
-        padding: {
-            top: 5,
-            bottom: 5,
-        },
-        fixedWidth: 0
-    }
 
-    this.add.text(centerX, centerY, "Click Here to Begin", beginConfig).setOrigin(0.5);
-
-    // go to Menu scene
-    this.input.on('pointerdown', () => {this.scene.start("menuScene");});
-    
+    this.startButton = this.add.text(centerX, centerY, "Click Here to Begin", { fill: '#dea918', fontSize: '50px', fontFamily: 'SanJose' }).setOrigin(0.5).setInteractive()
+    .on('pointerdown', () => this.returnToMenu() )
+    .on('pointerover', () => this.hoverState() )
+    .on('pointerout', () => this.restState() );
+    this.startButton.setAlpha(0.0000001);
+    this.startButtontemp = this.add.bitmapText(centerX, centerY + 2, "SanJoseB", "Click here to Begin").setOrigin(0.5);
 }
 
+returnToMenu() {
+    this.scene.start("menuScene");
 }
 
+hoverState() {
+    this.startButtontemp.setAlpha(0);
+    this.startButton.setAlpha(1).setStyle({ fill: '#dea918'});
+}
 
-
+restState() {
+    this.startButton.setStyle({ fill: '#eb4034'})
+}
+   
+}
 
 console.log("reached the bottom of load");

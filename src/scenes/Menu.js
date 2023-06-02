@@ -132,6 +132,8 @@ class Menu extends Phaser.Scene {
     
     //PLAY BUTTON FUNCTIONS
     nextScene() {
+        this.menuMusic.pause();
+        this.menuMusic.stop();
         this.menuMusic.destroy();
         menuMusicPlaying = false;
         this.scene.start('driveScene');

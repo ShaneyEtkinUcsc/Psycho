@@ -17,10 +17,11 @@ class Drive extends Phaser.Scene {
             delay: 0
          }
 
-        //if (!menuMusicPlaying){
+        if (menuMusicPlaying){
+            this.menuMusic.destroy();
             this.gameMusic.play(musicConfig);
-            //menuMusicPlaying = true;
-        //}
+            menuMusicPlaying = true;
+        }
 
 
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);

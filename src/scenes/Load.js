@@ -47,6 +47,7 @@ class Load extends Phaser.Scene {
         console.log("Local storage not supported");
     }
 
+    this.loadingfont = this.add.text(centerX, centerY, "Click Here to Begin", { fill: '#dea918', fontSize: '50px', fontFamily: 'Gothic' }).setAlpha(0).setOrigin(0.5).setInteractive()
 
     this.startButton = this.add.text(centerX, centerY, "Click Here to Begin", { fill: '#dea918', fontSize: '50px', fontFamily: 'SanJose' }).setOrigin(0.5).setInteractive()
     .on('pointerdown', () => this.returnToMenu() )

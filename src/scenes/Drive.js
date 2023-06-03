@@ -106,14 +106,15 @@ class Drive extends Phaser.Scene {
         //this.roadline.setRotation(10);
         //this.roadline2.setRotation(10);
 
-        let roadleftB = this.add.group({
+       /* let roadleftB = this.add.group({
             key: "roadline",
+            repeat: 1,
             setXY: {
                 x: 300,
                 y: centerY,
-                stepY: -24
+                stepY: -32
             },
-        });
+        });*/
 
         let roadleftBTween = this.tweens.chain({
             targets: this.roadline,

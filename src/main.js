@@ -3,9 +3,9 @@ console.log("in main");
 let config = {
     type: Phaser.CANVAS,
     pixelArt: true,
-    mode: Phaser.Scale.FIT,
+    //mode: Phaser.Scale.FIT,
     scale: {
-        // screen scalling
+        // screen scaling
         width: 1280,
         height: 720,
         mode: Phaser.Scale.FIT,

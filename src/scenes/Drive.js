@@ -277,12 +277,13 @@ class Drive extends Phaser.Scene {
         this.cameras.main.setBounds(0, 0, game.config.width, game.config.height);
         this.cameras.main.setZoom(1);
 
-        // have camera follow c
         // startFollow(target [, roundPixels] [, lerpX] [, lerpY] [, offsetX] [, offsetY])
         this.cameras.main.startFollow(this.roadCenter, true, 0.1, 0.1);
         // set camera dead zone
 
     }
+
+    //allows for line movement (still needs to be updated)
 
     redraw(directionLeft) {
         //this.graphics.clear();

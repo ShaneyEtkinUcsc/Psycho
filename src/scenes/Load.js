@@ -21,10 +21,10 @@ class Load extends Phaser.Scene {
             loadingBar.destroy();
         });
         this.load.image("carFront", "./assets/art/carfront.png");
-        this.load.image("roadline", "./assets/temps/roadlineTempL.png");
+        this.load.image("roadline", "./assets/art/whitelineF.png");
         this.load.image("roadlineR", "./assets/temps/roadlineTempR.png");
         this.load.image("yellowline", "./assets/temps/yellowTempL.png");
-        this.load.image("yellowlineR", "./assets/temps/yellowTempR.png");
+        this.load.image("yellowlineR", "./assets/art/yellowlineF.png");
         this.load.image("rearview", "./assets/art/rearview_frame.png");
         this.load.image("cop", "./assets/art/car_glare.png");
         this.load.image("top", "./assets/art/texttop.png");
@@ -50,8 +50,8 @@ class Load extends Phaser.Scene {
         console.log("Local storage not supported");
     }
 
-    //drive scene quick jump
-    //this.scene.start("driveScene");
+    //drive scene quick
+    this.scene.start("driveScene");
 
     this.loadingfont = this.add.text(centerX, centerY, "Click Here to Begin", { fill: '#dea918', fontSize: '50px', fontFamily: 'Gothic' }).setAlpha(0).setOrigin(0.5).setInteractive()
 

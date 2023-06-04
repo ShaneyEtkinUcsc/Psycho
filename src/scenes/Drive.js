@@ -57,7 +57,7 @@ class Drive extends Phaser.Scene {
         this.car.setDepth(9);
 
         //setting up physics for car
-        this.car.setSize(640, 30, true);
+        this.car.setSize(360, 30, true);
         this.car.setCollideWorldBounds(true);
         this.car.setImmovable(true);
         //this.car.body.setDragX(375);
@@ -105,7 +105,7 @@ class Drive extends Phaser.Scene {
                     duration: 100,
             }]
             
-        })
+        });
 
         //can't remember why I made this
         //const zone = this.add.zone(centerX, centerY, 200, 30);
@@ -118,7 +118,7 @@ class Drive extends Phaser.Scene {
 
         //creating road right back group
         let roadRightB = this.add.group({
-            key: "yellowlineR",
+            key: "roadlineR",
             loop: -1,
             setXY: {
                 x: 1080,
@@ -136,12 +136,12 @@ class Drive extends Phaser.Scene {
                 repeatDelay: 0,
                 loop: -1,
                 tweens: [{
-                    x: 1280,
+                    x: 1280 + scootch_countR,
                     y: 900,
                     duration: 500,
                     scale: { from: 1, to: 5},
             },
-            {       x: 1100,
+            {       x: 1080 + scootch_countR,
                     y: centerY + 18,
                     duration: 1,
                     scale: { from: 5, to: 0.1},
@@ -149,13 +149,13 @@ class Drive extends Phaser.Scene {
             
             })
             
-        })
+        });
     
        //bottom left roadline group
 
        //creating road left back group
        let roadLeftB = this.add.group({
-            key: "roadline",
+            key: "yellowline",
             loop: -1,
             setXY: {
                 x: 200,
@@ -174,12 +174,12 @@ class Drive extends Phaser.Scene {
                 repeatDelay: 0,
                 loop: -1,
                 tweens: [{
-                    x: 0,
+                    x: 0 + scootch_countL,
                     y: 900,
                     duration: 500,
                     scale: { from: 1, to: 5},
             },
-            {       x: 200,
+            {       x: 200 + scootch_countL,
                     y: centerY + 18,
                     duration: 1,
                     scale: { from: 5, to: 0.1},
@@ -187,18 +187,18 @@ class Drive extends Phaser.Scene {
             
             })
             
-        })
+        });
 
        //top right roadline group
 
        //creating road right front group
        let roadRightF = this.add.group({
-        key: "roadlineR",
+        key: "yellowlineR",
         loop: -1,
         delay: 100,
         setXY: {
             x: 1000,
-            y: centerY + 70,
+            y: centerY + 75,
         },
 
     });
@@ -209,36 +209,36 @@ class Drive extends Phaser.Scene {
             targets: child,
             ease: "Quint.easeIn",
             duration: 2000,
-            //delay: 1000,
             repeat: -1,
             repeatDelay: 0,
             loop: -1,
             tweens: [{
-                x: 900,
+                delay: 200,
+                x: 800 + scootch_countR,
                 y: centerY,
                 duration: 400,
-                scale: { from: 1.75, to: 0.1},
+                scale: { from: 1.75, to: 0.01},
         },
-        {       x: 1000,
-                y: centerY + 70,
+        {       x: 1000 + scootch_countR,
+                y: centerY + 75,
                 duration: 1,
-                scale: { from: 0.1, to: 0.1},
+                scale: { from: 0.001, to: 0.001},
         }]
         
         })
         
-    })
+    });
 
      //top left roadline group
 
      //creating road left front group
      let roadLeftF = this.add.group({
-        key: "yellowline",
+        key: "roadline",
         loop: -1,
         delay: 100,
         setXY: {
             x: 275,
-            y: centerY + 70,
+            y: centerY + 75,
         },
 
     });
@@ -253,20 +253,21 @@ class Drive extends Phaser.Scene {
             repeatDelay: 0,
             loop: -1,
             tweens: [{
-                x: 375,
+                delay: 200,
+                x: 500 + scootch_countL,
                 y: centerY,
                 duration: 400,
                 scale: { from: 1.75, to: 0.1},
         },
-        {       x: 275,
-                y: centerY + 70,
+        {       x: 275 + scootch_countL,
+                y: centerY + 75,
                 duration: 1,
-                scale: { from: 0.1, to: 0.1},
+                scale: { from: 0.0001, to: 0.0001},
         }]
         
         })
         
-    })
+    });
 
        //creating rear view mirror outline
         this.mirror = this.add.sprite(centerX, 250, "rearview");
@@ -279,83 +280,35 @@ class Drive extends Phaser.Scene {
 
         // startFollow(target [, roundPixels] [, lerpX] [, lerpY] [, offsetX] [, offsetY])
         this.cameras.main.startFollow(this.roadCenter, true, 0.1, 0.1);
-        // set camera dead zone
 
     }
 
     //allows for line movement (still needs to be updated)
 
-    redraw(directionLeft) {
-        //this.graphics.clear();
-        //this.graphics2.clear();
- 
+    /*redraw(directionLeft) {
 
         if (directionLeft == true){
             //if moving left
             if(scootch_countL <= 25){
                 scootch_countL += 1;
                 scootch_countR -= 1;
-            }
-            console.log("L: " + scootch_countL + " R: " + scootch_countR);
-            //if(scootch_countL % 5 == 0 ){
-                console.log("i moved left");
-                this.lineLeft.destroy();
-                this.lineLeft.add(new Phaser.Curves.Line([centerX - 100 - scootch_countL, centerY, 0  - scootch_countL, 720 ]));
-                if(scootch_countR <= -10 ){
-                    this.lineRight.destroy();
-                    this.lineRight.add(new Phaser.Curves.Line([centerX + 100 + scootch_countR, centerY, 1280 + scootch_countR, 720 ]));
-                }
-           // }
         } else {
             //if moving right
             if(scootch_countR <= 25){
                 scootch_countL -= 0.5;
                 scootch_countR += 0.5;
             }
-            console.log("L: " + scootch_countL + " R: " + scootch_countR);
-            //if(scootch_countR % 5 == 0 ){
-                console.log("i moved right");
-                this.lineRight.destroy();
-                this.lineRight.add(new Phaser.Curves.Line([centerX + 100 - scootch_countR, centerY, 1280 - scootch_countR , 720 ]));
-                if(scootch_countL <= -10 ){
-                    this.lineLeft.destroy();
-                    this.lineLeft.add(new Phaser.Curves.Line([centerX - 100 + scootch_countL, centerY, 0 + scootch_countL, 720 ]));
-                }
-            //}
-      
-            //console.log("L: " + scootch_countL + " R: " + scootch_countR);
          
-
-            //this.lineLeft.add(new Phaser.Curves.Line([centerX - 100 + scootch_countR/2, centerY, 0 + scootch_countR/2, 720 ]));
-            //this.lineRight.add(new Phaser.Curves.Line([centerX + 100 + 2*scootch_countR, centerY, 1280 + 2*scootch_countR, 720 ]));
+        }
         }
 
-
-    }
+    }*/
     
 
     update() {
 
         this.road.tilePositionY -= 5;
         this.roadBack.tilePositionY += 5;
-        
-        //this.graphics.clear();
-        //this.graphics.lineStyle(5, 0xFDFD32, 1);
-
-        //this.graphics2.clear();
-        //this.graphics2.lineStyle(5, 0xffffff, 1);
-
-        //this.lineLeft.draw(this.graphics);
-        //this.lineRight.draw(this.graphics2);
-
-        //this.lineLeft.getPoint(this.follower.t, this.follower.vec);
-        //this.lineRight.getPoint(this.follower2.t, this.follower2.vec);
-
-        //this.graphics.fillStyle(0xFDFD32, 1);
-        //this.graphics.fillRect(this.follower.vec.x - 8, this.follower.vec.y - 8, 16, 16);
-
-        //this.graphics2.fillStyle(0xffffff, 1);
-        //this.graphics2.fillRect(this.follower2.vec.x - 8, this.follower2.vec.y - 8, 16, 16);
 
         if(this.input.keyboard.checkDown(keyA) || this.input.keyboard.checkDown(keyLEFT)){
             //console.log("left down");

@@ -48,9 +48,9 @@ class Credits extends Phaser.Scene {
         this.creditsButton = this.add.sprite(centerX-3, centerY-200, 'buttons', 'help_psycho1.png').play('credyoyo');
 
         this.backButton = this.add.text(centerX - 53, 500, 'BACK', { fill: '#dea918', fontSize: '50px', fontFamily: 'SanJose' }).setInteractive()
-        .on('pointerdown', () => this.returnToMenu() )
-        .on('pointerover', () => this.hoverState() )
-        .on('pointerout', () => this.restState() );
+        .on('pointerdown', () => this.returnToMenu(), this)
+        .on('pointerover', () => this.hoverState(), this)
+        .on('pointerout', () => this.restState(), this);
     }
 
     returnToMenu() {

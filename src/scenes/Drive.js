@@ -6,6 +6,9 @@ class Drive extends Phaser.Scene {
     create() {
         console.log("in driving");
 
+        //defining game state
+        this.gameOver = false;
+
         //adding scene music config
 
         this.gameMusic = this.sound.add("menuMusic");
@@ -60,6 +63,20 @@ class Drive extends Phaser.Scene {
         this.car.setSize(360, 30, true);
         this.car.setCollideWorldBounds(true);
         this.car.setImmovable(true);
+        this.car.setDebugBodyColor(0xFACADE);
+
+        //setting up reactive sides for car
+        this.carsideL = this.physics.add.sprite(380, 650);
+        this.carsideL.setSize(250, 30, true);
+        this.carsideL.setImmovable(true);
+        this.carsideL.setDebugBodyColor(0xFACADE);
+        
+
+        this.carsideR = this.physics.add.sprite(900, 650);
+        this.carsideR.setSize(250, 30, true);
+        this.carsideR.setImmovable(true);
+        this.carsideR.setDebugBodyColor(0xFACADE);
+
         //this.car.body.setDragX(375);
 
         //making the player car bounce
@@ -269,6 +286,34 @@ class Drive extends Phaser.Scene {
         
     });
 
+        //creating right and left line collisions
+        this.roadLeftLine = this.physics.add.sprite(20, 500);
+        this.roadLeftLine.setSize(30, 500, true);
+        this.roadLeftLine.setImmovable(true);
+        this.roadLeftLine.setDebugBodyColor(0xFFFFFF);
+        this.physics.add.collider(this.car, this.roadLeftLine, (car, left) => {
+            this.gameOver = true;
+            console.log("left collision")
+        });
+        this.physics.add.overlap(this.carsideL, this.roadLeftLine, (car, left) => {
+            this.gameOver = true;
+            console.log("left overlap")
+        });
+
+        this.roadRightLine = this.physics.add.sprite(1260, 500);
+        this.roadRightLine.setSize(30, 500, true);
+        this.roadRightLine.setImmovable(true);
+        this.roadRightLine.setDebugBodyColor(0xFFFFFF);
+        this.physics.add.collider(this.car, this.roadRightLine, (car, right) => {
+            this.gameOver = true;
+            console.log("right collision")
+        });
+        this.physics.add.overlap(this.carsideR, this.roadRightLine, (car, left) => {
+            this.gameOver = true;
+            console.log("right overlap")
+        });
+
+
        //creating rear view mirror outline
         this.mirror = this.add.sprite(centerX, 250, "rearview");
         this.mirror.setScale(0.75);
@@ -303,28 +348,48 @@ class Drive extends Phaser.Scene {
         }
 
     }*/
-    
+
+    offRoad() {
+        this.gameOver = true;
+    }
+
+    goingOff() {
+
+    }
+  
 
     update() {
 
         this.road.tilePositionY -= 5;
         this.roadBack.tilePositionY += 5;
 
+        this.physics.collide(this.car, this.roadLeftLine, this.offRoad(), null, this);
+        this.physics.collide(this.car, this.roadRightLine, this.offRoad(), null, this);
+
+        this.physics.overlap(this.carsideL, this.roadLeftLine, this.goingOff(), null, this);
+        this.physics.overlap(this.carsideR, this.roadRightLine, this.goingOff(), null, this);
+
         if(this.input.keyboard.checkDown(keyA) || this.input.keyboard.checkDown(keyLEFT)){
             //console.log("left down");
             //this.car.setAccelerationX(-20);
             this.car.x -= 5;
+            this.carsideL.x -= 5;
+            this.carsideR.x -= 5;
             //this.roadCenter.x -= 5;
             //this.redraw(true);
         } 
         else if (this.input.keyboard.checkDown(keyD) || this.input.keyboard.checkDown(keyRIGHT)){
             //console.log("right down");
             this.car.x += 5;
+            this.carsideL.x += 5;
+            this.carsideR.x += 5;
             //this.roadCenter.x += 5;
             //this.redraw(false);
             //this.car.setAccelerationX(20);
         }
     }
+
+    
     
 
 }

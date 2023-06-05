@@ -51,7 +51,7 @@ class Load extends Phaser.Scene {
     }
 
     //drive scene quick
-    this.scene.start("driveScene");
+    //this.scene.start("driveScene");
 
     this.loadingfont = this.add.text(centerX, centerY, "Click Here to Begin", { fill: '#dea918', fontSize: '50px', fontFamily: 'Gothic' }).setAlpha(0).setOrigin(0.5).setInteractive()
 

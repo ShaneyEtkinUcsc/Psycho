@@ -62,9 +62,9 @@ class Help extends Phaser.Scene {
         this.helpButton = this.add.sprite(centerX-0.5, centerY-200, 'buttons', 'help_psycho1.png').play('yoyo');
 
         this.backButton = this.add.text(centerX - 60, 600, 'BACK', { fill: '#dea918', fontSize: '50px', fontFamily: 'SanJose' }).setInteractive()
-        .on('pointerdown', () => this.returnToMenu() )
-        .on('pointerover', () => this.hoverState() )
-        .on('pointerout', () => this.restState() );
+        .on('pointerdown', () => this.returnToMenu(), this)
+        .on('pointerover', () => this.hoverState(), this)
+        .on('pointerout', () => this.restState(), this);
     }
 
     returnToMenu() {

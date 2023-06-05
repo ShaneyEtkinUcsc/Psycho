@@ -50,6 +50,8 @@ class Load extends Phaser.Scene {
         console.log("Local storage not supported");
     }
 
+    this.sound.add("menuMusic");
+
     //drive scene quick
     //this.scene.start("driveScene");
 

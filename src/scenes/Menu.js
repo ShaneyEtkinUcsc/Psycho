@@ -8,7 +8,7 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
-        this.menuMusic = this.sound.add("menuMusic");
+        
 
         var musicConfig = {
             mute: false,
@@ -18,9 +18,10 @@ class Menu extends Phaser.Scene {
             loop: true,
             delay: 0
         }
-        if (!menuMusicPlaying){
-            this.menuMusic.play(musicConfig);
-            menuMusicPlaying = true;
+        
+        let bgMusic = this.sound.get("menuMusic");
+        if(!bgMusic.isPlaying) {
+            bgMusic.play(musicConfig);
         }
         //console.log("in menu");
         //this.scene.start("driveScene");
@@ -115,26 +116,24 @@ class Menu extends Phaser.Scene {
 
         //https://snowbillr.github.io/blog//2018-07-03-buttons-in-phaser-3/
         this.playButton = this.add.sprite(centerX/2, centerY, 'buttons', 'play_psycho7.png').setInteractive()
-        .on('pointerdown', () => this.nextScene(), this)
+        .on('pointerdown', () => this.nextScene(bgMusic), this)
         .on('pointerover', () => this.playHoverState(), this)
         .on('pointerout', () => this.playRestState(), this);
 
         this.helpButton = this.add.sprite(centerX+325, centerY+100, 'buttons', 'help_psycho6.png').setInteractive()
-        .on('pointerdown', () => this.toHelp(), this )
+        .on('pointerdown', () => this.toHelp(bgMusic), this )
         .on('pointerover', () => this.helpHoverState(), this)
         .on('pointerout', () => this.helpRestState(), this);
 
         this.creditsButton = this.add.sprite(centerX, centerY+275, 'buttons', 'credits_psycho6.png').setInteractive()
-        .on('pointerdown', () => this.toCredits(), this)
+        .on('pointerdown', () => this.toCredits(bgMusic), this)
         .on('pointerover', () => this.credHoverState(), this)
         .on('pointerout', () => this.credRestState(), this);
     }
     
     //PLAY BUTTON FUNCTIONS
-    nextScene() {
-        this.menuMusic.pause();
-        this.menuMusic.destroy();
-        this.menuMusic.stop();
+    nextScene(music) {
+        music.stop();
         menuMusicPlaying = false;
         this.scene.start('driveScene');
     }

@@ -40,7 +40,7 @@ let scootch_countL = 0;
 let scootch_countR = 0;
 let musicPlaying = false;
 let dead = false;
-let keySPACE, keyA, keyD, keyLEFT, keyRIGHT;
+let keySPACE, keyW, keyA, keyS, keyD, keyUP, keyLEFT, keyRIGHT, keyDOWN;
 
 var audioConfig = {
     mute: false,

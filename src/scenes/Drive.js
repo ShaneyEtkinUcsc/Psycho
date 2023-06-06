@@ -26,8 +26,10 @@ class Drive extends Phaser.Scene {
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
         keySPACE.enabled = true;
 
         //setting world bounds
@@ -362,8 +364,12 @@ class Drive extends Phaser.Scene {
 
         this.physics.overlap(this.carsideL, this.roadLeftLine, this.goingOff(), null, this);
         this.physics.overlap(this.carsideR, this.roadRightLine, this.goingOff(), null, this);
-
-        if(this.input.keyboard.checkDown(keyA) || this.input.keyboard.checkDown(keyLEFT)){
+        
+        if(Phaser.Input.Keyboard.JustDown(keyS) || Phaser.Input.Keyboard.JustDown(keyDOWN)){
+            console.log("down down");
+            this.scene.start("drive2Scene");
+        
+        }else if(this.input.keyboard.checkDown(keyA) || this.input.keyboard.checkDown(keyLEFT)){
             //console.log("left down");
             //this.car.setAccelerationX(-20);
             this.car.x -= 5;

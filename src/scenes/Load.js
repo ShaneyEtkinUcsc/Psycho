@@ -75,7 +75,10 @@ class Load extends Phaser.Scene {
         this.load.image("lines","./assets/art/DriveScene/whitelines.png");
 
         //drive scene 2 assets
-
+        this.load.image("face","./assets/art/DriveScene/face.png");
+        this.load.image("interior", "./assets/art/DriveScene/car_int.png");
+        this.load.image("exclamation", "./assets/art/DriveScene/exclamationpoint.png");
+        this.load.image("wheel", "./assets/art/DriveScene/wheel.png");
 
         //general fonts
 

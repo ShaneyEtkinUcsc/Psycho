@@ -7,50 +7,57 @@ class Dialog {
     constructor(scene, side, textSpeed = 30, inFocus = false, bodyText = '') {
 
         let x, y;
-        let textWidth = 300;
+        let textWidth = 20;
         let bubbleType = '';
         let textOffset = 0;
         let arrowOffset = {x: 0, y: 110};
 
         //side on dialouge boxes?
         if (side == 'right1') {
-            x = 950
-            y = 195
-            bubbleType = "top"
-            textOffset = -10
-            arrowOffset.x = -10
+            x = 850;
+            y = 125;
+            bubbleType = "top";
+            textOffset = 2;
+            arrowOffset.x = 2;
 
         } else if (side == 'left1') {
-            x = 400
-            y = 505
+            x = 415;
+            y = 500;
             bubbleType = "bottom";
-            textOffset = 20
-            arrowOffset.x = 20
+            textOffset = 2;
+            arrowOffset.x = 2;
 
         } else {
-            console.log('Undifined Side on Dialog Box with :' + bodyText)
+            console.log('Undefined Side on Dialog Box with :' + bodyText)
         }
         
-        this.image = scene.add.sprite(centerX, centerY, bubbleType).setOrigin(0.5);
+        this.right = scene.add.sprite(centerX - 200, centerY, "top").setOrigin(0.5).setScale(1.25);
+        this.left = scene.add.sprite(centerX + 250, centerY - 180, "bottom").setOrigin(0.5).setScale(1.45);
 
         //text family config
         let textConfig = {
             fontFamily: 'Gothic',
             fontSize: '40px',
             color: '#eb4034',
-            align: 'right',
+            align: 'center',
             padding: {
                 top: 5,
                 bottom: 5,
+            },
+            wordWrap: { 
+                width: 740, 
+                useAdvancedWrap: true 
             },
             fixedWidth: 0
         }
 
         //adding text
         if (side == 'right1') {
-            this.boxText = scene.add.text(950, 180, "", textConfig).setOrigin(0.5).setDepth(200);
+            //helpConfig.wordWrap.width = 00;
+            this.boxText = scene.add.text(850, 125, "", textConfig).setOrigin(0.5).setDepth(200);
         } else if (side == 'left1') {
-            this.boxText = scene.add.text(400, 500, "", textConfig).setOrigin(0.5).setDepth(200);
+            //helpConfig.wordWrap.width = 700;
+            this.boxText = scene.add.text(415, 500, "", textConfig).setOrigin(0.5).setDepth(200);
         }
 
         //adding waiting arrow
@@ -113,13 +120,15 @@ class Dialog {
     }
 
     hide() {
-        this.image.removeFromDisplayList();
+        this.right.removeFromDisplayList();
+        this.left.removeFromDisplayList();
         this.boxText.removeFromDisplayList().setText('');
         this.waitArrow.removeFromDisplayList();
     }
 
     show() {
-        this.image.addToDisplayList();
+        this.right.addToDisplayList();
+        this.left.addToDisplayList();
         this.boxText.addToDisplayList();
     }
 
@@ -163,7 +172,7 @@ class Dialog {
 
         if (target >= game.config.height * 5/6) target = game.config.height * 5/6;
         this.scene.tweens.add({
-            targets: [this.boxText, this.image],
+            targets: [this.boxText, this.right, this.left],
             y: target,
             ease: 'Quad.InOut',
             duration: 1500,

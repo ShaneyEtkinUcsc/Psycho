@@ -2,13 +2,8 @@ class Menu extends Phaser.Scene {
     constructor() {
         super("menuScene");
     }
-    preload() {
-        this.load.image("title", "./assets/art/PSYCHO.PNG");
-        this.load.atlas("buttons", "./assets/art/buttons.png", "./assets/art/buttons.json");
-    }
 
     create() {
-        
 
         var musicConfig = {
             mute: false,
@@ -134,8 +129,7 @@ class Menu extends Phaser.Scene {
     //PLAY BUTTON FUNCTIONS
     nextScene(music) {
         music.stop();
-        menuMusicPlaying = false;
-        this.scene.start('driveScene');
+        this.scene.start('introScene');
     }
     playHoverState() {
         this.playButton.play('playform');

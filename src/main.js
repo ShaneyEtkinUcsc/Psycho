@@ -24,7 +24,7 @@ let config = {
             }
         }
     },
-    scene: [ Load, Menu, Credits, Help, Drive ]
+    scene: [ Load, Menu, Credits, Help, Intro, Drive, Drive2 ]
 }
 
 let game = new Phaser.Game(config)
@@ -38,6 +38,16 @@ let centerY = game.config.height/2;
 let highScore = 0;
 let scootch_countL = 0;
 let scootch_countR = 0;
-let menuMusicPlaying = false;
+let musicPlaying = false;
 let dead = false;
 let keySPACE, keyA, keyD, keyLEFT, keyRIGHT;
+
+var audioConfig = {
+    mute: false,
+    volume: 0.08,
+    detune: 0,
+    seek: 0,
+    loop: false,
+    delay: 0,
+    fade: true,
+};

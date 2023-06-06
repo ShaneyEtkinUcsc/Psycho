@@ -22,12 +22,6 @@ class Drive extends Phaser.Scene {
             delay: 0
          }
 
-        if (menuMusicPlaying){
-            this.menuMusic.destroy();
-            this.gameMusic.play(musicConfig);
-            menuMusicPlaying = true;
-        }
-
         //reserving keyspaces
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);

@@ -20,22 +20,64 @@ class Load extends Phaser.Scene {
         this.load.on("complete", () => {
             loadingBar.destroy();
         });
-        this.load.image("carFront", "./assets/art/carfront.png");
-        this.load.image("roadline", "./assets/art/whitelineF.png");
+
+        //title scene assets
+        this.load.image("title", "./assets/art/PSYCHO.PNG");
+        this.load.atlas("buttons", "./assets/art/buttons.png", "./assets/art/buttons.json");
+
+        //menu music
+        this.load.audio("menuMusic", "./assets/sound/Psycho_8bit.wav");
+
+        //intro cutscene assets
+        this.load.image("top", "./assets/art/IntroCutscene/texttop.png");
+        this.load.image("bottom", "./assets/art/IntroCutscene/textbottom.png");
+        this.load.image("triangle", "./assets/art/IntroCutscene/twyangle.png")
+
+        //intro cutscene audio
+        this.load.audio("knock", "./assets/sound/IntroCutscene/walkingUp.m4a");
+        this.load.audio("pause", "./assets/sound/IntroCutscene/pause.m4a");
+        this.load.audio("driveAway", "./assets/sound/IntroCutscene/driveAway.m4a");
+        this.load.audio("audio1", "./assets/sound/IntroCutscene/audio1.m4a");
+        this.load.audio("audio2", "./assets/sound/IntroCutscene/audio2.m4a");
+        this.load.audio("audio3", "./assets/sound/IntroCutscene/audio3.m4a");
+        this.load.audio("audio4", "./assets/sound/IntroCutscene/audio4.m4a");
+        this.load.audio("audio5", "./assets/sound/IntroCutscene/audio5.m4a");
+        this.load.audio("audio6", "./assets/sound/IntroCutscene/audio6.m4a");
+        this.load.audio("audio7", "./assets/sound/IntroCutscene/audio7.m4a");
+        this.load.audio("audio8", "./assets/sound/IntroCutscene/audio8.m4a");
+        this.load.audio("audio9", "./assets/sound/IntroCutscene/audio9.m4a");
+        this.load.audio("audio10", "./assets/sound/IntroCutscene/audio10.m4a");
+        this.load.audio("audio11", "./assets/sound/IntroCutscene/audio11.m4a");
+        this.load.audio("audio12", "./assets/sound/IntroCutscene/audio12.m4a");
+        this.load.audio("audio13", "./assets/sound/IntroCutscene/audio13.m4a");
+        this.load.audio("audio14", "./assets/sound/IntroCutscene/audio14.m4a");
+        this.load.audio("audio15", "./assets/sound/IntroCutscene/audio15.m4a");
+        this.load.audio("audio16", "./assets/sound/IntroCutscene/audio16.m4a");
+        this.load.audio("audio17", "./assets/sound/IntroCutscene/audio17.m4a");
+        this.load.audio("audio18", "./assets/sound/IntroCutscene/audio18.m4a");
+        this.load.audio("audio19", "./assets/sound/IntroCutscene/audio19.m4a");
+        this.load.audio("audio20", "./assets/sound/IntroCutscene/audio20.m4a");
+        this.load.audio("audio21", "./assets/sound/IntroCutscene/audio21.m4a");
+        
+
+        //drive scene assets
+        this.load.image("carFront", "./assets/art/DriveScene/carfront.png");
+        this.load.image("roadline", "./assets/art/DriveScene/whitelineF.png");
         this.load.image("roadlineR", "./assets/temps/roadlineTempR.png");
         this.load.image("yellowline", "./assets/temps/yellowTempL.png");
-        this.load.image("yellowlineR", "./assets/art/yellowlineF.png");
-        this.load.image("rearview", "./assets/art/rearview_frame.png");
-        this.load.image("cop", "./assets/art/car_glare.png");
-        this.load.image("top", "./assets/art/texttop.png");
-        this.load.image("bottom", "./assets/art/textbottom.png");
-        this.load.image("skyline", "./assets/art/skyline.png");
-        this.load.image("frontview", "./assets/art/background2.png");
-        this.load.image("rainOverlay", "./assets/art/rainoverlay.png");
-        this.load.image("road", "./assets/art/ROADS.png")
-        this.load.image("lines","./assets/art/whitelines.png");
+        this.load.image("yellowlineR", "./assets/art/DriveScene/yellowlineF.png");
+        this.load.image("rearview", "./assets/art/DriveScene/rearview_frame.png");
+        this.load.image("cop", "./assets/art/DriveScene/car_glare.png");
+        this.load.image("skyline", "./assets/art/DriveScene/skyline.png");
+        this.load.image("frontview", "./assets/art/DriveScene/background2.png");
+        this.load.image("rainOverlay", "./assets/art/DriveScene/rainoverlay.png");
+        this.load.image("road", "./assets/art/DriveScene/ROADS.png")
+        this.load.image("lines","./assets/art/DriveScene/whitelines.png");
 
-        this.load.audio("menuMusic", "./assets/sound/Psycho_8bit.wav");
+        //drive scene 2 assets
+
+
+        //general fonts
 
         this.load.bitmapFont("SanJoseB", "./assets/fonts/NHLSanJose.png", "./assets/fonts/NHLSanJose.xml");
        

@@ -9,21 +9,8 @@ class Intro extends Phaser.Scene {
     //reserving keyspace SPACE
     keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-    //textbox assets
-    let textboxT = this.add.sprite(0, 0, "top").setOrigin(0).setAlpha(0);
-    let textboxB = this.add.sprite(0, 0, "bottom").setOrigin(0).setAlpha(0);
-
-    //adding textbox tweens
-    /*let fadeInT = this.tweens.add({
-        targets: textboxT,
-        alpha: { from: 0, to: 1},
-        duration: 1000,
-        delay: 14970,
-    });*/
-
-
-      // create the dialog boxes
-      this.boxBundle = new dialogBoxBundle(this, [
+    // create the dialog boxes
+    this.boxBundle = new dialogBoxBundle(this, [
         ['sound', "audio1"],
         ['right1', "Hold it there!"],
         ['sound', "audio2"],
@@ -88,8 +75,10 @@ class Intro extends Phaser.Scene {
     this.knock.play(walkConfig);
 
     });
+
     //drive scene quick
     //this.scene.start("drive2Scene");
+
     }
 
     driveAway(){

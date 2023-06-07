@@ -5,8 +5,9 @@ class Drive extends Phaser.Scene {
 
     create() {
         console.log("in driving");
-
         console.log(positionX);
+
+        //this.scene.run("drive2Scene");
 
         //defining game state
         this.gameOver = false;

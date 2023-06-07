@@ -55,6 +55,7 @@ let positionX = 0;
 let paraPos = 0;
 //camera switch to pass across scenes
 let lookable = false;
+let timeAdd = 3;
 let shake = false;
 //gameOver condition to pass across scenes
 let offRoad = false;

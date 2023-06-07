@@ -3,9 +3,12 @@ class Drive2 extends Phaser.Scene {
         super("drive2Scene");
     }
 
+
     create() {
         console.log("in driving2");
-         console.log(positionX);
+        console.log(positionX);
+
+
 
         var musicConfig = {
             mute: false,

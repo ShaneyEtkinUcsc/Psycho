@@ -6,6 +6,8 @@ class Drive extends Phaser.Scene {
     create() {
         console.log("in driving");
 
+        console.log(positionX);
+
         //defining game state
         this.gameOver = false;
 
@@ -41,7 +43,7 @@ class Drive extends Phaser.Scene {
         //this.back2 = this.add.rectangle(0, 0, 1280, 360, 0xDC3C28).setOrigin(0);
 
         //creating back mirror background
-        this.mirrorBack = this.add.sprite(0, 0, "skyline").setOrigin(0);
+        this.mirrorBack = this.add.tileSprite(0 + paraPos, 0, 1280, 360, "skyline").setOrigin(0);
         this.frontSky = this.add.sprite(0, 0, "frontview").setOrigin(0);
         this.frontSky.setScale(0.5);
       
@@ -51,7 +53,7 @@ class Drive extends Phaser.Scene {
         this.roadBack = this.add.tileSprite(220, centerY, 840, 90, "road").setOrigin(0);
 
         //creating player car and setting depth on top
-        this.car = this.physics.add.sprite(centerX, 650, "carFront");
+        this.car = this.physics.add.sprite(centerX + positionX, 650, "carFront");
         this.car.setScale(1.2);
         this.car.setDepth(9);
 
@@ -62,13 +64,12 @@ class Drive extends Phaser.Scene {
         this.car.setDebugBodyColor(0xFACADE);
 
         //setting up reactive sides for car
-        this.carsideL = this.physics.add.sprite(380, 650);
+        this.carsideL = this.physics.add.sprite(380 + positionX, 650);
         this.carsideL.setSize(250, 30, true);
         this.carsideL.setImmovable(true);
         this.carsideL.setDebugBodyColor(0xFACADE);
         
-
-        this.carsideR = this.physics.add.sprite(900, 650);
+        this.carsideR = this.physics.add.sprite(900 + positionX, 650);
         this.carsideR.setSize(250, 30, true);
         this.carsideR.setImmovable(true);
         this.carsideR.setDebugBodyColor(0xFACADE);
@@ -289,11 +290,11 @@ class Drive extends Phaser.Scene {
         this.roadLeftLine.setDebugBodyColor(0xFFFFFF);
         this.physics.add.collider(this.car, this.roadLeftLine, (car, left) => {
             this.gameOver = true;
-            console.log("left collision")
+            //console.log("left collision")
         });
         this.physics.add.overlap(this.carsideL, this.roadLeftLine, (car, left) => {
             this.gameOver = true;
-            console.log("left overlap")
+            //console.log("left overlap")
         });
 
         this.roadRightLine = this.physics.add.sprite(1260, 500);
@@ -302,11 +303,11 @@ class Drive extends Phaser.Scene {
         this.roadRightLine.setDebugBodyColor(0xFFFFFF);
         this.physics.add.collider(this.car, this.roadRightLine, (car, right) => {
             this.gameOver = true;
-            console.log("right collision")
+            //console.log("right collision")
         });
         this.physics.add.overlap(this.carsideR, this.roadRightLine, (car, left) => {
             this.gameOver = true;
-            console.log("right overlap")
+            //console.log("right overlap")
         });
 
 
@@ -372,17 +373,30 @@ class Drive extends Phaser.Scene {
         }else if(this.input.keyboard.checkDown(keyA) || this.input.keyboard.checkDown(keyLEFT)){
             //console.log("left down");
             //this.car.setAccelerationX(-20);
-            this.car.x -= 5;
-            this.carsideL.x -= 5;
-            this.carsideR.x -= 5;
+            if(positionX >= -400){
+            this.car.x -= 2;
+            this.carsideL.x -= 2;
+            this.carsideR.x -= 2;
+            if (this.mirrorBack.tilePositionX >= 0) this.mirrorBack.tilePositionX -= 0.25;
+            
+                paraPos -= 0.25;
+                positionX -= 2;
+            }
+            console.log(positionX);
             //this.roadCenter.x -= 5;
             //this.redraw(true);
         } 
         else if (this.input.keyboard.checkDown(keyD) || this.input.keyboard.checkDown(keyRIGHT)){
             //console.log("right down");
-            this.car.x += 5;
-            this.carsideL.x += 5;
-            this.carsideR.x += 5;
+            if(positionX <= 400){
+            this.car.x += 2;
+            this.carsideL.x += 2;
+            this.carsideR.x += 2;
+            if(this.mirrorBack.tilePositionX <= 33) this.mirrorBack.tilePositionX += 0.25;
+                paraPos += 0.25;
+                positionX += 2;
+            }
+            console.log(positionX);
             //this.roadCenter.x += 5;
             //this.redraw(false);
             //this.car.setAccelerationX(20);

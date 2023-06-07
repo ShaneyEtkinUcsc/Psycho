@@ -2,6 +2,8 @@
 //and was specifically designed by Alex Groff for dialouge functionality
 //this is used with his full permission to do so
 
+//this develops the actual textboxes themselves
+
 class Dialog {
 
     constructor(scene, side, textSpeed = 30, inFocus = false, bodyText = '') {

@@ -2,6 +2,8 @@
 //and was specifically designed by Alex Groff for dialouge functionality
 //this is used with his full permission to do so
 
+//this allows for the player to use the created textboxes in dialogBox
+
 class dialogBoxBundle {
     constructor(scene, script, inFocus = false){
         this.scene = scene;

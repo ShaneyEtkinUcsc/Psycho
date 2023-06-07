@@ -59,7 +59,6 @@ class Load extends Phaser.Scene {
         this.load.audio("audio20", "./assets/sound/IntroCutscene/audio20.m4a");
         this.load.audio("audio21", "./assets/sound/IntroCutscene/audio21.m4a");
         
-
         //drive scene assets
         this.load.image("carFront", "./assets/art/DriveScene/carfront.png");
         this.load.image("roadline", "./assets/art/DriveScene/whitelineF.png");
@@ -79,6 +78,9 @@ class Load extends Phaser.Scene {
         this.load.image("interior", "./assets/art/DriveScene/car_int.png");
         this.load.image("exclamation", "./assets/art/DriveScene/exclamationpoint.png");
         this.load.image("wheel", "./assets/art/DriveScene/wheel.png");
+
+        //drive scene audio
+        this.load.audio("siren", "./assets/sound/DriveScene/sirenSfx.mp3");
 
         //general fonts
 

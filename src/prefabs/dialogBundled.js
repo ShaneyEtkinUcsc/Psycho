@@ -9,8 +9,10 @@ class dialogBoxBundle {
         this.scene = scene;
         this.leftBox = new Dialog(scene, 'left1', 20, inFocus);
         this.rightBox = new Dialog(scene, 'right1', 20, inFocus);
+        this.bottomBox = new Dialog(scene, 'bottom2', 20, inFocus);
         this.leftBox.hide();
         this.rightBox.hide();
+        this.bottomBox.hide();
 
         
         this.script = script;
@@ -85,7 +87,8 @@ class dialogBoxBundle {
 
             } else if (this.nextInstruction === 'hide') {  // hide a box
                 this.script[i][1] === 'left1' ? this.leftBox.hide() : 
-                (this.script[i][1] === 'right1' ? this.rightBox.hide() : false);
+                this.script[i][1] === 'right1' ? this.rightBox.hide() : 
+                (this.script[i][1] === 'bottom2' ? this.bottomBox.hide() : false)
 
             } else if (this.nextInstruction === 'end') {
                 return; // our script is DONE!
@@ -109,7 +112,7 @@ class dialogBoxBundle {
 
         this.leftBox.shift(targetY);
         this.rightBox.shift(targetY);
-        this.centerBox.shift(targetY);
+        this.bottomBox.shift(targetY);
         
     }
 
@@ -121,6 +124,7 @@ class dialogBoxBundle {
     remove() {
         this.leftBox.hide()
         this.rightBox.hide()
+        this.bottomBox.hide()
         this.unusable = true;
     }
 

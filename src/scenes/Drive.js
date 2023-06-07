@@ -4,13 +4,16 @@ class Drive extends Phaser.Scene {
     }
 
     create() {
+        //keeping track of player's scene visits
+        visitedtwice += 1;
+
         console.log("in driving");
         console.log(positionX);
 
         //this.scene.run("drive2Scene");
 
         //defining game state
-        this.gameOver = false;
+        offRoad = false;
 
         //adding scene music config
 
@@ -128,7 +131,6 @@ class Drive extends Phaser.Scene {
 
         //creating tweening road groups
 
-
         //bottom right roadline group
 
         //creating road right back group
@@ -208,15 +210,15 @@ class Drive extends Phaser.Scene {
 
        //creating road right front group
        let roadRightF = this.add.group({
-        key: "yellowlineR",
-        loop: -1,
-        delay: 100,
-        setXY: {
-            x: 1000,
-            y: centerY + 75,
-        },
+            key: "yellowlineR",
+            loop: -1,
+            delay: 100,
+            setXY: {
+                x: 1000,
+                y: centerY + 75,
+            },
 
-    });
+        });
 
     //creating animations for rrf group
     roadRightF.children.iterate(child => {
@@ -290,11 +292,11 @@ class Drive extends Phaser.Scene {
         this.roadLeftLine.setImmovable(true);
         this.roadLeftLine.setDebugBodyColor(0xFFFFFF);
         this.physics.add.collider(this.car, this.roadLeftLine, (car, left) => {
-            this.gameOver = true;
+            this.goingOff();
             //console.log("left collision")
         });
         this.physics.add.overlap(this.carsideL, this.roadLeftLine, (car, left) => {
-            this.gameOver = true;
+            this.goingOff();
             //console.log("left overlap")
         });
 
@@ -303,14 +305,13 @@ class Drive extends Phaser.Scene {
         this.roadRightLine.setImmovable(true);
         this.roadRightLine.setDebugBodyColor(0xFFFFFF);
         this.physics.add.collider(this.car, this.roadRightLine, (car, right) => {
-            this.gameOver = true;
+            this.goingOff();
             //console.log("right collision")
         });
         this.physics.add.overlap(this.carsideR, this.roadRightLine, (car, left) => {
-            this.gameOver = true;
+            this.goingOff();
             //console.log("right overlap")
         });
-
 
        //creating rear view mirror outline
         this.mirror = this.add.sprite(centerX, 250, "rearview");
@@ -324,17 +325,44 @@ class Drive extends Phaser.Scene {
         // startFollow(target [, roundPixels] [, lerpX] [, lerpY] [, offsetX] [, offsetY])
         this.cameras.main.startFollow(this.roadCenter, true, 0.1, 0.1);
 
+        //flipping the camera back after 5 second check
+        this.time.delayedCall(5000, () => {
+            if(!offRoad){
+                console.log("done peeking");
+                this.scene.start("drive2Scene");
+            }
+        });
+
+        let tutorialConfig = {
+            fontFamily: 'Gothic',
+            fontSize: '25px',
+            //backgroundColor: '#ffffff',
+            color: '#ffffff',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
+
+        //adding tutorial text
+        if(visitedtwice <= 1){
+            this.tutorial = this.add.text(centerX, centerY + 50, "'A' and 'D' or '←' and '→' to move", tutorialConfig).setOrigin(0.5);
+        }
+
     }
 
     //allows for line movement (still needs to be updated)
 
-    /*redraw(directionLeft) {
+    redraw(directionLeft) {
 
         if (directionLeft == true){
             //if moving left
             if(scootch_countL <= 25){
                 scootch_countL += 1;
                 scootch_countR -= 1;
+
         } else {
             //if moving right
             if(scootch_countR <= 25){
@@ -345,14 +373,51 @@ class Drive extends Phaser.Scene {
         }
         }
 
-    }*/
+    }
 
     offRoad() {
-        this.gameOver = true;
+
+        //adding gameOver sfx config
+        var sfxConfig = {
+            mute: false,
+            volume: 0.1,
+            detune: 0,
+            seek: 0,
+            loop: false,
+            delay: 0
+        }
+
+        //adding gameOver text config
+        let gameOverConfig = {
+            fontFamily: 'Gothic',
+            fontSize: '25px',
+            //backgroundColor: '#ffffff',
+            color: '#ffffff',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
+
+        //getting gameOver sfx for gameOver call
+        let sirenSound = this.sound.get("siren");
+        if(!sirenSound.isPlaying) {
+            sirenSound.play(sfxConfig);
+        }
+        offRoad = true;
+        if(this.tutorial){
+            this.tutorial.destroy()
+        }
+        this.add.text(centerX, centerY, "GAME OVER", gameOverConfig).setOrigin(0.5);
+        this.add.text(centerX, centerY + 50, "Press S to restart", gameOverConfig).setOrigin(0.5);
+
     }
 
     goingOff() {
-
+        console.log("camera shake triggered");
+        this.cameras.main.shake(1000, 0.0005, false); 
     }
   
 
@@ -361,46 +426,75 @@ class Drive extends Phaser.Scene {
         this.road.tilePositionY -= 5;
         this.roadBack.tilePositionY += 5;
 
-        this.physics.collide(this.car, this.roadLeftLine, this.offRoad(), null, this);
-        this.physics.collide(this.car, this.roadRightLine, this.offRoad(), null, this);
+        if(!offRoad){
 
-        this.physics.overlap(this.carsideL, this.roadLeftLine, this.goingOff(), null, this);
-        this.physics.overlap(this.carsideR, this.roadRightLine, this.goingOff(), null, this);
-        
-        if(Phaser.Input.Keyboard.JustDown(keyS) || Phaser.Input.Keyboard.JustDown(keyDOWN)){
-            console.log("down down");
-            this.scene.start("drive2Scene");
-        
-        }else if(this.input.keyboard.checkDown(keyA) || this.input.keyboard.checkDown(keyLEFT)){
-            //console.log("left down");
-            //this.car.setAccelerationX(-20);
-            if(positionX >= -400){
-            this.car.x -= 2;
-            this.carsideL.x -= 2;
-            this.carsideR.x -= 2;
-            if (this.mirrorBack.tilePositionX >= 0) this.mirrorBack.tilePositionX -= 0.25;
+            this.physics.collide(this.car, this.roadLeftLine, (car, left) =>
+            {
+                this.offRoad();
+            });
+            this.physics.collide(this.car, this.roadRightLine, (car, right) =>
+            {
+                this.offRoad();
+            });
+            this.physics.overlap(this.carsideL, this.roadLeftLine, (car, left) =>
+            {
+                this.goingOff();
+            });
+            this.physics.overlap(this.carsideR, this.roadRightLine, (car, right) =>
+            {
+                this.goingOff();
+            });
+            if(this.input.keyboard.checkDown(keyA) || this.input.keyboard.checkDown(keyLEFT)){
+                //console.log("left down");
+                //this.car.setAccelerationX(-20);
+                if(positionX >= -400){
+                this.car.x -= 2;
+                this.carsideL.x -= 2;
+                this.carsideR.x -= 2;
+                if (this.mirrorBack.tilePositionX >= 0) this.mirrorBack.tilePositionX -= 0.25;
             
-                paraPos -= 0.25;
-                positionX -= 2;
+                    paraPos -= 0.25;
+                    positionX -= 2;
+                }
+                console.log(positionX);
+                //this.roadCenter.x -= 5;
+                //this.redraw(true);
+            } 
+            else if (this.input.keyboard.checkDown(keyD) || this.input.keyboard.checkDown(keyRIGHT)){
+                //console.log("right down");
+                if(positionX <= 400){
+                this.car.x += 2;
+                this.carsideL.x += 2;
+                this.carsideR.x += 2;
+                if(this.mirrorBack.tilePositionX <= 33) this.mirrorBack.tilePositionX += 0.25;
+                    paraPos += 0.25;
+                    positionX += 2;
+                }
+                console.log(positionX);
+                //this.roadCenter.x += 5;
+                //this.redraw(false);
+                //this.car.setAccelerationX(20);
             }
-            console.log(positionX);
-            //this.roadCenter.x -= 5;
-            //this.redraw(true);
-        } 
-        else if (this.input.keyboard.checkDown(keyD) || this.input.keyboard.checkDown(keyRIGHT)){
-            //console.log("right down");
-            if(positionX <= 400){
-            this.car.x += 2;
-            this.carsideL.x += 2;
-            this.carsideR.x += 2;
-            if(this.mirrorBack.tilePositionX <= 33) this.mirrorBack.tilePositionX += 0.25;
-                paraPos += 0.25;
-                positionX += 2;
+        } else if (offRoad) {
+            if(Phaser.Input.Keyboard.JustDown(keyS) || Phaser.Input.Keyboard.JustDown(keyDOWN)){
+            console.log("down down");
+            //resetting globalVariables
+            //resetting position
+            positionX = 0;
+            paraPos = 0;
+            //resetting camera switch to pass across scenes
+            lookable = false;
+            shakeL = -222;
+            shakeR = 222;
+            visitedtwice = 0;
+            visited2twice = 0;
+            //resetting gameOver condition to pass across scenes
+            offRoad = false;
+            offRoadL = -392;
+            offRoadR = 392;
+            this.scene.start("drive2Scene");
+
             }
-            console.log(positionX);
-            //this.roadCenter.x += 5;
-            //this.redraw(false);
-            //this.car.setAccelerationX(20);
         }
     }
 

@@ -29,12 +29,20 @@ class Dialog {
             textOffset = 2;
             arrowOffset.x = 2;
 
+        } else if (side == 'bottom2'){
+            x = 0;
+            y = 0;
+            bubbleType = "";
+            textOffset = 2;
+            arrowOffset.x = 2;
+            arrowOffset.y = 2;
         } else {
             console.log('Undefined Side on Dialog Box with :' + bodyText)
         }
         
         this.right = scene.add.sprite(centerX - 200, centerY, "top").setOrigin(0.5).setScale(1.25);
         this.left = scene.add.sprite(centerX + 250, centerY - 180, "bottom").setOrigin(0.5).setScale(1.45);
+        this.bottom = scene.add.sprite(centerX, centerY, "").setOrigin(0.5);
 
         //text family config
         let textConfig = {
@@ -60,6 +68,8 @@ class Dialog {
         } else if (side == 'left1') {
             //helpConfig.wordWrap.width = 700;
             this.boxText = scene.add.text(415, 500, "", textConfig).setOrigin(0.5).setDepth(200);
+        } else if (side == 'bottom2') {
+            this.boxText = scene.add.text(centerX, centerY, "", textConfig).setOrigin(0.5).setDepth(200);
         }
 
         //adding waiting arrow
@@ -124,6 +134,7 @@ class Dialog {
     hide() {
         this.right.removeFromDisplayList();
         this.left.removeFromDisplayList();
+        this.bottom.removeFromDisplayList();
         this.boxText.removeFromDisplayList().setText('');
         this.waitArrow.removeFromDisplayList();
     }
@@ -131,6 +142,7 @@ class Dialog {
     show() {
         this.right.addToDisplayList();
         this.left.addToDisplayList();
+        this.bottom.addToDisplayList();
         this.boxText.addToDisplayList();
     }
 

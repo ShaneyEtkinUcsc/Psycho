@@ -6,6 +6,9 @@ class Intro extends Phaser.Scene {
     create() {
         console.log("in introcutscene");
 
+    //adding gameOver siren for driving
+    this.sound.add("siren");
+
     //reserving keyspace SPACE
     keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 

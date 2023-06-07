@@ -55,14 +55,17 @@ let positionX = 0;
 let paraPos = 0;
 //camera switch to pass across scenes
 let lookable = false;
-let timeAdd = 3;
-let shake = false;
+let shakeL = -222;
+let shakeR = 222;
+let visitedtwice = 0;
+let visited2twice = 0;
 //gameOver condition to pass across scenes
+let offRoadL = -392;
+let offRoadR = 392;
 let offRoad = false;
 
 let scootch_countL = 0;
 let scootch_countR = 0;
-
 
 //gameOver screen scene 3
 let dead = false;

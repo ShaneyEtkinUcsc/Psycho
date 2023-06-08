@@ -1,0 +1,146 @@
+{
+	"textures": [
+		{
+			"image": "Bates.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 89,
+				"h": 458
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "Bates1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 4,
+						"w": 41,
+						"h": 150
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 41,
+						"h": 150
+					}
+				},
+				{
+					"filename": "Bates3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 4,
+						"w": 44,
+						"h": 150
+					},
+					"frame": {
+						"x": 44,
+						"y": 1,
+						"w": 44,
+						"h": 150
+					}
+				},
+				{
+					"filename": "Bates4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 4,
+						"w": 41,
+						"h": 150
+					},
+					"frame": {
+						"x": 1,
+						"y": 153,
+						"w": 41,
+						"h": 150
+					}
+				},
+				{
+					"filename": "Bates6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 4,
+						"w": 44,
+						"h": 150
+					},
+					"frame": {
+						"x": 44,
+						"y": 153,
+						"w": 44,
+						"h": 150
+					}
+				},
+				{
+					"filename": "Bates2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 2,
+						"w": 42,
+						"h": 152
+					},
+					"frame": {
+						"x": 1,
+						"y": 305,
+						"w": 42,
+						"h": 152
+					}
+				},
+				{
+					"filename": "Bates5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 2,
+						"w": 38,
+						"h": 152
+					},
+					"frame": {
+						"x": 45,
+						"y": 305,
+						"w": 38,
+						"h": 152
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:d73d4e9df02e850615a6eb8d869d6228:11e293513aedd108298c86017fbdb2d9:6770fb9d4e5792d27380a750253c2430$"
+	}
+}

@@ -78,6 +78,7 @@ class Load extends Phaser.Scene {
         this.load.image("interior", "./assets/art/DriveScene/car_int.png");
         this.load.image("exclamation", "./assets/art/DriveScene/exclamationpoint.png");
         this.load.image("wheel", "./assets/art/DriveScene/wheel.png");
+        this.load.image("txtbottom", "./assets/art/DriveScene/textboxbottom.png");
 
         //drive scene audio
         this.load.audio("siren", "./assets/sound/DriveScene/sirenSfx.mp3");

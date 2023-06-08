@@ -2,8 +2,6 @@
 //and was specifically designed by Alex Groff for dialouge functionality
 //this is used with his full permission to do so
 
-//this develops the actual textboxes themselves
-
 class Dialog {
 
     constructor(scene, side, textSpeed = 30, inFocus = false, bodyText = '') {
@@ -21,6 +19,7 @@ class Dialog {
             bubbleType = "top";
             textOffset = 2;
             arrowOffset.x = 2;
+            this.image = scene.add.sprite(centerX - 200, centerY, "top").setOrigin(0.5).setScale(1.25);
 
         } else if (side == 'left1') {
             x = 415;
@@ -28,21 +27,20 @@ class Dialog {
             bubbleType = "bottom";
             textOffset = 2;
             arrowOffset.x = 2;
+            this.image = scene.add.sprite(centerX + 250, centerY - 180, "bottom").setOrigin(0.5).setScale(1.45);
 
-        } else if (side == 'bottom2'){
+        }else if (side == 'bottom2') {
             x = 0;
-            y = 0;
-            bubbleType = "";
+            y = 600;
+            bubbleType = "txtbottom";
             textOffset = 2;
-            arrowOffset.x = 2;
-            arrowOffset.y = 2;
+            arrowOffset.x = 1100;
+            arrowOffset.y = 25;
+            this.image = scene.add.sprite(0, 520, "txtbottom").setOrigin(0).setAlpha(0.5);
+
         } else {
             console.log('Undefined Side on Dialog Box with :' + bodyText)
         }
-        
-        this.right = scene.add.sprite(centerX - 200, centerY, "top").setOrigin(0.5).setScale(1.25);
-        this.left = scene.add.sprite(centerX + 250, centerY - 180, "bottom").setOrigin(0.5).setScale(1.45);
-        this.bottom = scene.add.sprite(centerX, centerY, "").setOrigin(0.5);
 
         //text family config
         let textConfig = {
@@ -68,8 +66,8 @@ class Dialog {
         } else if (side == 'left1') {
             //helpConfig.wordWrap.width = 700;
             this.boxText = scene.add.text(415, 500, "", textConfig).setOrigin(0.5).setDepth(200);
-        } else if (side == 'bottom2') {
-            this.boxText = scene.add.text(centerX, centerY, "", textConfig).setOrigin(0.5).setDepth(200);
+        } else if (side == 'bottom2'){
+            this.boxText = scene.add.text(centerX, 650, "", textConfig).setOrigin(0.5).setDepth(200);
         }
 
         //adding waiting arrow
@@ -132,17 +130,13 @@ class Dialog {
     }
 
     hide() {
-        this.right.removeFromDisplayList();
-        this.left.removeFromDisplayList();
-        this.bottom.removeFromDisplayList();
+        this.image.removeFromDisplayList();
         this.boxText.removeFromDisplayList().setText('');
         this.waitArrow.removeFromDisplayList();
     }
 
     show() {
-        this.right.addToDisplayList();
-        this.left.addToDisplayList();
-        this.bottom.addToDisplayList();
+        this.image.addToDisplayList();
         this.boxText.addToDisplayList();
     }
 
@@ -186,7 +180,7 @@ class Dialog {
 
         if (target >= game.config.height * 5/6) target = game.config.height * 5/6;
         this.scene.tweens.add({
-            targets: [this.boxText, this.right, this.left],
+            targets: [this.boxText, this.image],
             y: target,
             ease: 'Quad.InOut',
             duration: 1500,
@@ -235,4 +229,3 @@ class Queue {
       return this.length === 0;
     }
 }
-

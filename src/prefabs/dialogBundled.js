@@ -1,10 +1,9 @@
-//this class is developed directly from my ARTG 120 game, Quilted
-//and was specifically designed by Alex Groff for dialouge functionality
-//this is used with his full permission to do so
 
-//this allows for the player to use the created textboxes in dialogBox
+ //this class is developed directly from my ARTG 120 game, Quilted
+ //and was specifically designed by Alex Groff for dialouge functionality
+ //this is used with his full permission to do so
 
-class dialogBoxBundle {
+ class dialogBoxBundle {
     constructor(scene, script, inFocus = false){
         this.scene = scene;
         this.leftBox = new Dialog(scene, 'left1', 20, inFocus);
@@ -14,7 +13,7 @@ class dialogBoxBundle {
         this.rightBox.hide();
         this.bottomBox.hide();
 
-        
+
         this.script = script;
         this.nextInstruction = this.script[0][0];
         this.activeBox = this.leftBox;
@@ -67,7 +66,7 @@ class dialogBoxBundle {
                 boxChosen = true;
                 this.activeBox = this.leftBox;
                 this.activeBox.addText(this.script[i][1]);
-                
+
 
             } else if (this.nextInstruction === 'right1') { // right is our next dialog sequence
                 currentBox = 'right1'; 
@@ -75,6 +74,11 @@ class dialogBoxBundle {
                 this.activeBox = this.rightBox;
                 this.activeBox.addText(this.script[i][1])
 
+            } else if (this.nextInstruction === 'bottom2') { // right is our next dialog sequence
+                currentBox = 'bottom2'; 
+                boxChosen = true;
+                this.activeBox = this.bottomBox;
+                this.activeBox.addText(this.script[i][1])
             } else if (this.nextInstruction === 'sound') { // make noise
                 if(i > 0) {
                     this.wasPlaying = this.scene.sound.get(this.script[i - 2][1]);
@@ -87,8 +91,7 @@ class dialogBoxBundle {
 
             } else if (this.nextInstruction === 'hide') {  // hide a box
                 this.script[i][1] === 'left1' ? this.leftBox.hide() : 
-                this.script[i][1] === 'right1' ? this.rightBox.hide() : 
-                (this.script[i][1] === 'bottom2' ? this.bottomBox.hide() : false)
+                (this.script[i][1] === 'right1' ? this.rightBox.hide() : false);
 
             } else if (this.nextInstruction === 'end') {
                 return; // our script is DONE!
@@ -96,7 +99,7 @@ class dialogBoxBundle {
             } else {
                 console.log("UNDEFINED INSTRUCTION ON LINE " + i + ":  " + this.script[i][0])
             }
-            
+
             try {
                 this.nextInstruction = this.script[i+1][0];
             } catch {
@@ -112,8 +115,8 @@ class dialogBoxBundle {
 
         this.leftBox.shift(targetY);
         this.rightBox.shift(targetY);
-        this.bottomBox.shift(targetY);
-        
+        this.centerBox.shift(targetY);
+
     }
 
     get scriptFinished() {
@@ -124,8 +127,6 @@ class dialogBoxBundle {
     remove() {
         this.leftBox.hide()
         this.rightBox.hide()
-        this.bottomBox.hide()
         this.unusable = true;
     }
-
-}
+ }

@@ -37,7 +37,7 @@ class Intro extends Phaser.Scene {
         ['sound', "audio11"],
         ['left1', "I didn't intend to sleep all night. I just pulled over. Have I broken any laws?"],
         ['sound', "audio12"],
-        ['right1', "No ma'm."],
+        ['right1', "No ma'am."],
         ['sound', "audio13"],
         ['left1', "Then I'm free to go."],
         ['sound', "audio14"],
@@ -53,7 +53,7 @@ class Intro extends Phaser.Scene {
         ['sound', "audio19"],
         ['left1', "Is there what?"],
         ['sound', "pause"],
-        ['right1', ""],
+        ['right1', ". . ."],
         ['sound', "audio20"],
         ['left1', "I've told you there is nothing wrong, except that I'm in a hurry and you are taking up my time."],
         ['sound', "audio21"],
@@ -101,6 +101,7 @@ class Intro extends Phaser.Scene {
         // dialog box update
         this.boxBundle.update();
         if (this.boxBundle.scriptFinished === "Chat") {
+            //this.boxBundle.remove();
             this.driveAway();
         }
         });

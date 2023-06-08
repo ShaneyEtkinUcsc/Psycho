@@ -49,6 +49,9 @@ var audioConfig = {
     fade: true,
 };
 
+//cutscene audio fix
+let musicPlaying = false;
+
 //drive definitions
 //car position to pass across scenes
 let positionX = 0;
@@ -63,6 +66,8 @@ let visited2twice = 0;
 let offRoadL = -392;
 let offRoadR = 392;
 let offRoad = false;
+//conversation switching point
+let talkPosition = 0;
 
 let scootch_countL = 0;
 let scootch_countR = 0;

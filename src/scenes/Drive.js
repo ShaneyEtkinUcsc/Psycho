@@ -329,7 +329,11 @@ class Drive extends Phaser.Scene {
         this.time.delayedCall(5000, () => {
             if(!offRoad){
                 console.log("done peeking");
+                if(talkPosition <= 5){
+                console.log("talkPosition" +  talkPosition);
+                talkPosition += 1;
                 this.scene.start("drive2Scene");
+                }
             }
         });
 
@@ -420,6 +424,23 @@ class Drive extends Phaser.Scene {
         this.cameras.main.shake(1000, 0.0005, false); 
     }
   
+    //resetting globalVariables on a restart
+    reset() {
+        //resetting position
+        positionX = 0;
+        paraPos = 0;
+        talkPosition = 0;
+        //resetting camera switch to pass across scenes
+        lookable = false;
+        shakeL = -222;
+        shakeR = 222;
+        visitedtwice = 0;
+        //resetting gameOver condition to pass across scenes
+        offRoad = false;
+        offRoadL = -392;
+        offRoadR = 392;
+        this.scene.start("drive2Scene");
+    }
 
     update() {
 
@@ -477,23 +498,8 @@ class Drive extends Phaser.Scene {
             }
         } else if (offRoad) {
             if(Phaser.Input.Keyboard.JustDown(keyS) || Phaser.Input.Keyboard.JustDown(keyDOWN)){
-            console.log("down down");
-            //resetting globalVariables
-            //resetting position
-            positionX = 0;
-            paraPos = 0;
-            //resetting camera switch to pass across scenes
-            lookable = false;
-            shakeL = -222;
-            shakeR = 222;
-            visitedtwice = 0;
-            visited2twice = 0;
-            //resetting gameOver condition to pass across scenes
-            offRoad = false;
-            offRoadL = -392;
-            offRoadR = 392;
-            this.scene.start("drive2Scene");
-
+                console.log("down down");
+                this.reset();
             }
         }
     }

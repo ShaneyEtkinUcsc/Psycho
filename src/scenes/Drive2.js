@@ -10,6 +10,7 @@ class Drive2 extends Phaser.Scene {
         console.log("in driving2");
         console.log(positionX);
 
+        //setting up music for drive scenes
         var musicConfig = {
             mute: false,
             volume: 0.1,
@@ -24,6 +25,7 @@ class Drive2 extends Phaser.Scene {
             bgMusic.play(musicConfig);
         }
 
+        //importing siren sound for offRoad instances
         this.sirenSound = this.sound.get("siren");
 
         //reserving keyspaces
@@ -44,6 +46,18 @@ class Drive2 extends Phaser.Scene {
         this.Marion = this.add.sprite(400, 0, "face").setOrigin(0).setScale(1.2);
         this.wheel = this.add.sprite(670, 660, "wheel").setOrigin(0.5).setScale(1.8);
         this.exclamation = this.add.sprite(30, centerY - 250, "exclamation").setOrigin(0.5).setScale(3).setAlpha(0);
+       
+        //adding random position array for random generator to use
+        /*let position = [
+            -40,
+            -30,
+            -20,
+            -10,
+            10,
+            20,
+            30,
+            40,
+        ]*/
 
         //adding look back indicator
         let checkConfig = {
@@ -132,14 +146,18 @@ class Drive2 extends Phaser.Scene {
 
         //camera switch to pass across scenes
         lookable = false;
-        this.time.delayedCall(7000, () => {
-            lookable = true;
-            this.lookback.setAlpha(1);
-            console.log("you can look now");
-        });
+        if(visited2twice <= 1){
+            this.time.delayedCall(7000, () => {
+                lookable = true;
+                this.lookback.setAlpha(1);
+                console.log("you can look now");
+            });
+        }
        
         // create the scene's dialouge boxes
         this.boxBundle1 = new dialogBoxBundle(this, [
+            //['hide', 'right1'],
+            //['hide', 'left1'],
             //['sound', "audio1"],
             ['bottom2', "Yes Mr. Lowery?"],
             //['sound', "audio2"],
@@ -167,7 +185,7 @@ class Drive2 extends Phaser.Scene {
             //['sound', "audio10"],
             ['bottom2', "No, I haven't the faintest idea. As I said, I last saw your sister when she left this"],
             //['sound', "audio11"],
-            ['bottom2', "office on Friday, said she didn't feel well, and wanted to leave earlt, and I said she could."],
+            ['bottom2', "office on Friday, said she didn't feel well, and wanted to leave early, and I said she could."],
             //['sound', "audio12"],
             ['bottom2', "That was the last I saw her."],
             //['sound', "audio13"],
@@ -175,16 +193,19 @@ class Drive2 extends Phaser.Scene {
             //['sound', "audio14"],
             ['bottom2', "Uh, I think you'd better come over here to my office quick."],
             //['sound', "audio15"],
-            ['bottom2', "Caroline, get Mr. Cassidy for me."],
-            //['sound', "audio16"],
-            ['bottom2', "After all Cassidy, I told you all that cash. I'm not taking the responsisibility."],
-            //['sound', "audio17"],
-            ['bottom2', "Oh for heavens sake, girl works for you for 10 years you trust her."],
-             //['sound', "audio18"],
-             ['bottom2', "Alright, yes, you should probably come over."],
             ['end', "talk3"]
         ], true);
         this.boxBundle4 = new dialogBoxBundle(this, [
+            ['bottom2', "Caroline, get Mr. Cassidy for me."],
+            //['sound', "audio16"],
+            ['bottom2', "After all Cassidy, I told you all that cash. I'm not taking the responsibility."],
+            //['sound', "audio17"],
+            ['bottom2', "Oh for heavens sake, girl works for you for 10 years, you trust her."],
+             //['sound', "audio18"],
+            ['bottom2', "Alright, yes, you should probably come over."],
+            ['end', "talk4"]
+        ], true);
+        this.boxBundle5 = new dialogBoxBundle(this, [
             //['sound', "audio19"],
             ['bottom2', "I'm not about to kiss our $40,000 goodbye."],
             //['sound', "pause"],
@@ -198,9 +219,21 @@ class Drive2 extends Phaser.Scene {
             //['sound', "audio21"],
             ['bottom2', "Hot creeper. She sat there while I dumped it out, hardly even looked at it."],
             //['sound', "audio21"],
-            ['bottom2', "Planning, and even flirting with me too"],
-            ['end', "talk4"]
+            ['bottom2', "Planning, and even flirting with me too."],
+            ['end', "talk5"]
         ], true);
+
+        //creating random movement generation timer after player has the chance to read
+        //tutorial instructions
+        this.time.delayedCall(7000, () => {
+            var timer = scene.time.addEvent({
+                delay: 500,
+                callback: this.roadMovementGen(),
+                //args: [],
+                callbackScope: thisArg,
+                loop: true
+             });
+         });
             
     }
 
@@ -245,15 +278,78 @@ class Drive2 extends Phaser.Scene {
 
     }
 
-   
+    //I got this random generation from 
+    //https://rexrainbow.github.io/phaser3-rex-notes/docs/site/random-data-generator/
+    /*roadMovementGen() {
+        if(!this.offRoad){
+            var rnd = Phaser.Math.RND;
+            let newPosition = rnd.pick(position);
+            positionX += newPosition;
+        }
+    }*/
+
+    //resetting globalVariables on a restart
+    reset() {
+        //resetting position
+        this.sirenSound.stop();
+        positionX = 0;
+        paraPos = 0;
+        talkPosition = 0;
+        //resetting camera switch to pass across scenes
+        lookable = false;
+        shakeL = -222;
+        shakeR = 222;
+        visitedtwice = 0;
+        visited2twice = 0;
+        //resetting gameOver condition to pass across scenes
+        offRoad = false;
+        offRoadL = -392;
+        offRoadR = 392;
+        this.scene.restart();
+    }
 
     update(){
-        if(positionX <= offRoadL || positionX >= offRoadR){
-            this.offRoad(this.sirenSound);
-        }
-        if(!offRoad){
 
-            //going Off indications
+        if(!offRoad){
+            if(visited2twice = 1){
+                if(talkPosition == 1){
+                    this.boxBundle1.update();
+                    this.time.delayedCall(7000, () => {
+                        lookable = true;
+                        this.lookback.setAlpha(1);
+                    });
+                } else if (talkPosition == 2){
+                    this.boxBundle2.update();
+                    this.time.delayedCall(7000, () => {
+                        lookable = true;
+                        this.lookback.setAlpha(1);
+                    });
+                } else if (talkPosition == 3){
+                    this.boxBundle3.update();
+                    this.time.delayedCall(7000, () => {
+                        lookable = true;
+                        this.lookback.setAlpha(1);
+                    });
+                } else if (talkPosition == 4){
+                    this.boxBundle4.update();
+                    this.time.delayedCall(7000, () => {
+                        lookable = true;
+                        this.lookback.setAlpha(1);
+                    });
+                } else if (talkPosition == 5){
+                    this.boxBundle4.update();
+                    this.time.delayedCall(7000, () => {
+                        lookable = true;
+                        this.lookback.setAlpha(1);
+                    });
+                }
+            }
+            //enabling offRoad conditions
+            if(positionX <= offRoadL || positionX >= offRoadR){
+                this.offRoad(this.sirenSound);
+                positionX = 0;
+            }
+            //goingOff indications
             if(positionX <= shakeL || positionX >= shakeR){
                 console.log("camera shake triggered");
                 this.cameras.main.shake(1000, 0.0005, false); 
@@ -265,7 +361,7 @@ class Drive2 extends Phaser.Scene {
                     this.exclamation.setAlpha(1);
                 }
             } else {
-                //making the exclamation invisible
+                //making the exclamation invisible since no danger is present
                 this.exclamation.setAlpha(0);
             }
 
@@ -308,22 +404,7 @@ class Drive2 extends Phaser.Scene {
         } else if (offRoad){
             if(Phaser.Input.Keyboard.JustDown(keyS) || Phaser.Input.Keyboard.JustDown(keyDOWN)){
                 console.log("down down");
-                //resetting globalVariables
-                //resetting position
-                this.sirenSound.stop();
-                positionX = 0;
-                paraPos = 0;
-                //resetting camera switch to pass across scenes
-                lookable = false;
-                shakeL = -222;
-                shakeR = 222;
-                visitedtwice = 0;
-                visited2twice = 0;
-                //resetting gameOver condition to pass across scenes
-                offRoad = false;
-                offRoadL = -392;
-                offRoadR = 392;
-                this.scene.restart();
+                this.reset();
     
                 }
             }

@@ -33,7 +33,7 @@ class Load extends Phaser.Scene {
         this.load.image("bottom", "./assets/art/IntroCutscene/textbottom.png");
         this.load.image("triangle", "./assets/art/IntroCutscene/twyangle.png")
 
-        //intro cutscene audio
+        //intro cutscene voice audio
         this.load.audio("knock", "./assets/sound/IntroCutscene/walkingUp.m4a");
         this.load.audio("pause", "./assets/sound/IntroCutscene/pause.m4a");
         this.load.audio("driveAway", "./assets/sound/IntroCutscene/driveAway.m4a");
@@ -80,8 +80,36 @@ class Load extends Phaser.Scene {
         this.load.image("wheel", "./assets/art/DriveScene/wheel.png");
         this.load.image("txtbottom", "./assets/art/DriveScene/textboxbottom.png");
 
-        //drive scene audio
+        //drive scene siren audio
         this.load.audio("siren", "./assets/sound/DriveScene/sirenSfx.mp3");
+        //drive scene voice audio
+        this.load.audio("audio22", "./assets/sound/DriveScene/audio22.m4a");
+        this.load.audio("audio23", "./assets/sound/DriveScene/audio23.m4a");
+        this.load.audio("audio24", "./assets/sound/DriveScene/audio24.m4a");
+        this.load.audio("audio25", "./assets/sound/DriveScene/audio25.m4a");
+        this.load.audio("audio26", "./assets/sound/DriveScene/audio26.m4a");
+        this.load.audio("audio27", "./assets/sound/DriveScene/audio27.m4a");
+        this.load.audio("audio28", "./assets/sound/DriveScene/audio28.m4a");
+        this.load.audio("audio29", "./assets/sound/DriveScene/audio29.m4a");
+        this.load.audio("audio30", "./assets/sound/DriveScene/audio30.m4a");
+        this.load.audio("audio31", "./assets/sound/DriveScene/audio31.m4a");
+        this.load.audio("audio32", "./assets/sound/DriveScene/audio32.m4a");
+        this.load.audio("audio33", "./assets/sound/DriveScene/audio33.m4a");
+        this.load.audio("audio34", "./assets/sound/DriveScene/audio34.m4a");
+        this.load.audio("audio35", "./assets/sound/DriveScene/audio35.m4a");
+        this.load.audio("audio36", "./assets/sound/DriveScene/audio36.m4a");
+        this.load.audio("audio37", "./assets/sound/DriveScene/audio37.m4a");
+        this.load.audio("audio38", "./assets/sound/DriveScene/audio38.m4a");
+        this.load.audio("audio39", "./assets/sound/DriveScene/audio39.m4a");
+        this.load.audio("audio40", "./assets/sound/DriveScene/audio40.m4a");
+        this.load.audio("audio41", "./assets/sound/DriveScene/audio41.m4a");
+        this.load.audio("audio42", "./assets/sound/DriveScene/audio42.m4a");
+        this.load.audio("audio43", "./assets/sound/DriveScene/audio43.m4a");
+        this.load.audio("audio44", "./assets/sound/DriveScene/audio44.m4a");
+        this.load.audio("audio45", "./assets/sound/DriveScene/audio45.m4a");
+        this.load.audio("audio46", "./assets/sound/DriveScene/audio46.m4a");
+
+
 
         //general fonts
 

@@ -100,7 +100,7 @@ class Drive extends Phaser.Scene {
 
         //creating cop car
         this.roadCenter = this.physics.add.sprite(centerX, 340, "cop").setDepth(5);
-        this.roadCenter.setScale(5.5);
+        this.roadCenter.setScale(2.5);
         this.roadCenter.setSize(45, 30, true);
         this.roadCenter.setCollideWorldBounds(false);
         if (talkPosition == 3){

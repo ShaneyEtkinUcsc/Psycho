@@ -42,13 +42,9 @@ class Drive extends Phaser.Scene {
         this.physics.world.bounds.setTo(0, 0, game.config.width, game.config.height);
         this.physics.world.setBoundsCollision(true, true, false, false); // check left and right, not up or down
 
-        //temp backgrounds
-        //this.back1 = this.add.rectangle(0, 0, 1280, 720, 0xFFFFFF).setOrigin(0);
-        //this.back2 = this.add.rectangle(0, 0, 1280, 360, 0xDC3C28).setOrigin(0);
-
         //creating back mirror background
         this.mirrorBack = this.add.tileSprite(0 + paraPos, 0, 1280, 360, "skyline").setOrigin(0);
-        this.frontSky = this.add.sprite(0, 0, "frontview").setOrigin(0);
+        this.frontSky = this.add.sprite(0, 0, "frontview").setOrigin(0).setDepth(10);
         this.frontSky.setScale(0.5);
       
         //creating road
@@ -103,11 +99,18 @@ class Drive extends Phaser.Scene {
         this.rainOverlay.setDepth(10);
 
         //creating cop car
-        this.roadCenter = this.physics.add.sprite(centerX, 340, "cop");
-        this.roadCenter.setScale(2.5);
+        this.roadCenter = this.physics.add.sprite(centerX, 340, "cop").setDepth(5);
+        this.roadCenter.setScale(5.5);
         this.roadCenter.setSize(45, 30, true);
-        this.roadCenter.setCollideWorldBounds(true);
-
+        this.roadCenter.setCollideWorldBounds(false);
+        if (talkPosition == 3){
+            this.roadCenter.setScale(3.5);
+        } else if (talkPosition == 4){
+            this.roadCenter.setScale(4.5);
+        } else if (talkPosition == 5){
+            this.roadCenter.setScale(5.5);
+        }
+        
         //making the cop bounce
         let copBounce = this.tweens.chain({
             targets: this.roadCenter,
@@ -124,10 +127,6 @@ class Drive extends Phaser.Scene {
             }]
             
         });
-
-        //can't remember why I made this
-        //const zone = this.add.zone(centerX, centerY, 200, 30);
-        
 
         //creating tweening road groups
 
@@ -286,6 +285,7 @@ class Drive extends Phaser.Scene {
         
     });
 
+        roadLeftB.setDepth(5);
         //creating right and left line collisions
         this.roadLeftLine = this.physics.add.sprite(20, 500);
         this.roadLeftLine.setSize(30, 500, true);
@@ -329,10 +329,18 @@ class Drive extends Phaser.Scene {
         this.time.delayedCall(5000, () => {
             if(!offRoad){
                 console.log("done peeking");
-                if(talkPosition <= 5){
-                console.log("talkPosition" +  talkPosition);
-                talkPosition += 1;
-                this.scene.start("drive2Scene");
+                if(talkPosition <= 4){
+                    console.log("talkPosition: " +  talkPosition);
+                    talkPosition += 1;
+                    this.scene.start("drive2Scene");
+                } else {
+                    console.log("cop moves");
+                    copBounce.remove(copBounce);
+                    this.roadCenter.setVelocityX(-100);
+                    this.roadCenter.setVelocityY(-16);
+                    this.time.delayedCall(5000, () =>{
+                        this.scene.start("cutScene2");
+                    });
                 }
             }
         });
@@ -353,28 +361,6 @@ class Drive extends Phaser.Scene {
         //adding tutorial text
         if(visitedtwice <= 1){
             this.tutorial = this.add.text(centerX, centerY + 50, "'A' and 'D' or '←' and '→' to move", tutorialConfig).setOrigin(0.5);
-        }
-
-    }
-
-    //allows for line movement (still needs to be updated)
-
-    redraw(directionLeft) {
-
-        if (directionLeft == true){
-            //if moving left
-            if(scootch_countL <= 25){
-                scootch_countL += 1;
-                scootch_countR -= 1;
-
-        } else {
-            //if moving right
-            if(scootch_countR <= 25){
-                scootch_countL -= 0.5;
-                scootch_countR += 0.5;
-            }
-         
-        }
         }
 
     }
@@ -473,7 +459,6 @@ class Drive extends Phaser.Scene {
                 this.carsideL.x -= 2;
                 this.carsideR.x -= 2;
                 if (this.mirrorBack.tilePositionX >= 0) this.mirrorBack.tilePositionX -= 0.25;
-            
                     paraPos -= 0.25;
                     positionX -= 2;
                 }

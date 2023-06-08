@@ -7,6 +7,7 @@ class Drive2 extends Phaser.Scene {
     create() {
         //keeping track of player's scene visits
         visited2twice += 1;
+        console.log("visited2twice: " + visited2twice);
         console.log("in driving2");
         console.log(positionX);
 
@@ -46,18 +47,12 @@ class Drive2 extends Phaser.Scene {
         this.Marion = this.add.sprite(400, 0, "face").setOrigin(0).setScale(1.2);
         this.wheel = this.add.sprite(670, 660, "wheel").setOrigin(0.5).setScale(1.8);
         this.exclamation = this.add.sprite(30, centerY - 250, "exclamation").setOrigin(0.5).setScale(3).setAlpha(0);
+        this.waitArrow = this.add.sprite(200, 40, "triangle").setOrigin(0.5).setAngle(-90).setAlpha(0);
        
-        //adding random position array for random generator to use
-        /*let position = [
-            -40,
-            -30,
-            -20,
-            -10,
-            10,
-            20,
-            30,
-            40,
-        ]*/
+        //adding random position arrays for random generator to use
+        this.position = [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5];
+        this.driftLeft = [-20, -30, -40, -50, -60, -70, -80, -100 -150, -160];
+        this.driftRight = [20, 30, 40, 50, 60, 70, 80, 100, 150, 160];
 
         //adding look back indicator
         let checkConfig = {
@@ -144,11 +139,22 @@ class Drive2 extends Phaser.Scene {
             
         });
 
+        let bounce = this.tweens.add({
+            targets: this.waitArrow,
+            x: (this.waitArrow.x + 25),
+            ease: 'Quad.Out',
+            duration: 1000,
+            yoyo: true,
+            repeat: -1,
+            loop: -1,
+        });
+
         //camera switch to pass across scenes
         lookable = false;
         if(visited2twice <= 1){
             this.time.delayedCall(7000, () => {
                 lookable = true;
+                this.waitArrow.setAlpha(1);
                 this.lookback.setAlpha(1);
                 console.log("you can look now");
             });
@@ -183,9 +189,9 @@ class Drive2 extends Phaser.Scene {
         ], true);
         this.boxBundle3 = new dialogBoxBundle(this, [
             //['sound', "audio10"],
-            ['bottom2', "No, I haven't the faintest idea. As I said, I last saw your sister when she left this"],
+            ['bottom2', "No, I haven't the faintest idea. As I said, I last saw your sister when she left this office on Friday,"],
             //['sound', "audio11"],
-            ['bottom2', "office on Friday, said she didn't feel well, and wanted to leave early, and I said she could."],
+            ['bottom2', "said she didn't feel well, and wanted to leave early, and I said she could."],
             //['sound', "audio12"],
             ['bottom2', "That was the last I saw her."],
             //['sound', "audio13"],
@@ -193,10 +199,10 @@ class Drive2 extends Phaser.Scene {
             //['sound', "audio14"],
             ['bottom2', "Uh, I think you'd better come over here to my office quick."],
             //['sound', "audio15"],
+            ['bottom2', "Caroline, get Mr. Cassidy for me."],
             ['end', "talk3"]
         ], true);
         this.boxBundle4 = new dialogBoxBundle(this, [
-            ['bottom2', "Caroline, get Mr. Cassidy for me."],
             //['sound', "audio16"],
             ['bottom2', "After all Cassidy, I told you all that cash. I'm not taking the responsibility."],
             //['sound', "audio17"],
@@ -223,18 +229,9 @@ class Drive2 extends Phaser.Scene {
             ['end', "talk5"]
         ], true);
 
-        //creating random movement generation timer after player has the chance to read
-        //tutorial instructions
-        this.time.delayedCall(7000, () => {
-            var timer = scene.time.addEvent({
-                delay: 500,
-                callback: this.roadMovementGen(),
-                //args: [],
-                callbackScope: thisArg,
-                loop: true
-             });
-         });
-            
+        //creating random movement generation timer
+        this.timer = 0;
+        this.lastPosition = 0;
     }
 
     offRoad(sirenSound) {
@@ -280,13 +277,24 @@ class Drive2 extends Phaser.Scene {
 
     //I got this random generation from 
     //https://rexrainbow.github.io/phaser3-rex-notes/docs/site/random-data-generator/
-    /*roadMovementGen() {
-        if(!this.offRoad){
+    roadMovementGen() {
+        if(!offRoad){
             var rnd = Phaser.Math.RND;
-            let newPosition = rnd.pick(position);
-            positionX += newPosition;
+            let newPosition = rnd.pick(this.position);
+            if(this.lastPosition + newPosition <= -1){
+                let driftLeft = rnd.pick(this.driftLeft);
+                console.log("Position changed by: " + driftLeft);
+                positionX += driftLeft;
+                this.lastPosition = newPosition;
+            } else if (this.lastPosition + newPosition >= 1 ){
+                let driftRight = rnd.pick(this.driftRight);
+                console.log("Position changed by: " + driftRight);
+                positionX += driftRight;
+                this.lastPosition = newPosition;
+            }
+            
         }
-    }*/
+    }
 
     //resetting globalVariables on a restart
     reset() {
@@ -308,40 +316,53 @@ class Drive2 extends Phaser.Scene {
         this.scene.restart();
     }
 
-    update(){
-
+    update(time, delta) {
+        //setting random position
+        if(visited2twice >= 1){
+            this.timer += delta;
+            while (this.timer > 3000) {
+                this.roadMovementGen();
+                this.timer -= 3000;
+            }
+        }
         if(!offRoad){
+            //setting up dialouge calls
             if(visited2twice = 1){
                 if(talkPosition == 1){
                     this.boxBundle1.update();
-                    this.time.delayedCall(7000, () => {
+                   if (this.boxBundle1.scriptFinished === "talk1"){
                         lookable = true;
+                        this.waitArrow.setAlpha(1);
                         this.lookback.setAlpha(1);
-                    });
+                    }
                 } else if (talkPosition == 2){
                     this.boxBundle2.update();
-                    this.time.delayedCall(7000, () => {
+                    if (this.boxBundle2.scriptFinished === "talk2"){
                         lookable = true;
+                        this.waitArrow.setAlpha(1);
                         this.lookback.setAlpha(1);
-                    });
+                    }
                 } else if (talkPosition == 3){
                     this.boxBundle3.update();
-                    this.time.delayedCall(7000, () => {
+                    if (this.boxBundle3.scriptFinished === "talk3"){
                         lookable = true;
+                        this.waitArrow.setAlpha(1);
                         this.lookback.setAlpha(1);
-                    });
+                    }
                 } else if (talkPosition == 4){
                     this.boxBundle4.update();
-                    this.time.delayedCall(7000, () => {
+                    if (this.boxBundle4.scriptFinished === "talk4"){
                         lookable = true;
+                        this.waitArrow.setAlpha(1);
                         this.lookback.setAlpha(1);
-                    });
+                    }
                 } else if (talkPosition == 5){
-                    this.boxBundle4.update();
-                    this.time.delayedCall(7000, () => {
+                    this.boxBundle5.update();
+                    if (this.boxBundle5.scriptFinished === "talk5"){
                         lookable = true;
+                        this.waitArrow.setAlpha(1);
                         this.lookback.setAlpha(1);
-                    });
+                    }
                 }
             }
             //enabling offRoad conditions

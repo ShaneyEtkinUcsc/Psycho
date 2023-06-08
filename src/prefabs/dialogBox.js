@@ -12,7 +12,7 @@ class Dialog {
         let textOffset = 0;
         let arrowOffset = {x: 0, y: 110};
 
-        //side on dialouge boxes?
+        //creating dialouge box preferences
         if (side == 'right1') {
             x = 850;
             y = 125;
@@ -61,10 +61,8 @@ class Dialog {
 
         //adding text
         if (side == 'right1') {
-            //helpConfig.wordWrap.width = 00;
             this.boxText = scene.add.text(850, 125, "", textConfig).setOrigin(0.5).setDepth(200);
         } else if (side == 'left1') {
-            //helpConfig.wordWrap.width = 700;
             this.boxText = scene.add.text(415, 500, "", textConfig).setOrigin(0.5).setDepth(200);
         } else if (side == 'bottom2'){
             this.boxText = scene.add.text(centerX, 650, "", textConfig).setOrigin(0.5).setDepth(200);
@@ -125,7 +123,6 @@ class Dialog {
 
         this.scene.time.delayedCall(textSpeeeeeed, () => {
             this.displaySlowTextR(fullText, textSpeeeeeed, textIndex+1)
-            //this.side === 'center' ? this.boxText.setPosition(this.x, this.y + 65) : this.boxText.setPosition(this.x + this.textOffset, this.y) 
         }, null, this.scene);
     }
 

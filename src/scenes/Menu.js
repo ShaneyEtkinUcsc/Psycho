@@ -110,6 +110,7 @@ class Menu extends Phaser.Scene {
         this.titleText = this.add.sprite(400, 50, 'title').setOrigin(0);
 
         //https://snowbillr.github.io/blog//2018-07-03-buttons-in-phaser-3/
+        //this is to make the buttons work :)
         this.playButton = this.add.sprite(centerX/2, centerY, 'buttons', 'play_psycho7.png').setInteractive()
         .on('pointerdown', () => this.nextScene(bgMusic), this)
         .on('pointerover', () => this.playHoverState(), this)

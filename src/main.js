@@ -68,6 +68,8 @@ let offRoadR = 392;
 let offRoad = false;
 //conversation switching point
 let talkPosition = 0;
+let scootch_countR = 0;
+let scootch_countL = 0;
 
 //motel definitions
 

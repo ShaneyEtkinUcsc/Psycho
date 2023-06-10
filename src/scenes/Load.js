@@ -22,8 +22,9 @@ class Load extends Phaser.Scene {
         });
 
         //title scene assets
-        this.load.image("title", "./assets/art/PSYCHO.PNG");
-        this.load.atlas("buttons", "./assets/art/buttons.png", "./assets/art/buttons.json");
+        this.load.image("title", "./assets/art/MenuScene/PSYCHO.PNG");
+        this.load.atlas("buttons", "./assets/art/MenuScene/buttons.png", "./assets/art/MenuScene/buttons.json");
+        this.load.bitmapFont("SanJoseB", "./assets/fonts/NHLSanJose.png", "./assets/fonts/NHLSanJose.xml");
 
         //menu music
         this.load.audio("menuMusic", "./assets/sound/Psycho_8bit.wav");
@@ -109,27 +110,48 @@ class Load extends Phaser.Scene {
         this.load.audio("audio45", "./assets/sound/DriveScene/audio45.m4a");
         this.load.audio("audio46", "./assets/sound/DriveScene/audio46.m4a");
 
+        //motel scene assets
+        this.load.atlas("Marion", "./assets/art/MotelScene/Marion.png", "./assets/art/MotelScene/Marion.json");
+        this.load.atlas("Bates", "./assets/art/MotelScene/Bates.png", "./assets/art/MotelScene/Bates.json");
+        this.load.image("closetRack", "./assets/art/MotelScene/ClosetRack.png");
+        this.load.image("desk1", "./assets/art/MotelScene/Desk1.png");
+        this.load.image("desk2C", "./assets/art/MotelScene/Desk2_1.png");
+        this.load.image("desk2O", "./assets/art/MotelScene/Desk2_2.png");
+        this.load.image("painting2", "./assets/art/MotelScene/Desk2_Painting.png");
+        this.load.image("desk3", "./assets/art/MotelScene/Desk3.png");
+        this.load.image("desk4", "./assets/art/MotelScene/Desk4.png");
+        this.load.image("bed", "./assets/art/MotelScene/Scene2_Bed.png");
+        this.load.image("floorPlan", "./assets/art/MotelScene/Scene2_BG.PNG");
+        this.load.image("chair", "./assets/art/MotelScene/Scene2_Chair.png");
+        this.load.image("smallPaint1", "./assets/art/MotelScene/SmallPainting_1.png");
+        this.load.image("smallPaint2", "./assets/art/MotelScene/SmallPainting_2.png");
+        this.load.image("smallPaint3", "./assets/art/MotelScene/SmallPainting_3.png");
 
+        //temp Motel Road Map for Placement
+        this.load.image("roadMap", "./assets/art/MotelScene/MotelMap.png")
 
-        //general fonts
-
-        this.load.bitmapFont("SanJoseB", "./assets/fonts/NHLSanJose.png", "./assets/fonts/NHLSanJose.xml");
+        //motel scene audio        
        
     }
 
 
     create() {
+
+    //drive scene quick start
+    //this.scene.start("driveScene");
+
+    //motel scene quick start
+    this.scene.start("motelScene");
+
+
      // check for local storage browser support
      if(window.localStorage) {
         console.log("Local storage supported");
     } else {
-        console.log("Local storage not supported");
+        console.log("Local storage not supported")
     }
 
     this.sound.add("menuMusic");
-
-    //drive scene quick
-    //this.scene.start("driveScene");
 
     this.loadingfont = this.add.text(centerX, centerY, "Click Here to Begin", { fill: '#dea918', fontSize: '50px', fontFamily: 'Gothic' }).setAlpha(0).setOrigin(0.5).setInteractive()
 

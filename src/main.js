@@ -24,7 +24,7 @@ let config = {
             }
         }
     },
-    scene: [ Load, Menu, Credits, Help, Intro, Drive, Drive2, Cutscene2 ]
+    scene: [ Load, Menu, Credits, Help, Intro, Drive, Drive2, Cutscene2, Motel ]
 }
 
 let game = new Phaser.Game(config)
@@ -69,10 +69,9 @@ let offRoad = false;
 //conversation switching point
 let talkPosition = 0;
 
-let scootch_countL = 0;
-let scootch_countR = 0;
+//motel definitions
 
-//gameOver screen scene 3
+//split scream defitions
 let dead = false;
 
 

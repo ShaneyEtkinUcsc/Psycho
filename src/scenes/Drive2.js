@@ -187,7 +187,7 @@ class Drive2 extends Phaser.Scene {
         ], true);
         this.boxBundle3 = new dialogBoxBundle(this, [
             ['sound', "audio31"],
-            ['bottom2', "No, I haven't the faintest idea. As I said, I last saw your sister when she left this office on Friday,"],
+            ['bottom2', "No, I haven't the faintest idea. As I said, I last saw your sister when she left this office last Friday,"],
             ['sound', "audio32"],
             ['bottom2', "said she didn't feel well, and wanted to leave early, and I said she could."],
             ['sound', "audio33"],

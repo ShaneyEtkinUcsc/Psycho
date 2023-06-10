@@ -4,5 +4,8 @@ class Cutscene2 extends Phaser.Scene {
     }
     create() {
         console.log("in cutScene2");
+
+        this.scene.start("motelScene");
+
     }
 }

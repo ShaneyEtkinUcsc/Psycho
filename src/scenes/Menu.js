@@ -18,8 +18,8 @@ class Menu extends Phaser.Scene {
         if(!bgMusic.isPlaying) {
             bgMusic.play(musicConfig);
         }
-        //console.log("in menu");
-        //this.scene.start("driveScene");
+        
+        console.log("in menu");
 
         //ANIMATION CONFIGS
         this.frameNames = this.textures.get('buttons').getFrameNames();

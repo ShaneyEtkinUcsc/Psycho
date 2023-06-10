@@ -141,7 +141,7 @@ class Load extends Phaser.Scene {
     //this.scene.start("driveScene");
 
     //motel scene quick start
-    this.scene.start("motelScene");
+    //this.scene.start("motelScene");
 
 
      // check for local storage browser support

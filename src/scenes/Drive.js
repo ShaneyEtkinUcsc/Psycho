@@ -16,8 +16,11 @@ class Drive extends Phaser.Scene {
         offRoad = false;
 
         //adding scene music config
-
-        this.gameMusic = this.sound.add("menuMusic");
+        
+        let bgMusic = this.sound.get("menuMusic");
+        if(!bgMusic.isPlaying) {
+            bgMusic.play(musicConfig);
+        }
         
         var musicConfig = {
             mute: false,
@@ -339,6 +342,7 @@ class Drive extends Phaser.Scene {
                     this.roadCenter.setVelocityX(-100);
                     this.roadCenter.setVelocityY(-16);
                     this.time.delayedCall(5000, () =>{
+                        bgMusic.stop();
                         this.scene.start("cutScene2");
                     });
                 }
@@ -398,7 +402,7 @@ class Drive extends Phaser.Scene {
         }
         offRoad = true;
         if(this.tutorial){
-            this.tutorial.destroy()
+            this.tutorial.destroy();
         }
         this.add.text(centerX, centerY, "GAME OVER", gameOverConfig).setOrigin(0.5);
         this.add.text(centerX, centerY + 50, "Press S to restart", gameOverConfig).setOrigin(0.5);
@@ -452,8 +456,6 @@ class Drive extends Phaser.Scene {
                 this.goingOff();
             });
             if(this.input.keyboard.checkDown(keyA) || this.input.keyboard.checkDown(keyLEFT)){
-                //console.log("left down");
-                //this.car.setAccelerationX(-20);
                 if(positionX >= -400){
                 this.car.x -= 2;
                 this.carsideL.x -= 2;
@@ -462,12 +464,9 @@ class Drive extends Phaser.Scene {
                     paraPos -= 0.25;
                     positionX -= 2;
                 }
-                console.log(positionX);
-                //this.roadCenter.x -= 5;
-                //this.redraw(true);
+                //console.log(positionX);
             } 
             else if (this.input.keyboard.checkDown(keyD) || this.input.keyboard.checkDown(keyRIGHT)){
-                //console.log("right down");
                 if(positionX <= 400){
                 this.car.x += 2;
                 this.carsideL.x += 2;
@@ -476,10 +475,7 @@ class Drive extends Phaser.Scene {
                     paraPos += 0.25;
                     positionX += 2;
                 }
-                console.log(positionX);
-                //this.roadCenter.x += 5;
-                //this.redraw(false);
-                //this.car.setAccelerationX(20);
+                //console.log(positionX);
             }
         } else if (offRoad) {
             if(Phaser.Input.Keyboard.JustDown(keyS) || Phaser.Input.Keyboard.JustDown(keyDOWN)){

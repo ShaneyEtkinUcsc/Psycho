@@ -141,7 +141,6 @@ class Menu extends Phaser.Scene {
 
     //HELP BUTTON FUNCTIONS
     toHelp(){
-        //this.menuMusic.stop();
         this.scene.start('helpScene');
     }
     helpHoverState() {
@@ -153,7 +152,6 @@ class Menu extends Phaser.Scene {
 
     //CREDITS BUTTON FUNCTIONS
     toCredits(){
-        //this.menuMusic.stop();
         this.scene.start('creditsScene');
     }
     credHoverState() {

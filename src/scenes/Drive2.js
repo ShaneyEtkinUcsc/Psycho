@@ -83,6 +83,7 @@ class Drive2 extends Phaser.Scene {
         }
 
         this.lookback = this.add.text(centerX - 300, 40, "CHECK", checkConfig).setOrigin(0.5).setAlpha(0.5);
+        //removing tutorial after first visit
         if(visited2twice <= 1){
             this.tutorial = this.add.text(30, centerY - 50, "'A' and 'D' or '←' and '→' to move", tutorialConfig).setOrigin(0);
             this.tutorial2 = this.add.text(30, centerY, " press 'W' or '↑' to flip the camera\n when CHECK is ready", tutorialConfig).setOrigin(0);
@@ -139,6 +140,7 @@ class Drive2 extends Phaser.Scene {
             
         });
 
+        //adding bounce to dialouge arrow
         let bounce = this.tweens.add({
             targets: this.waitArrow,
             x: (this.waitArrow.x + 25),
@@ -160,7 +162,7 @@ class Drive2 extends Phaser.Scene {
             });
         }
        
-        // create the scene's dialouge boxes
+        // creating the scene's dialouge boxes
         this.boxBundle1 = new dialogBoxBundle(this, [
             ['sound', "audio22"],
             ['bottom2', "Yes Mr. Lowrey?"],
@@ -259,7 +261,6 @@ class Drive2 extends Phaser.Scene {
         }
 
         //getting gameOver sfx for gameOver call
-        
         if(!sirenSound.isPlaying) {
             sirenSound.play(sfxConfig);
         }

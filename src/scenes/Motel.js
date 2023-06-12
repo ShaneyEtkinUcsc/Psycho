@@ -5,7 +5,7 @@ class Motel extends Phaser.Scene {
     create() {
 
         // camera fade in effect
-        //this.cameras.main.fadeIn(2000, 0, 0);
+        this.cameras.main.fadeIn(2000, 0, 0);
 
         console.log("in motelScene");
 
@@ -100,8 +100,10 @@ class Motel extends Phaser.Scene {
         this.desk = this.physics.add.sprite(80, 350).setOrigin(0.5);
         this.desk.setSize(40, 100);
         this.desk.body.onOverlap = true;
+        this.desk.body.onCollide = true;
+        this.desk.setImmovable(true);
 
-        this.chair1 = this.physics.add.sprite(100, 500).setOrigin(0.5);
+        this.chair1 = this.physics.add.sprite(100, 550).setOrigin(0.5);
         this.chair1.setSize(40, 120);
         this.chair1.body.onOverlap = true;
 
@@ -121,8 +123,8 @@ class Motel extends Phaser.Scene {
         this.largePainting.setSize(175, 35);
         this.largePainting.body.onOverlap = true;
 
-        this.bathroomDoor = this.physics.add.sprite(150, 275).setOrigin(0.5);
-        this.bathroomDoor.setSize(100, 25);
+        this.bathroomDoor = this.physics.add.sprite(150, 270).setOrigin(0.5);
+        this.bathroomDoor.setSize(100, 15);
         this.bathroomDoor.body.onOverlap = true;
 
         this.motelDoor = this.physics.add.sprite(1120, 250).setOrigin(0.5);
@@ -164,8 +166,6 @@ class Motel extends Phaser.Scene {
         this.keyDresserCloseUp = this.add.sprite(centerX, centerY - 100, "desk2C").setScale(2.5).setAlpha(0);
 
        
-        
-
         //enable collisions
 
         floor.setCollisionByProperty({ collides: true});
@@ -177,31 +177,44 @@ class Motel extends Phaser.Scene {
         
         this.physics.world.on('overlap', (obj1, obj2, body1, body2)=>{
             if(obj2 === this.desk){
+                this.overlap("desk");
                 console.log(`${obj1.texture.key} body is overlapping this.desk`);
             } else if(obj2 === this.chair1){
+                this.overlap("chair1");
                 console.log(`${obj1.texture.key} body is overlapping this.chair1`);
             } else if( obj2 === this.chair2){
                 console.log(`${obj1.texture.key} body is overlapping this.chair2`);
+                this.overlap("chair2");
             } else if( obj2 === this.chair3){
                 console.log(`${obj1.texture.key} body is overlapping this.chair3`);
+                this.overlap("chair3");
             } else if( obj2 === this.paintingSet){
                 console.log(`${obj1.texture.key} body is overlapping this.paintingSet`);
+                this.overlap("paintingS");
             } else if( obj2 === this.largePainting){
                 console.log(`${obj1.texture.key} body is overlapping this.largePainting`);
+                this.overlap("paintingL");
             } else if( obj2 === this.bathroomDoor){
                 console.log(`${obj1.texture.key} body is overlapping this.bathroomDoor`);
+                this.overlap("bathDoor");
             } else if( obj2 === this.motelDoor){
                 console.log(`${obj1.texture.key} body is overlapping this.motelDoor`);
+                this.overlap("motelDoor");
             } else if( obj2 === this.lockedDresser){
                 console.log(`${obj1.texture.key} body is overlapping this.lockedDresser`);
+                this.overlap("lockedDresser");
             } else if( obj2 === this.plainDresser){
                 console.log(`${obj1.texture.key} body is overlapping this.plainDresser`);
+                this.overlap("plainDresser");
             } else if( obj2 === this.keyDresser){
                 console.log(`${obj1.texture.key} body is overlapping this.keyDresser`);
+                this.overlap("keyDresser");
             } else if( obj2 === this.closet){
                 console.log(`${obj1.texture.key} body is overlapping this.closet`);
+                this.overlap("closet");
             } else if (obj2 === this.bed) {
                 console.log(`${obj1.texture.key} body is overlapping this.bed`);
+                this.overlap("bed");
             }
         });
 
@@ -210,10 +223,174 @@ class Motel extends Phaser.Scene {
 
     }
 
+    //directions for overlap occurances
     overlap(item){
         if(item === "desk"){
-            console.log ("overlap with this.desk!");
+            if(!desk && creatable){
+                this.deskInspect = new Button(100, centerY, "SanJoseB", "Inspect", this, () => this.dialogue("desk"));
+                desk = true;
+            } else if(desk){
+                this.deskInspect.show();
+            }
+            
+        } else if (item === "chair1") {
+            if(!chair1 && creatable){
+                this.chair1Inspect = new Button(100, 500, "SanJoseB", "Inspect", this, () => this.dialogue("chair"));
+                chair1 = true;
+            } else if(chair1){
+                this.chair1Inspect.show();
+            }
+        } else if (item === "chair2"){
+            if(!chair2 && creatable){
+                this.chair2Inspect = new Button(625, 100, "SanJoseB", "Inspect", this, () => this.dialogue("chair"));
+                chair2 = true;
+            } else if(chair2){
+                this.chair2Inspect.show();
+            }
+        } else if (item === "chair3"){
+            if(!chair3 && creatable){
+                this.chair3Inspect = new Button(1100, 125, "SanJoseB", "Inspect", this, () => this.dialogue("chair"));
+                chair3 = true;
+            } else if(chair3){
+                this.chair3Inspect.show();
+            }
+        } else if (item === "paintingS"){
+            if(!paintingS && creatable){
+                this.paintingSInspect = new Button(335, 250, "SanJoseB", "Inspect", this, () => this.dialogue("paintingS"));
+                paintingS = true;
+            } else if(paintingS){
+                this.paintingSInspect.show();
+            }
+        } else if (item === "paintingL"){
+            if(!paintingL && creatable){
+                this.paintingLInspect = new Button(325, 620, "SanJoseB", "Inspect", this, () => this.dialogue("paintingL"));
+                paintingL = true;
+            } else if(paintingL){
+                this.paintingLInspect.show();
+            }
+        } else if (item === "bathDoor"){
+            if(!bathroomDoor && creatable){
+                this.bathDoorInspect = new Button(200, 200, "SanJoseB", "Inspect", this, () => this.dialogue("bathroomDoor"));
+                bathroomDoor = true;
+            } else if(bathroomDoor){
+                this.bathDoorInspect.show();
+            }
+
+        } else if (item === "motelDoor"){
+            if(!motelDoor && creatable){
+                this.motelDoorInspect = new Button(1100, 250, "SanJoseB", "Inspect", this, () => this.dialogue("motelDoor"));
+                motelDoor = true;
+            } else if(motelDoor){
+                this.motelDoorInspect.show();
+            }
+
+        } else if (item === "lockedDresser"){
+            if(!lockedDresser && creatable){
+                this.lockedDresserInspect = new Button(510, 550, "SanJoseB", "Inspect", this, () => this.dialogue("lockedDresser"));
+                lockedDresser = true;
+            } else if(lockedDresser){
+                this.lockedDresserInspect.show();
+            }
+        } else if (item === "plainDresser"){
+            if(!plainDresser && creatable){
+                this.plainDresserInspect = new Button(1150, 450, "SanJoseB", "Inspect", this, () => this.dialogue("plainDresser"));
+                plainDresser = true;
+            } else if(plainDresser){
+                this.plainDresserInspect.show();
+            }
+        } else if (item === "keyDresser"){
+            if(!keyDresser && creatable){
+                this.keyDresserInspect = new Button(835, 100, "SanJoseB", "Inspect", this, () => this.dialogue("keyDresser"));
+                keyDresser = true;
+            } else if(keyDresser){
+                this.keyDresserInspect.show();
+            }
+        } else if (item === "closet"){
+            if(!closet && creatable){
+                this.closetInspect = new Button(400, 30, "SanJoseB", "Inspect", this, () => this.dialogue("closet"));
+                closet = true;
+            } else if(closet){
+                this.closetInspect.show();
+            }
+        } else if (item === "bed"){
+            if(!bed && creatable){
+                this.bedInspect = new Button(730, 500, "SanJoseB", "Inspect", this, () => this.dialogue("bed"));
+                bed = true;
+            } else if(bed){
+                this.bedInspect.show();
+            }
         }
+
+        this.time.delayedCall(100, () => {
+            if(desk){ this.deskInspect.hide(); }
+            if(chair1){ this.chair1Inspect.hide(); }
+            if(chair2){ this.chair2Inspect.hide(); }
+            if(chair3){ this.chair3Inspect.hide(); }
+            if(paintingS){ this.paintingSInspect.hide(); }
+            if(paintingL){ this.paintingLInspect.hide(); }
+            if(bathroomDoor){ this.bathDoorInspect.hide(); }
+            if(motelDoor){ this.motelDoorInspect.hide(); }
+            if(lockedDresser){ this.lockedDresserInspect.hide(); }
+            if(plainDresser){ this.plainDresserInspect.hide(); }
+            if(keyDresser){ this.keyDresserInspect.hide(); }
+            if(closet){ this.closetInspect.hide(); }
+            if(bed){ this.bedInspect.hide(); }
+        });
+    }
+
+    //dialogue selections
+    dialogue(selection){
+        if(selection === "desk"){
+            console.log("dialogue");
+            this.deskInspect.hide();
+            
+        } else if (selection === "chair"){
+            console.log("dialogue chair");
+            if(chair1) {this.chair1Inspect.hide()};
+            if(chair2) {this.chair2Inspect.hide()};
+            if(chair3) {this.chair3Inspect.hide()};
+
+        } else if (selection === "paintingS"){
+            console.log("dialogue paintingS");
+            if(paintingS) {this.paintingSInspect.hide(); };
+        } else if (selection === "paintingL"){
+            console.log("dialogue paintingL");
+            if(paintingL) {this.paintingLInspect.hide(); };
+        } else if (selection === "bathroomDoor"){
+            console.log("dialogue bath");
+            if(bathroomDoor) {this.bathDoorInspect.hide(); };
+        } else if (selection === "motelDoor"){
+            console.log("dialogue moteldoor");
+            if(motelDoor) { this.motelDoorInspect.hide(); };
+        } else if (selection === "lockedDresser"){
+            console.log("locked dresser");
+            if(lockedDresser) {this.lockedDresserInspect.hide(); };
+        } else if (selection === "plainDresser"){
+            console.log("plain");
+            if(plainDresser) {this.plainDresserInspect.hide(); };
+        } else if (selection === "keyDresser"){
+            console.log("key");
+            hasKey = true;
+            if(keyDresser) {this.keyDresserInspect.hide(); };
+        } else if (selection === "closet"){
+            console.log("closet party");
+            if(closet) {this.closetInspect.hide(); };
+        } else if (selection === "bed"){
+            console.log("sleepy time");
+            if(bed) {this.bedInspect.hide(); };
+        }
+
+        //re-enabling inspection selections
+        creatable = false;
+            this.time.delayedCall(2000, () => {
+                console.log("its creatable again")
+                creatable = true;
+            });
+    }
+
+    noOverlap(zone){
+        
+        zone.body.touching.none = zoneInspect.destroy();
     }
 
     /*stop() {
@@ -224,6 +401,7 @@ class Motel extends Phaser.Scene {
         this.physics.collide(this.Marion, this.Marionint, /*this.stop(), this.topCollide()*/);
         this.physics.collide(this.Marion, this.Mariontop);
         this.physics.overlap(this.Marion, this.desk);
+        //this.physics.collide(this.Marion, this.desk, this.overlap("desk"));
         this.physics.overlap(this.Marion, this.chair1);
         this.physics.overlap(this.Marion, this.chair2);
         this.physics.overlap(this.Marion, this.chair3);
@@ -236,6 +414,13 @@ class Motel extends Phaser.Scene {
         this.physics.overlap(this.Marion, this.keyDresser);
         this.physics.overlap(this.Marion, this.closet);
         this.physics.overlap(this.Marion, this.bed);
+        //this.desk.body.debugBodyColor = this.desk.body.onCollide ? this.overlap("desk") : this.deskInspect.hide();
+        /*if(desk){
+            if(this.Marion.body.touching.none){
+                this.deskInspect.hide();
+            }
+        }*/
+
         //this.physics.collide(this.Marionint, this.Mariontop);
         this.direction = new Phaser.Math.Vector2(0);
 
@@ -248,10 +433,10 @@ class Motel extends Phaser.Scene {
             delay: 0
          }
 
-        /* let bgMusic = this.sound.get("hotelMusic");
+        let bgMusic = this.sound.get("hotelMusic");
          if(!bgMusic.isPlaying) {
             bgMusic.play(musicConfig);
-        }*/
+        }
 
         //checking up and down movement and playing corresponding animation and sound
         if(this.input.keyboard.checkDown(keyW) || this.input.keyboard.checkDown(keyUP) && this.direction.x == 0){

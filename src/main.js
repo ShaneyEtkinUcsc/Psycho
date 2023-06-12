@@ -75,9 +75,26 @@ let scootch_countR = 0;
 let scootch_countL = 0;
 
 //motel definitions
+//defining player states
 let movingRight = false;
 let movingLeft = false;
 let hasKey = false;
+//defining inspection states
+let creatable = true;
+let desk = false;
+let chair1 = false;
+let chair2 = false;
+let chair3 = false;
+let paintingS = false;
+let paintingL = false;
+let bathroomDoor = false;
+let motelDoor = false;
+let lockedDresser = false;
+let plainDresser = false;
+let keyDresser = false;
+let closet = false;
+let bed = false;
+
 
 //split scream defitions
 let dead = false;

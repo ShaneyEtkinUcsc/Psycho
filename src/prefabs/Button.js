@@ -4,11 +4,19 @@
 class Button {
     constructor(x, y, font, label, scene, callback) {
         const button_back = scene.add.image();
-        const button = scene.add.bitmapText(x, y, font, label)
+        this.button = scene.add.bitmapText(x, y, font, label)
             .setOrigin(0.5)
             .setInteractive({ useHandCursor: true })
             .on('pointerdown', () => callback())
             // .on('pointerover', () => button.setStyle({ fill: '#c92870' }))
             // .on('pointerout', () => button.setStyle({ fill: '#FFF' }));
+    }
+    hide() {
+        this.button.removeFromDisplayList();
+    }
+    show() {
+        if(creatable){
+            this.button.addToDisplayList();
+        }
     }
 }

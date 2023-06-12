@@ -21,7 +21,17 @@ class Motel extends Phaser.Scene {
         this.physics.world.bounds.setTo(0, 0, game.config.width, game.config.height);
         this.physics.world.setBoundsCollision(true, true, true, true); // check left and right, up and down
 
-        this.floor = this.add.sprite(-50, -50, "floorPlan").setOrigin(0);
+        //creating tile map
+        const map = this.add.tilemap("MotelMapJSON");
+        const motel = map.addTilesetImage("motel", "MotelMapImage");
+
+        //adding tile map layers
+        const floor = map.createLayer("Background", motel, 0, 0);
+        const furniture = map.createLayer("Furniture", motel, 0, 0);
+        const paintings = map.createLayer("Paintings", motel, 0, 0);
+
+
+        //this.floor = this.add.sprite(-50, -50, "floorPlan").setOrigin(0);
         //this.floor.setScale(1.09);
 
         //this.roadMap = this.add.sprite(0, 0, "roadMap").setOrigin(0);

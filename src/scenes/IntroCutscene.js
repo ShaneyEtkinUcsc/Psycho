@@ -79,9 +79,6 @@ class Intro extends Phaser.Scene {
 
     });
 
-    //drive scene quick
-    this.scene.start("drive2Scene");
-
     }
 
     driveAway(){

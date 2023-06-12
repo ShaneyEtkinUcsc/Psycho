@@ -83,6 +83,7 @@ class Load extends Phaser.Scene {
 
         //drive scene siren audio
         this.load.audio("siren", "./assets/sound/DriveScene/sirenSfx.mp3");
+
         //drive scene voice audio
         this.load.audio("audio22", "./assets/sound/DriveScene/audio22.m4a");
         this.load.audio("audio23", "./assets/sound/DriveScene/audio23.m4a");
@@ -113,6 +114,10 @@ class Load extends Phaser.Scene {
         //motel scene assets
         this.load.atlas("Marion", "./assets/art/MotelScene/Marion.png", "./assets/art/MotelScene/Marion.json");
         this.load.atlas("Bates", "./assets/art/MotelScene/Bates.png", "./assets/art/MotelScene/Bates.json");
+
+        this.load.image("MotelMapImage", "./assets/art/MotelScene/MotelMap.png");
+        this.load.tilemapTiledJSON("MotelMapJSON", "./assets/art/MotelScene/MotelMap.json");
+
         this.load.image("closetRack", "./assets/art/MotelScene/ClosetRack.png");
         this.load.image("desk1", "./assets/art/MotelScene/Desk1.png");
         this.load.image("desk2C", "./assets/art/MotelScene/Desk2_1.png");
@@ -141,7 +146,7 @@ class Load extends Phaser.Scene {
     //this.scene.start("driveScene");
 
     //motel scene quick start
-    //this.scene.start("motelScene");
+    this.scene.start("motelScene");
 
 
      // check for local storage browser support

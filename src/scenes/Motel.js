@@ -9,6 +9,21 @@ class Motel extends Phaser.Scene {
 
         console.log("in motelScene");
 
+        //adding music
+       this.sound.play("hotelMusic", musicConfig);
+
+       this.Mfootsteps = this.sound.add("Mfootsfx");
+       //this.Mfootsteps = this.sound.get("Mfootsfx");
+
+        var musicConfig = {
+            mute: false,
+            volume: 0.1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 0
+         }
+
         //reserving keyspaces
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W)
@@ -104,19 +119,40 @@ class Motel extends Phaser.Scene {
         //this.physics.collide(this.Marionint, this.Mariontop);
         this.direction = new Phaser.Math.Vector2(0);
 
-        //checking up and down movement
+        var musicConfig = {
+            mute: false,
+            volume: 3,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 0
+         }
+
+        //checking up and down movement and playing corresponding animation and sound
         if(this.input.keyboard.checkDown(keyW) || this.input.keyboard.checkDown(keyUP) && this.direction.x == 0){
             this.direction.y = -1;
             this.Marion.flipX = false;
             this.Marion.anims.play("walkUp", true);
+            if(!this.Mfootsteps.isPlaying) {
+                this.Mfootsteps.play(musicConfig);
+            }
         } else if (Phaser.Input.Keyboard.JustUp(keyW) || Phaser.Input.Keyboard.JustUp(keyUP) && this.direction.x == 0){
             this.Marion.anims.play("idle", true); 
+            if(this.Mfootsteps.isPlaying) {
+                this.Mfootsteps.stop();
+            }
         } else if (this.input.keyboard.checkDown(keyS) || this.input.keyboard.checkDown(keyDOWN) && this.direction.x == 0) {
             this.direction.y = 1;
             this.Marion.flipX = true;
             this.Marion.anims.play("walkUp", true);
+            if(!this.Mfootsteps.isPlaying) {
+                this.Mfootsteps.play(musicConfig);
+            }
         } else if (Phaser.Input.Keyboard.JustUp(keyS) || Phaser.Input.Keyboard.JustUp(keyDOWN) && this.direction.x == 0){
             this.Marion.anims.play("idle", true); 
+            if(this.Mfootsteps.isPlaying) {
+                this.Mfootsteps.stop();
+            }
         }
 
         //checking left and righ movement
@@ -124,14 +160,26 @@ class Motel extends Phaser.Scene {
             this.direction.x = -1;
             this.Marion.flipX = false;
             this.Marion.anims.play("walkR", true);
+            if(!this.Mfootsteps.isPlaying) {
+                this.Mfootsteps.play(musicConfig);
+            }
         } else if (Phaser.Input.Keyboard.JustUp(keyA) || Phaser.Input.Keyboard.JustUp(keyLEFT) && this.direction.y == 0){
             this.Marion.anims.play("idle", true);
+            if(this.Mfootsteps.isPlaying) {
+                this.Mfootsteps.stop();
+            }
         } else if (this.input.keyboard.checkDown(keyD) || this.input.keyboard.checkDown(keyRIGHT) && this.direction.y == 0){
             this.direction.x = 1;
             this.Marion.flipX = true;
             this.Marion.anims.play("walkR", true);
+            if(!this.Mfootsteps.isPlaying) {
+                this.Mfootsteps.play(musicConfig);
+            }
         } else if (Phaser.Input.Keyboard.JustUp(keyD) || Phaser.Input.Keyboard.JustUp(keyRIGHT) && this.direction.y == 0){
             this.Marion.anims.play("idle", true);
+            if(this.Mfootsteps.isPlaying) {
+                this.Mfootsteps.stop();
+            }
         }
 
         this.direction.normalize();

@@ -35,7 +35,7 @@ class Load extends Phaser.Scene {
         this.load.image("triangle", "./assets/art/IntroCutscene/twyangle.png")
 
         //intro cutscene voice audio
-        this.load.audio("knock", "./assets/sound/IntroCutscene/walkingUp.m4a");
+        this.load.audio("knock", "./assets/sound/IntroCutscene/walkingUpEdited.mp3");
         this.load.audio("pause", "./assets/sound/IntroCutscene/pause.m4a");
         this.load.audio("driveAway", "./assets/sound/IntroCutscene/driveAway.m4a");
         this.load.audio("audio1", "./assets/sound/IntroCutscene/audio1.m4a");
@@ -115,7 +115,7 @@ class Load extends Phaser.Scene {
         this.load.atlas("Marion", "./assets/art/MotelScene/Marion.png", "./assets/art/MotelScene/Marion.json");
         this.load.atlas("Bates", "./assets/art/MotelScene/Bates.png", "./assets/art/MotelScene/Bates.json");
 
-        this.load.image("MotelMap", "./assets/art/MotelScene/MotelSet.png");
+        this.load.image("MotelMapImage", "./assets/art/MotelScene/MotelSet.png");
         this.load.tilemapTiledJSON("MotelMapJSON", "./assets/art/MotelScene/MotelMap.json");
 
         this.load.image("closetRack", "./assets/art/MotelScene/ClosetRack.png");
@@ -133,7 +133,7 @@ class Load extends Phaser.Scene {
         this.load.image("smallPaint3", "./assets/art/MotelScene/SmallPainting_3.png");
 
         //temp Motel Road Map for Placement
-        this.load.image("roadMap", "./assets/art/MotelScene/MotelMap.png")
+        //this.load.image("roadMap", "./assets/art/MotelScene/MotelMap.png")
 
         //motel scene audio        
        

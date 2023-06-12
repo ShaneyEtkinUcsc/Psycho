@@ -115,7 +115,7 @@ class Load extends Phaser.Scene {
         this.load.atlas("Marion", "./assets/art/MotelScene/Marion.png", "./assets/art/MotelScene/Marion.json");
         this.load.atlas("Bates", "./assets/art/MotelScene/Bates.png", "./assets/art/MotelScene/Bates.json");
 
-        this.load.image("MotelMapImage", "./assets/art/MotelScene/MotelMap.png");
+        this.load.image("MotelMap", "./assets/art/MotelScene/MotelSet.png");
         this.load.tilemapTiledJSON("MotelMapJSON", "./assets/art/MotelScene/MotelMap.json");
 
         this.load.image("closetRack", "./assets/art/MotelScene/ClosetRack.png");

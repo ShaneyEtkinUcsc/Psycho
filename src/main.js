@@ -2,7 +2,9 @@ console.log("in main");
 
 let config = {
     type: Phaser.CANVAS,
+    render: {
     pixelArt: true,
+    },
     //mode: Phaser.Scale.FIT,
     scale: {
         // screen scaling
@@ -17,6 +19,7 @@ let config = {
     physics: {
         default: "arcade",
         arcade: {
+            //turn on debugging
             debug: true,
             gravity: {
                 x: 0,
@@ -27,7 +30,7 @@ let config = {
     scene: [ Load, Menu, Credits, Help, Intro, Drive, Drive2, Cutscene2, Motel ]
 }
 
-let game = new Phaser.Game(config)
+const game = new Phaser.Game(config)
 
 //global definitions
 

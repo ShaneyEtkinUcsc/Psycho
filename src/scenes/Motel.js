@@ -21,9 +21,8 @@ class Motel extends Phaser.Scene {
         this.physics.world.bounds.setTo(0, 0, game.config.width, game.config.height);
         this.physics.world.setBoundsCollision(true, true, true, true); // check left and right, up and down
 
-        //creating tile map
         const map = this.add.tilemap("MotelMapJSON");
-        const motel = map.addTilesetImage("motel", "MotelMapImage");
+        const motel = map.addTilesetImage("motel", "MotelMap");
 
         //adding tile map layers
         const floor = map.createLayer("Background", motel, 0, 0);
@@ -48,6 +47,20 @@ class Motel extends Phaser.Scene {
         this.Marionint.setCollideWorldBounds(true);
         this.Marionint.setImmovable(true);
         this.Marionint.setDebugBodyColor(0xFACADE);
+
+        //creating Marion's animations
+        this.anims.create({
+            key: "walkR",
+            frames: [
+                {key: "Marion", frame: "Marion1"},
+                {key: "Marion", frame: "Marion2"},
+                {key: "Marion", frame: "Marion3"},
+                {key: "Marion", frame: "Marion4"},
+                {key: "Marion", frame: "Marion5"},
+                {key: "Marion", frame: "Marion6"},
+            ],
+            frameRate: 12,
+        });
 
         /*this.Mariontop = this.physics.add.sprite(centerX, centerY).setOrigin(0.5);
         this.Mariontop.setSize(50, 80);

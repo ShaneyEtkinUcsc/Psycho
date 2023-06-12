@@ -12,6 +12,105 @@ class Intro extends Phaser.Scene {
     //reserving keyspace SPACE
     keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
+    //date title animation config
+    this.anims.create({
+        key: 'date1play',
+        frames: [
+            {key: 'date1', frame: "Date1stScene11.png"},
+            {key: 'date1', frame: "Date1stScene10.png"},
+            {key: 'date1', frame: "Date1stScene9.png"},
+            {key: 'date1', frame: "Date1stScene8.png"},
+            {key: 'date1', frame: "Date1stScene7.png"},
+            {key: 'date1', frame: "Date1stScene6.png"},
+            {key: 'date1', frame: "Date1stScene5.png"},
+            {key: 'date1', frame: "Date1stScene4.png"},
+            {key: 'date1', frame: "Date1stScene3.png"},
+            {key: 'date1', frame: "Date1stScene2.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene2.png"},
+            {key: 'date1', frame: "Date1stScene3.png"},
+            {key: 'date1', frame: "Date1stScene4.png"},
+            {key: 'date1', frame: "Date1stScene5.png"},
+            {key: 'date1', frame: "Date1stScene6.png"},
+            {key: 'date1', frame: "Date1stScene7.png"},
+            {key: 'date1', frame: "Date1stScene8.png"},
+            {key: 'date1', frame: "Date1stScene9.png"},
+            {key: 'date1', frame: "Date1stScene10.png"},
+            {key: 'date1', frame: "Date1stScene11.png"}
+        ],
+        frameRate: 14,
+        repeat: 0
+    })
+
     // create the dialog boxes
     this.boxBundle = new dialogBoxBundle(this, [
         ['sound', "audio1"],
@@ -74,6 +173,7 @@ class Intro extends Phaser.Scene {
 
     this.time.delayedCall(1000, () => {
 
+    this.Date1 = this.add.sprite(centerX, centerY, 'date1', 'Date1stScene11.png').play("date1play");
     this.knock = this.sound.add("knock");
     this.knock.play(walkConfig);
 
@@ -94,7 +194,7 @@ class Intro extends Phaser.Scene {
 
     update() { 
      
-        this.time.delayedCall(14970, () => {
+        this.time.delayedCall(8300, () => {
         // dialog box update
         this.boxBundle.update();
         if (this.boxBundle.scriptFinished === "Chat") {

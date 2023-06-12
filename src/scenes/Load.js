@@ -29,13 +29,18 @@ class Load extends Phaser.Scene {
         //menu music
         this.load.audio("menuMusic", "./assets/sound/Psycho_8bit.wav");
 
+        //load date sliding titles
+        this.load.atlas("date1", "./assets/art/DateTitles/DateOpening.png", "./assets/art/DateTitles/DateOpening.json");
+        this.load.atlas("date2", "./assets/art/DateTitles/DateMarionMotel.png", "./assets/art/DateTitles/DateMarionMotel.json");
+        this.load.atlas("date3", "./assets/art/DateTitles/Date3rdScene.png", "./assets/art/DateTitles/Date3rdScene.json");
+
         //intro cutscene assets
         this.load.image("top", "./assets/art/IntroCutscene/texttop.png");
         this.load.image("bottom", "./assets/art/IntroCutscene/textbottom.png");
         this.load.image("triangle", "./assets/art/IntroCutscene/twyangle.png")
 
         //intro cutscene voice audio
-        this.load.audio("knock", "./assets/sound/IntroCutscene/walkingUp.m4a");
+        this.load.audio("knock", "./assets/sound/IntroCutscene/walkingUpEdited.mp3");
         this.load.audio("pause", "./assets/sound/IntroCutscene/pause.m4a");
         this.load.audio("driveAway", "./assets/sound/IntroCutscene/driveAway.m4a");
         this.load.audio("audio1", "./assets/sound/IntroCutscene/audio1.m4a");
@@ -146,7 +151,7 @@ class Load extends Phaser.Scene {
     create() {
 
      //motel scene quick start
-     this.scene.start("motelScene");
+     //this.scene.start("motelScene");
 
      // check for local storage browser support
      if(window.localStorage) {

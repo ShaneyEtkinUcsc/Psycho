@@ -105,32 +105,32 @@ class Motel extends Phaser.Scene {
         this.direction = new Phaser.Math.Vector2(0);
 
         //checking up and down movement
-        if(this.input.keyboard.checkDown(keyW) || this.input.keyboard.checkDown(keyUP)){
+        if(this.input.keyboard.checkDown(keyW) || this.input.keyboard.checkDown(keyUP) && this.direction.x == 0){
             this.direction.y = -1;
             this.Marion.flipX = false;
             this.Marion.anims.play("walkUp", true);
-        } else if (Phaser.Input.Keyboard.JustUp(keyW) || Phaser.Input.Keyboard.JustUp(keyUP)){
+        } else if (Phaser.Input.Keyboard.JustUp(keyW) || Phaser.Input.Keyboard.JustUp(keyUP) && this.direction.x == 0){
             this.Marion.anims.play("idle", true); 
-        } else if (this.input.keyboard.checkDown(keyS) || this.input.keyboard.checkDown(keyDOWN)) {
+        } else if (this.input.keyboard.checkDown(keyS) || this.input.keyboard.checkDown(keyDOWN) && this.direction.x == 0) {
             this.direction.y = 1;
             this.Marion.flipX = true;
             this.Marion.anims.play("walkUp", true);
-        } else if (Phaser.Input.Keyboard.JustUp(keyS) || Phaser.Input.Keyboard.JustUp(keyDOWN)){
+        } else if (Phaser.Input.Keyboard.JustUp(keyS) || Phaser.Input.Keyboard.JustUp(keyDOWN) && this.direction.x == 0){
             this.Marion.anims.play("idle", true); 
         }
 
         //checking left and righ movement
-        if(this.input.keyboard.checkDown(keyA) || this.input.keyboard.checkDown(keyLEFT)){
+        if(this.input.keyboard.checkDown(keyA) || this.input.keyboard.checkDown(keyLEFT) && this.direction.y == 0){
             this.direction.x = -1;
             this.Marion.flipX = false;
             this.Marion.anims.play("walkR", true);
-        } else if (Phaser.Input.Keyboard.JustUp(keyA) || Phaser.Input.Keyboard.JustUp(keyLEFT)){
+        } else if (Phaser.Input.Keyboard.JustUp(keyA) || Phaser.Input.Keyboard.JustUp(keyLEFT) && this.direction.y == 0){
             this.Marion.anims.play("idle", true);
-        } else if (this.input.keyboard.checkDown(keyD) || this.input.keyboard.checkDown(keyRIGHT)){
+        } else if (this.input.keyboard.checkDown(keyD) || this.input.keyboard.checkDown(keyRIGHT) && this.direction.y == 0){
             this.direction.x = 1;
             this.Marion.flipX = true;
             this.Marion.anims.play("walkR", true);
-        } else if (Phaser.Input.Keyboard.JustUp(keyD) || Phaser.Input.Keyboard.JustUp(keyRIGHT)){
+        } else if (Phaser.Input.Keyboard.JustUp(keyD) || Phaser.Input.Keyboard.JustUp(keyRIGHT) && this.direction.y == 0){
             this.Marion.anims.play("idle", true);
         }
 

@@ -133,7 +133,7 @@ class Load extends Phaser.Scene {
         this.load.image("smallPaint3", "./assets/art/MotelScene/SmallPainting_3.png");
 
         //temp Motel Road Map for Placement
-        this.load.image("roadMap", "./assets/art/MotelScene/MotelMap.png")
+        //this.load.image("roadMap", "./assets/art/MotelScene/MotelMap.png")
 
         //motel scene audio        
        

@@ -140,7 +140,7 @@ class Drive2 extends Phaser.Scene {
             
         });
 
-        //adding bounce to dialouge arrow
+        //adding bounce to dialogue arrow
         let bounce = this.tweens.add({
             targets: this.waitArrow,
             x: (this.waitArrow.x + 25),

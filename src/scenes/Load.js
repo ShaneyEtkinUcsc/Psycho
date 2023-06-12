@@ -131,6 +131,7 @@ class Load extends Phaser.Scene {
         this.load.image("smallPaint1", "./assets/art/MotelScene/SmallPainting_1.png");
         this.load.image("smallPaint2", "./assets/art/MotelScene/SmallPainting_2.png");
         this.load.image("smallPaint3", "./assets/art/MotelScene/SmallPainting_3.png");
+        this.load.image("bottomtxt", "./assets/art/MotelScene/textboxbottom.png");
 
         //temp Motel Road Map for Placement
         //this.load.image("roadMap", "./assets/art/MotelScene/MotelMap.png")
@@ -144,12 +145,8 @@ class Load extends Phaser.Scene {
 
     create() {
 
-    //drive scene quick start
-    //this.scene.start("driveScene");
-
-    //motel scene quick start
-    this.scene.start("motelScene");
-
+     //motel scene quick start
+     this.scene.start("motelScene");
 
      // check for local storage browser support
      if(window.localStorage) {

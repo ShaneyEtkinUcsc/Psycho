@@ -79,6 +79,8 @@ let scootch_countL = 0;
 let movingRight = false;
 let movingLeft = false;
 let hasKey = false;
+let inspections = 0;
+let shown = false;
 //defining inspection states
 let creatable = true;
 let desk = false;

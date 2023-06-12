@@ -9,9 +9,11 @@
         this.leftBox = new Dialog(scene, 'left1', 20, inFocus);
         this.rightBox = new Dialog(scene, 'right1', 20, inFocus);
         this.bottomBox = new Dialog(scene, 'bottom2', 20, inFocus);
+        this.bottomBox3 = new Dialog(scene, 'bottom3', 20, inFocus);
         this.leftBox.hide();
         this.rightBox.hide();
         this.bottomBox.hide();
+        this.bottomBox3.hide();
 
 
         this.script = script;
@@ -79,6 +81,13 @@
                 boxChosen = true;
                 this.activeBox = this.bottomBox;
                 this.activeBox.addText(this.script[i][1])
+
+            } else if (this.nextInstruction === 'bottom3') { // right is our next dialog sequence
+                currentBox = 'bottom3'; 
+                boxChosen = true;
+                this.activeBox = this.bottomBox3;
+                this.activeBox.addText(this.script[i][1])
+                
             } else if (this.nextInstruction === 'sound') { // make noise
                 if(i > 0) {
                     this.wasPlaying = this.scene.sound.get(this.script[i - 2][1]);
@@ -91,7 +100,15 @@
 
             } else if (this.nextInstruction === 'hide') {  // hide a box
                 this.script[i][1] === 'left1' ? this.leftBox.hide() : 
-                (this.script[i][1] === 'right1' ? this.rightBox.hide() : false);
+                (this.script[i][1] === 'right1' ? this.rightBox.hide() : 
+                (this.script[i][1] === 'bottom2' ? this.bottomBox.hide() : 
+                (this.script[i][1] === 'bottom3' ? this.bottomBox3.hide() : false)));
+
+            } else if (this.nextInstruction === 'image') { // load an image onto the screen with the given key
+                let tempImage = this.scene.add.image(this.script[i][1], this.script[i][2], this.script[i][3]).setOrigin(.5).setScale(this.script[i][4])
+                this.scene.dialogImages.push(tempImage);
+                tempImage.alpha = 0;
+                this.tweenImageAlpha(tempImage, 1);
 
             } else if (this.nextInstruction === 'end') {
                 return; // our script is DONE!
@@ -117,6 +134,10 @@
         this.rightBox.shift(targetY);
         this.centerBox.shift(targetY);
 
+    }
+
+    get scriptHide() {
+        return (this.lastBoxClicked);
     }
 
     get scriptFinished() {

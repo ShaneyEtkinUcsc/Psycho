@@ -38,6 +38,15 @@ class Dialog {
             arrowOffset.y = 25;
             this.image = scene.add.sprite(0, 520, "txtbottom").setOrigin(0).setAlpha(0.5);
 
+        }else if (side == 'bottom3'){
+            x = 0;
+            y = 400;
+            bubbleType = "bottomtxt";
+            textOffset = 2;
+            arrowOffset.x = 1100;
+            arrowOffset.y = 200;
+            this.image = scene.add.sprite(0, 400, "bottomtxt").setOrigin(0);
+
         } else {
             console.log('Undefined Side on Dialog Box with :' + bodyText)
         }
@@ -66,6 +75,8 @@ class Dialog {
             this.boxText = scene.add.text(415, 500, "", textConfig).setOrigin(0.5).setDepth(200);
         } else if (side == 'bottom2'){
             this.boxText = scene.add.text(centerX, 650, "", textConfig).setOrigin(0.5).setDepth(200);
+        } else if (side == 'bottom3'){
+            this.boxText = scene.add.text(centerX, 550, "", textConfig).setOrigin(0.5).setDepth(200);
         }
 
         //adding waiting arrow
@@ -127,14 +138,18 @@ class Dialog {
     }
 
     hide() {
+        //console.log("hide called");
         this.image.removeFromDisplayList();
         this.boxText.removeFromDisplayList().setText('');
         this.waitArrow.removeFromDisplayList();
+        this.waitArrow.alpha = 0;
     }
 
     show() {
         this.image.addToDisplayList();
         this.boxText.addToDisplayList();
+        this.waitArrow.removeFromDisplayList();
+        this.waitArrow.alpha = 1;
     }
 
     // when a box is clicked

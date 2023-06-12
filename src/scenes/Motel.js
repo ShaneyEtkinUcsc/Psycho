@@ -29,12 +29,6 @@ class Motel extends Phaser.Scene {
         const floor = map.createLayer("Background", motel, -692, -434).setOrigin(0);
         const furniture = map.createLayer("Furniture", motel, -692, -434).setOrigin(0);
         const paintings = map.createLayer("Paintings", motel, -692, -434).setOrigin(0);
-
-
-        //this.floor = this.add.sprite(-50, -50, "floorPlan").setOrigin(0);
-        //this.floor.setScale(1.09);
-
-        //this.roadMap = this.add.sprite(0, 0, "roadMap").setOrigin(0);
         
         this.Marion = this.physics.add.sprite(300, 400, "Marion");
         this.Marion.setSize(35, 150)

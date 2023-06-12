@@ -343,6 +343,8 @@ class Drive extends Phaser.Scene {
                     this.roadCenter.setVelocityY(-16);
                     this.time.delayedCall(5000, () =>{
                         bgMusic.stop();
+                          // camera fade in effect
+                        this.cameras.main.fadeOut(2000, 0, 0);
                         this.scene.start("cutScene2");
                     });
                 }

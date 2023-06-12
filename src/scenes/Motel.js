@@ -96,18 +96,108 @@ class Motel extends Phaser.Scene {
             repeat: -1
         });
 
-         //enable collision
-
-         floor.setCollisionByProperty({ collides: true});
-         furniture.setCollisionByProperty({ collides: true});
-         this.physics.add.collider(this.Marion, floor);
-         this.physics.add.collider(this.Marion, furniture);
-
         //adding overlap boxes
-        this.desk1 = this.physics.add.sprite(40, 400);
+        this.desk = this.physics.add.sprite(80, 350).setOrigin(0.5);
+        this.desk.setSize(40, 100);
+        this.desk.body.onOverlap = true;
+
+        this.chair1 = this.physics.add.sprite(100, 500).setOrigin(0.5);
+        this.chair1.setSize(40, 120);
+        this.chair1.body.onOverlap = true;
+
+        this.chair2 = this.physics.add.sprite(620, 115).setOrigin(0.5);
+        this.chair2.setSize(120, 40);
+        this.chair2.body.onOverlap = true;
+
+        this.chair3 = this.physics.add.sprite(1075, 110).setOrigin(0.5);
+        this.chair3.setSize(40, 120);
+        this.chair3.body.onOverlap = true;
+
+        this.paintingSet = this.physics.add.sprite(330, 280).setOrigin(0.5);
+        this.paintingSet.setSize(200, 25);
+        this.paintingSet.body.onOverlap = true;
+
+        this.largePainting = this.physics.add.sprite(318, 570).setOrigin(0.5);
+        this.largePainting.setSize(175, 35);
+        this.largePainting.body.onOverlap = true;
+
+        this.bathroomDoor = this.physics.add.sprite(150, 275).setOrigin(0.5);
+        this.bathroomDoor.setSize(100, 25);
+        this.bathroomDoor.body.onOverlap = true;
+
+        this.motelDoor = this.physics.add.sprite(1120, 250).setOrigin(0.5);
+        this.motelDoor.setSize(100, 100);
+        this.motelDoor.body.onOverlap = true;
+
+        this.lockedDresser = this.physics.add.sprite(500, 490).setOrigin(0.5);
+        this.lockedDresser.setSize(150, 30);
+        this.lockedDresser.body.onOverlap = true;
+
+        this.plainDresser = this.physics.add.sprite(1065, 445).setOrigin(0.5);
+        this.plainDresser.setSize(30, 175);
+        this.plainDresser.body.onOverlap = true;
+
+        this.keyDresser = this.physics.add.sprite(835, 120).setOrigin(0.5);
+        this.keyDresser.setSize(250, 30);
+        this.keyDresser.body.onOverlap = true;
+
+        this.closet = this.physics.add.sprite(400, 125).setOrigin(0.5);
+        this.closet.setSize(100, 250);
+        this.closet.body.onOverlap = true;
+
+        this.bed = this.physics.add.sprite(850, 500).setOrigin(0.5);
+        this.bed.setSize(40, 200);
+        this.bed.body.onOverlap = true;
+        
+
+        //enable collisions
+
+        floor.setCollisionByProperty({ collides: true});
+        furniture.setCollisionByProperty({ collides: true});
+        this.physics.add.collider(this.Marion, floor);
+        this.physics.add.collider(this.Marion, furniture);
+        
+        //enabling overlaps
+        
+        this.physics.world.on('overlap', (obj1, obj2, body1, body2)=>{
+            if(obj2 === this.desk){
+                console.log(`${obj1.texture.key} body is overlapping this.desk`);
+            } else if(obj2 === this.chair1){
+                console.log(`${obj1.texture.key} body is overlapping this.chair1`);
+            } else if( obj2 === this.chair2){
+                console.log(`${obj1.texture.key} body is overlapping this.chair2`);
+            } else if( obj2 === this.chair3){
+                console.log(`${obj1.texture.key} body is overlapping this.chair3`);
+            } else if( obj2 === this.paintingSet){
+                console.log(`${obj1.texture.key} body is overlapping this.paintingSet`);
+            } else if( obj2 === this.largePainting){
+                console.log(`${obj1.texture.key} body is overlapping this.largePainting`);
+            } else if( obj2 === this.bathroomDoor){
+                console.log(`${obj1.texture.key} body is overlapping this.bathroomDoor`);
+            } else if( obj2 === this.motelDoor){
+                console.log(`${obj1.texture.key} body is overlapping this.motelDoor`);
+            } else if( obj2 === this.lockedDresser){
+                console.log(`${obj1.texture.key} body is overlapping this.lockedDresser`);
+            } else if( obj2 === this.plainDresser){
+                console.log(`${obj1.texture.key} body is overlapping this.plainDresser`);
+            } else if( obj2 === this.keyDresser){
+                console.log(`${obj1.texture.key} body is overlapping this.keyDresser`);
+            } else if( obj2 === this.closet){
+                console.log(`${obj1.texture.key} body is overlapping this.closet`);
+            } else if (obj2 === this.bed) {
+                console.log(`${obj1.texture.key} body is overlapping this.bed`);
+            }
+        });
 
 
 
+
+    }
+
+    overlap(item){
+        if(item === "desk"){
+            console.log ("overlap with this.desk!");
+        }
     }
 
     /*stop() {
@@ -117,10 +207,23 @@ class Motel extends Phaser.Scene {
     update() {
         this.physics.collide(this.Marion, this.Marionint, /*this.stop(), this.topCollide()*/);
         this.physics.collide(this.Marion, this.Mariontop);
+        this.physics.overlap(this.Marion, this.desk);
+        this.physics.overlap(this.Marion, this.chair1);
+        this.physics.overlap(this.Marion, this.chair2);
+        this.physics.overlap(this.Marion, this.chair3);
+        this.physics.overlap(this.Marion, this.paintingSet);
+        this.physics.overlap(this.Marion, this.largePainting);
+        this.physics.overlap(this.Marion, this.bathroomDoor);
+        this.physics.overlap(this.Marion, this.motelDoor);
+        this.physics.overlap(this.Marion, this.lockedDresser);
+        this.physics.overlap(this.Marion, this.plainDresser);
+        this.physics.overlap(this.Marion, this.keyDresser);
+        this.physics.overlap(this.Marion, this.closet);
+        this.physics.overlap(this.Marion, this.bed);
         //this.physics.collide(this.Marionint, this.Mariontop);
         this.direction = new Phaser.Math.Vector2(0);
 
-        var musicConfig = {
+       var musicConfig = {
             mute: false,
             volume: 3,
             detune: 0,
@@ -129,10 +232,10 @@ class Motel extends Phaser.Scene {
             delay: 0
          }
 
-         let bgMusic = this.sound.get("hotelMusic");
+        /* let bgMusic = this.sound.get("hotelMusic");
          if(!bgMusic.isPlaying) {
             bgMusic.play(musicConfig);
-        }
+        }*/
 
         //checking up and down movement and playing corresponding animation and sound
         if(this.input.keyboard.checkDown(keyW) || this.input.keyboard.checkDown(keyUP) && this.direction.x == 0){

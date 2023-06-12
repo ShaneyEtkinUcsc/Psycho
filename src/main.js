@@ -77,6 +77,7 @@ let scootch_countL = 0;
 //motel definitions
 let movingRight = false;
 let movingLeft = false;
+let hasKey = false;
 
 //split scream defitions
 let dead = false;

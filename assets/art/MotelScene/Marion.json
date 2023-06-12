@@ -4,8 +4,8 @@
 			"image": "Marion.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 52,
-				"h": 1964
+				"w": 252,
+				"h": 467
 			},
 			"scale": 1,
 			"frames": [
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "Marion2.png",
+					"filename": "Marion4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -52,86 +52,44 @@
 					}
 				},
 				{
-					"filename": "Marion3.png",
+					"filename": "Marion2.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
 						"w": 50,
 						"h": 154
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 0,
+						"y": 1,
 						"w": 50,
-						"h": 154
+						"h": 153
 					},
 					"frame": {
 						"x": 1,
 						"y": 313,
 						"w": 50,
-						"h": 154
+						"h": 153
 					}
 				},
 				{
-					"filename": "Marion4.png",
+					"filename": "MarionUpDown5.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
 						"w": 50,
 						"h": 154
 					},
 					"spriteSourceSize": {
-						"x": 0,
+						"x": 1,
 						"y": 0,
-						"w": 50,
+						"w": 49,
 						"h": 154
 					},
 					"frame": {
-						"x": 1,
-						"y": 469,
-						"w": 50,
-						"h": 154
-					}
-				},
-				{
-					"filename": "Marion5.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 50,
-						"h": 154
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 50,
-						"h": 154
-					},
-					"frame": {
-						"x": 1,
-						"y": 625,
-						"w": 50,
-						"h": 154
-					}
-				},
-				{
-					"filename": "Marion6.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 50,
-						"h": 154
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 50,
-						"h": 154
-					},
-					"frame": {
-						"x": 1,
-						"y": 781,
-						"w": 50,
+						"x": 53,
+						"y": 1,
+						"w": 49,
 						"h": 154
 					}
 				},
@@ -144,20 +102,20 @@
 						"h": 154
 					},
 					"spriteSourceSize": {
-						"x": 3,
-						"y": 8,
-						"w": 46,
-						"h": 146
+						"x": 2,
+						"y": 0,
+						"w": 48,
+						"h": 154
 					},
 					"frame": {
-						"x": 1,
-						"y": 937,
-						"w": 46,
-						"h": 146
+						"x": 53,
+						"y": 157,
+						"w": 48,
+						"h": 154
 					}
 				},
 				{
-					"filename": "MarionUpDown5.png",
+					"filename": "Marion3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -165,16 +123,100 @@
 						"h": 154
 					},
 					"spriteSourceSize": {
-						"x": 3,
-						"y": 8,
-						"w": 46,
-						"h": 146
+						"x": 0,
+						"y": 1,
+						"w": 50,
+						"h": 153
 					},
 					"frame": {
-						"x": 1,
-						"y": 937,
-						"w": 46,
-						"h": 146
+						"x": 53,
+						"y": 313,
+						"w": 50,
+						"h": 153
+					}
+				},
+				{
+					"filename": "Marion5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 50,
+						"h": 153
+					},
+					"frame": {
+						"x": 103,
+						"y": 157,
+						"w": 50,
+						"h": 153
+					}
+				},
+				{
+					"filename": "Marion6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 50,
+						"h": 153
+					},
+					"frame": {
+						"x": 105,
+						"y": 312,
+						"w": 50,
+						"h": 153
+					}
+				},
+				{
+					"filename": "MarionUpDown8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 48,
+						"h": 154
+					},
+					"frame": {
+						"x": 104,
+						"y": 1,
+						"w": 48,
+						"h": 154
+					}
+				},
+				{
+					"filename": "MarionUpDown7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 48,
+						"h": 151
+					},
+					"frame": {
+						"x": 154,
+						"y": 1,
+						"w": 48,
+						"h": 151
 					}
 				},
 				{
@@ -187,36 +229,15 @@
 					},
 					"spriteSourceSize": {
 						"x": 3,
-						"y": 8,
-						"w": 46,
-						"h": 146
-					},
-					"frame": {
-						"x": 1,
-						"y": 1085,
-						"w": 46,
-						"h": 146
-					}
-				},
-				{
-					"filename": "MarionUpDown8.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
+						"y": 0,
+						"w": 47,
 						"h": 154
 					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 8,
-						"w": 46,
-						"h": 146
-					},
 					"frame": {
-						"x": 1,
-						"y": 1233,
-						"w": 46,
-						"h": 146
+						"x": 155,
+						"y": 154,
+						"w": 47,
+						"h": 154
 					}
 				},
 				{
@@ -229,15 +250,36 @@
 					},
 					"spriteSourceSize": {
 						"x": 3,
-						"y": 10,
-						"w": 46,
-						"h": 144
+						"y": 2,
+						"w": 47,
+						"h": 152
 					},
 					"frame": {
-						"x": 1,
-						"y": 1381,
-						"w": 46,
-						"h": 144
+						"x": 157,
+						"y": 310,
+						"w": 47,
+						"h": 152
+					}
+				},
+				{
+					"filename": "MarionUpDown6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 47,
+						"h": 152
+					},
+					"frame": {
+						"x": 204,
+						"y": 1,
+						"w": 47,
+						"h": 152
 					}
 				},
 				{
@@ -250,57 +292,15 @@
 					},
 					"spriteSourceSize": {
 						"x": 3,
-						"y": 10,
-						"w": 46,
-						"h": 144
+						"y": 3,
+						"w": 47,
+						"h": 151
 					},
 					"frame": {
-						"x": 1,
-						"y": 1527,
-						"w": 46,
-						"h": 144
-					}
-				},
-				{
-					"filename": "MarionUpDown6.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
-						"h": 154
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 10,
-						"w": 46,
-						"h": 144
-					},
-					"frame": {
-						"x": 1,
-						"y": 1673,
-						"w": 46,
-						"h": 144
-					}
-				},
-				{
-					"filename": "MarionUpDown7.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 50,
-						"h": 154
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 10,
-						"w": 46,
-						"h": 144
-					},
-					"frame": {
-						"x": 1,
-						"y": 1819,
-						"w": 46,
-						"h": 144
+						"x": 204,
+						"y": 155,
+						"w": 47,
+						"h": 151
 					}
 				}
 			]
@@ -309,6 +309,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:0e8735ffda6d14e34d448c1cf7ab867f:900f16c3c10dd8eb93cde6c3fb2445b5:dfccbc4c83eef3644e5bd2e23e94609f$"
+		"smartupdate": "$TexturePacker:SmartUpdate:e8f4fbfd6e1db86235819f0075b048d1:0bc982f5eebbd61eb513ef84377654cf:dfccbc4c83eef3644e5bd2e23e94609f$"
 	}
 }

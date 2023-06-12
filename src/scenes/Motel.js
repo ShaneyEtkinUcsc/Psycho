@@ -172,6 +172,7 @@ class Motel extends Phaser.Scene {
         furniture.setCollisionByProperty({ collides: true});
         this.physics.add.collider(this.Marion, floor);
         this.physics.add.collider(this.Marion, furniture);
+        this.physics.add.collider(this.Marion, paintings);
         
         //enabling overlaps
         this.physics.world.on('overlap', (obj1, obj2, body1, body2)=>{

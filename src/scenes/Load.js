@@ -40,7 +40,7 @@ class Load extends Phaser.Scene {
         this.load.image("triangle", "./assets/art/IntroCutscene/twyangle.png")
 
         //intro cutscene voice audio
-        this.load.audio("knock", "./assets/sound/IntroCutscene/walkingUp.m4a");
+        this.load.audio("knock", "./assets/sound/IntroCutscene/walkingUpEdited.mp3");
         this.load.audio("pause", "./assets/sound/IntroCutscene/pause.m4a");
         this.load.audio("driveAway", "./assets/sound/IntroCutscene/driveAway.m4a");
         this.load.audio("audio1", "./assets/sound/IntroCutscene/audio1.m4a");
@@ -151,7 +151,7 @@ class Load extends Phaser.Scene {
     create() {
 
      //motel scene quick start
-     this.scene.start("motelScene");
+     //this.scene.start("motelScene");
 
      // check for local storage browser support
      if(window.localStorage) {

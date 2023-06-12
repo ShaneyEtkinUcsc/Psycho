@@ -31,6 +31,71 @@ class Intro extends Phaser.Scene {
             {key: 'date1', frame: "Date1stScene1.png"},
             {key: 'date1', frame: "Date1stScene1.png"},
             {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
+            {key: 'date1', frame: "Date1stScene1.png"},
             {key: 'date1', frame: "Date1stScene2.png"},
             {key: 'date1', frame: "Date1stScene3.png"},
             {key: 'date1', frame: "Date1stScene4.png"},
@@ -108,7 +173,7 @@ class Intro extends Phaser.Scene {
 
     this.time.delayedCall(1000, () => {
 
-    this.Date1 = this.add.sprite(0, 0, 'date1', 'Date1stScene11.png').play("date1play");
+    this.Date1 = this.add.sprite(centerX, centerY, 'date1', 'Date1stScene11.png').play("date1play");
     this.knock = this.sound.add("knock");
     this.knock.play(walkConfig);
 
@@ -129,7 +194,7 @@ class Intro extends Phaser.Scene {
 
     update() { 
      
-        this.time.delayedCall(14970, () => {
+        this.time.delayedCall(8300, () => {
         // dialog box update
         this.boxBundle.update();
         if (this.boxBundle.scriptFinished === "Chat") {

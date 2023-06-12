@@ -148,6 +148,22 @@ class Motel extends Phaser.Scene {
         this.bed = this.physics.add.sprite(850, 500).setOrigin(0.5);
         this.bed.setSize(40, 200);
         this.bed.body.onOverlap = true;
+
+        //adding closeup objects
+
+        this.anims.create({
+            key: "open",
+            frames: [
+                { key: "desk2C" },
+                { key: "desk2O" },
+            ],
+            framerate: 12,
+        });
+
+        this.deskCloseUp = this.add.sprite(centerX, centerY - 100, "desk1").setRotation(1.5708).setScale(5).setAlpha(0);
+        this.keyDresserCloseUp = this.add.sprite(centerX, centerY - 100, "desk2C").setScale(2.5).setAlpha(0);
+
+       
         
 
         //enable collisions

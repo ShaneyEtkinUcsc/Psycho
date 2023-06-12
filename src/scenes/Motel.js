@@ -5,12 +5,13 @@ class Motel extends Phaser.Scene {
     create() {
 
         // camera fade in effect
-        this.cameras.main.fadeIn(2000, 0, 0);
+        //this.cameras.main.fadeIn(2000, 0, 0);
 
         console.log("in motelScene");
 
         //adding music
-       this.sound.play("hotelMusic", musicConfig);
+        this.sound.add("hotelMusic")
+        
 
        this.Mfootsteps = this.sound.add("Mfootsfx");
        //this.Mfootsteps = this.sound.get("Mfootsfx");
@@ -127,6 +128,11 @@ class Motel extends Phaser.Scene {
             loop: true,
             delay: 0
          }
+
+         let bgMusic = this.sound.get("hotelMusic");
+         if(!bgMusic.isPlaying) {
+            bgMusic.play(musicConfig);
+        }
 
         //checking up and down movement and playing corresponding animation and sound
         if(this.input.keyboard.checkDown(keyW) || this.input.keyboard.checkDown(keyUP) && this.direction.x == 0){

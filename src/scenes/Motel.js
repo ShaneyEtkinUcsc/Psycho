@@ -219,6 +219,7 @@ class Motel extends Phaser.Scene {
         });
 
         this.boxBundle = new dialogBoxBundle(this, ['bottom3', ""], ['end', "talk"]);
+        this.boxBundle1 = new dialogBoxBundle(this, ['bottom3', ""], ['end', "talk"]);
 
 
     }
@@ -366,7 +367,7 @@ class Motel extends Phaser.Scene {
         } else if (selection === "paintingS"){
             console.log("dialogue paintingS");
             if(paintingS) {this.paintingSInspect.hide(); };
-            this.boxBundle = new dialogBoxBundle(this, [
+            this.boxBundle1 = new dialogBoxBundle(this, [
                 //['sound', "audio22"],
                 ['bottom3', "Hello"],
                 //['sound', "audio23"],
@@ -530,11 +531,15 @@ class Motel extends Phaser.Scene {
         this.Marion.setVelocity(150 * this.direction.x, 150 * this.direction.y);
 
         //updating text
-        this.boxBundle.update();
-        if(!(this.boxBundle.nextInstruction === 'hide')){
-            this.deskCloseUp.setAlpha(0);
-        } else {
-            this.deskCloseUp.setAlpha(1);
-        }
+        this.boxBundle1.update();
+        //if(this.boxBundle){
+            this.boxBundle.update();
+            /*if(!(this.boxBundle.nextInstruction === 'hide')){
+                this.deskCloseUp.setAlpha(0);
+            } else {
+                this.deskCloseUp.setAlpha(1);
+         }*/
+        //}
+        
     }
 }

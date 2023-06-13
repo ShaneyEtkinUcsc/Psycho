@@ -150,9 +150,6 @@ class Load extends Phaser.Scene {
 
     create() {
 
-     //motel scene quick start
-     //this.scene.start("motelScene");
-
      // check for local storage browser support
      if(window.localStorage) {
         console.log("Local storage supported");

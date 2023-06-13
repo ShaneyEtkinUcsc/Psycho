@@ -118,6 +118,22 @@ class Motel extends Phaser.Scene {
             repeat: -1
         });
 
+        //adding sound bar animation
+        this.anims.create({
+        key: "soundUp",
+        frames: [
+            {key: "soundBar", frame: "Soundbar1.png"},
+            {key: "soundBar", frame: "Soundbar2.png"},
+            {key: "soundBar", frame: "Soundbar3.png"},
+            {key: "soundBar", frame: "Soundbar4.png"},
+            {key: "soundBar", frame: "Soundbar5.png"},
+        ],
+        frameRate: 12,
+        repeat: -1,
+        yoyo: true,
+    });
+
+
         //adding UI elements
         this.soundBar = this.add.sprite(1225, 300, "soundBar").setScale(0.25);
         this.key = this.add.sprite(1225, 100, "key").setScale(0.75);

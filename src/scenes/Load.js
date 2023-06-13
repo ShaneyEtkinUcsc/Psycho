@@ -143,7 +143,7 @@ class Load extends Phaser.Scene {
 
         //motel scene audio        
        this.load.audio("hotelMusic", "./assets/sound/MotelScene/HotelRoom.mp3");
-       this.load.audio("Mfootsfx", "./assets/sound/MotelScene/carpetFootstep.m4a");
+       this.load.audio("Mfootsfx", "./assets/sound/MotelScene/carpetFootstep.mp3");
 
     }
 

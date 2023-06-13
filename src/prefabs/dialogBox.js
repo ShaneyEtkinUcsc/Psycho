@@ -19,7 +19,7 @@ class Dialog {
             bubbleType = "top";
             textOffset = 2;
             arrowOffset.x = 2;
-            this.image = scene.add.sprite(centerX - 200, centerY, "top").setOrigin(0.5).setScale(1.25);
+            this.image = scene.add.sprite(centerX - 200, centerY, "top").setOrigin(0.5).setScale(1.25).setDepth(2000);
 
         } else if (side == 'left1') {
             x = 415;
@@ -27,7 +27,7 @@ class Dialog {
             bubbleType = "bottom";
             textOffset = 2;
             arrowOffset.x = 2;
-            this.image = scene.add.sprite(centerX + 250, centerY - 180, "bottom").setOrigin(0.5).setScale(1.45);
+            this.image = scene.add.sprite(centerX + 250, centerY - 180, "bottom").setOrigin(0.5).setScale(1.45).setDepth(2000);
 
         }else if (side == 'bottom2') {
             x = 0;
@@ -36,7 +36,7 @@ class Dialog {
             textOffset = 2;
             arrowOffset.x = 1100;
             arrowOffset.y = 25;
-            this.image = scene.add.sprite(0, 520, "txtbottom").setOrigin(0).setAlpha(0.5);
+            this.image = scene.add.sprite(0, 520, "txtbottom").setOrigin(0).setAlpha(0.5).setDepth(2000);
 
         }else if (side == 'bottom3'){
             x = 0;
@@ -45,7 +45,7 @@ class Dialog {
             textOffset = 2;
             arrowOffset.x = 1100;
             arrowOffset.y = 200;
-            this.image = scene.add.sprite(0, 400, "bottomtxt").setOrigin(0);
+            this.image = scene.add.sprite(0, 400, "bottomtxt").setOrigin(0).setDepth(2000);
 
         } else {
             console.log('Undefined Side on Dialog Box with :' + bodyText)
@@ -70,13 +70,13 @@ class Dialog {
 
         //adding text
         if (side == 'right1') {
-            this.boxText = scene.add.text(850, 125, "", textConfig).setOrigin(0.5).setDepth(200);
+            this.boxText = scene.add.text(850, 125, "", textConfig).setOrigin(0.5).setDepth(2000);
         } else if (side == 'left1') {
-            this.boxText = scene.add.text(415, 500, "", textConfig).setOrigin(0.5).setDepth(200);
+            this.boxText = scene.add.text(415, 500, "", textConfig).setOrigin(0.5).setDepth(2000);
         } else if (side == 'bottom2'){
-            this.boxText = scene.add.text(centerX, 650, "", textConfig).setOrigin(0.5).setDepth(200);
+            this.boxText = scene.add.text(centerX, 650, "", textConfig).setOrigin(0.5).setDepth(2000);
         } else if (side == 'bottom3'){
-            this.boxText = scene.add.text(centerX, 550, "", textConfig).setOrigin(0.5).setDepth(200);
+            this.boxText = scene.add.text(centerX, 550, "", textConfig).setOrigin(0.5).setDepth(2000);
         }
 
         //adding waiting arrow

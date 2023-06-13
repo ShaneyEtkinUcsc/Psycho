@@ -7,6 +7,7 @@ class Button {
         this.button = scene.add.bitmapText(x, y, font, label)
             .setOrigin(0.5)
             .setInteractive({ useHandCursor: true })
+            .setDepth(200)
             .on('pointerdown', () => callback())
             // .on('pointerover', () => button.setStyle({ fill: '#c92870' }))
             // .on('pointerout', () => button.setStyle({ fill: '#FFF' }));

@@ -57,7 +57,8 @@ class Motel extends Phaser.Scene {
         this.Marion.setCollideWorldBounds(true);
         this.Marion.setImmovable(true);
         this.Marion.setDebugBodyColor(0xFACADE);
-        this.Marion.setScale(0.9)
+        this.Marion.setScale(0.9);
+        this.Marion.setDepth(300);
 
         //creating Marion's animations
         this.anims.create({
@@ -217,7 +218,7 @@ class Motel extends Phaser.Scene {
         });
 
         this.boxBundle = new dialogBoxBundle(this, ['bottom3', ""], ['end', "talk"]);
-        this.boxBundle1 = new dialogBoxBundle(this, ['bottom3', ""], ['end', "talk"]);
+        //this.boxBundle
 
 
     }
@@ -346,13 +347,13 @@ class Motel extends Phaser.Scene {
             console.log("this: " + this);
             this.boxBundle = new dialogBoxBundle(this, [
                 //['sound', "audio22"],
-                ['bottom3', "Hello"],
+                ['bottom3', "A very detailed description of a crow"],
                 //['sound', "audio23"],
-                ['bottom3', "I'm Marion"],
+                ['bottom3', "read in Marion's voice"],
                 //['sound', "audio24"],
-                ['bottom3', "And you're watching Psycho"],
+                ['bottom3', "Anna will add it later tonight"],
                 //['sound', "audio25"],
-                ['bottom3', "Only on Disney channel"],
+                //['bottom3', "Only on Disney channel"],
                 ['hide', "bottom3"],
                 ['end', "talk1"]
             ], true);
@@ -362,47 +363,150 @@ class Motel extends Phaser.Scene {
             if(chair1) {this.chair1Inspect.hide()};
             if(chair2) {this.chair2Inspect.hide()};
             if(chair3) {this.chair3Inspect.hide()};
+            this.boxBundle = new dialogBoxBundle(this, [
+                //['sound', "audio22"],
+                ['bottom3', "It's just a chair..."],
+                ['hide', "bottom3"],
+                ['end', "talk2"]
+            ], true);
 
         } else if (selection === "paintingS"){
             console.log("dialogue paintingS");
             if(paintingS) {this.paintingSInspect.hide(); };
             this.boxBundle = new dialogBoxBundle(this, [
                 //['sound', "audio22"],
-                ['bottom3', "Hello"],
+                ['bottom3', "Very detailed descritpions of 3 bird paintings"],
                 //['sound', "audio23"],
-                ['bottom3', "I'm Marion"],
+                ['bottom3', "read in Marion's voice"],
                 //['sound', "audio24"],
-                ['bottom3', "And you're watching Psycho"],
+                ['bottom3', "Anna will add it later tonight"],
                 //['sound', "audio25"],
-                ['bottom3', "Only on Cartoon Network"],
+                //['bottom3', "Only on Cartoon Network"],
                 ['hide', "bottom3"],
-                ['end', "talk1"]
+                ['end', "talk3"]
             ], true);
         } else if (selection === "paintingL"){
             console.log("dialogue paintingL");
             if(paintingL) {this.paintingLInspect.hide(); };
+            this.boxBundle = new dialogBoxBundle(this, [
+                //['sound', "audio22"],
+                ['bottom3', "very detailed description of a large bird painting"],
+                //['sound', "audio23"],
+                ['bottom3', "read in Marion's voice"],
+                //['sound', "audio24"],
+                ['bottom3', "Anna will add this later"],
+                //['sound', "audio25"],
+                //['bottom3', "Only on Cartoon Network"],
+                ['hide', "bottom3"],
+                ['end', "talk4"]
+            ], true);
         } else if (selection === "bathroomDoor"){
             console.log("dialogue bath");
             if(bathroomDoor) {this.bathDoorInspect.hide(); };
+            this.boxBundle = new dialogBoxBundle(this, [
+                //['sound', "audio22"],
+                ['bottom3', "YEaH iM dEf tAkINg a ShOWeR iN ThERe"],
+                //['sound', "audio23"],
+                ['bottom3', "Marion's last words"],
+                //['sound', "audio24"],
+                ['bottom3', "Anna will add this later"],
+                //['sound', "audio25"],
+                //['bottom3', "Only on Cartoon Network"],
+                ['hide', "bottom3"],
+                ['end', "talk5"]
+            ], true);
         } else if (selection === "motelDoor"){
             console.log("dialogue moteldoor");
             if(motelDoor) { this.motelDoorInspect.hide(); };
+            this.boxBundle = new dialogBoxBundle(this, [
+                //['sound', "audio22"],
+                ['bottom3', "Oh look its Norman Bates"],
+                //['sound', "audio23"],
+                ['bottom3', "Don't worry, its about time for me to take a shower"],
+                //['sound', "audio24"],
+                ['bottom3', "Anna will add this later"],
+                //['sound', "audio25"],
+                //['bottom3', "Only on Cartoon Network"],
+                ['hide', "bottom3"],
+                ['end', "talk6"]
+            ], true);
         } else if (selection === "lockedDresser"){
             console.log("locked dresser");
             if(lockedDresser) {this.lockedDresserInspect.hide(); };
+            this.boxBundle = new dialogBoxBundle(this, [
+                //['sound', "audio22"],
+                ['bottom3', "Damn I wish I had a key"],
+                //['sound', "audio23"],
+                ['bottom3', "And a pre-set key finding dialogue"],
+                //['sound', "audio24"],
+                ['bottom3', "Oh well."],
+                //['sound', "audio25"],
+                //['bottom3', "Only on Cartoon Network"],
+                ['hide', "bottom3"],
+                ['end', "talk7"]
+            ], true);
         } else if (selection === "plainDresser"){
             console.log("plain");
             if(plainDresser) {this.plainDresserInspect.hide(); };
+            this.boxBundle = new dialogBoxBundle(this, [
+                //['sound', "audio22"],
+                ['bottom3', "Hello unsuspecting dresser!"],
+                //['sound', "audio23"],
+                ['bottom3', "Anna is definitely not going to stash a suggestion of a cover up in here!"],
+                //['sound', "audio24"],
+                ['bottom3', "No sir."],
+                //['sound', "audio25"],
+                //['bottom3', "Only on Cartoon Network"],
+                ['hide', "bottom3"],
+                ['end', "talk8"]
+            ], true);
         } else if (selection === "keyDresser"){
             console.log("key");
             hasKey = true;
-            if(keyDresser) {this.keyDresserInspect.hide(); };
+            shownK == true;
+            this.keyDresserInspect.hide();
+            this.boxBundle = new dialogBoxBundle(this, [
+                //['sound', "audio22"],
+                ['bottom3', "Hello"],
+                //['sound', "audio23"],
+                ['bottom3', "Key"],
+                //['sound', "audio24"],
+                ['bottom3', "And goodbye"],
+                //['sound', "audio25"],
+                //['bottom3', "Only on Disney channel"],
+                ['hide', "bottom3"],
+                ['end', "talk9"]
+            ], true);
         } else if (selection === "closet"){
             console.log("closet party");
             if(closet) {this.closetInspect.hide(); };
+            this.boxBundle = new dialogBoxBundle(this, [
+                //['sound', "audio22"],
+                ['bottom3', "CLOSET PARTY"],
+                //['sound', "audio23"],
+                ['bottom3', "let's go bitches"],
+                //['sound', "audio24"],
+                ['bottom3', "party like its 1960 Psycho"],
+                //['sound', "audio25"],
+                //['bottom3', "Only on Cartoon Network"],
+                ['hide', "bottom3"],
+                ['end', "talk7"]
+            ], true);
         } else if (selection === "bed"){
             console.log("sleepy time");
             if(bed) {this.bedInspect.hide(); };
+            this.boxBundle = new dialogBoxBundle(this, [
+                //['sound', "audio22"],
+                ['bottom3', "yeah Anna is definitely not sleep deprived"],
+                //['sound', "audio23"],
+                ['bottom3', "neither is Shaney"],
+                //['sound', "audio24"],
+                ['bottom3', "this is def not due tmrw, no way"],
+                //['sound', "audio25"],
+                //['bottom3', "Only on Cartoon Network"],
+                ['hide', "bottom3"],
+                ['end', "talk10"]
+            ], true);
         }
 
         //re-enabling inspection selections
@@ -459,7 +563,7 @@ class Motel extends Phaser.Scene {
 
          var sfxConfig = {
             mute: false,
-            volume: 5,
+            volume: 0.05,
             detune: 0,
             seek: 0,
             loop: true,
@@ -529,10 +633,7 @@ class Motel extends Phaser.Scene {
         this.direction.normalize();
         this.Marion.setVelocity(150 * this.direction.x, 150 * this.direction.y);
 
-        //updating text
-        //if(this.boxBundle1){
-            //this.boxBundle1.update();
-        /*}*/ if(this.boxBundle){
+       if(this.boxBundle){
             this.boxBundle.update();
             if(!(this.boxBundle.nextInstruction === 'hide') && (desk == true)){
                 this.deskCloseUp.setAlpha(0);
@@ -543,10 +644,17 @@ class Motel extends Phaser.Scene {
                     });
             } else if (desk == true) {
                 this.deskCloseUp.setAlpha(1);
-                
-                
-         }
+            } else if(!(this.boxBundle.nextInstruction === 'hide') && (keyDresser == true)){
+                this.keyDresserCloseUp.setAlpha(0);
+                this.time.delayedCall(100, () => {
+                    console.log("delayed call");
+                    this.keyDresserInspect.hide();
+                    keyDresser = false;
+                });
+            } else if (keyDresser == true) {
+                this.keyDresserCloseUp.setAlpha(1);
+                this.keyDresser.anims.play("open", true);
+            }
         }
-        
     }
 }

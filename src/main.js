@@ -81,6 +81,7 @@ let movingLeft = false;
 let hasKey = false;
 let inspections = 0;
 let shown = true;
+let shownK = true;
 //defining inspection states
 let creatable = true;
 let desk = false;

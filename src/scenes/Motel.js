@@ -748,7 +748,15 @@ class Motel extends Phaser.Scene {
                 this.time.delayedCall(5000, () => { 
                     this.tutorial.alpha = 1;
                     this.tutorial2.alpha = 1;
+                    this.boxBundle = new dialogBoxBundle(this, [
+                        //['sound', ""],
+                        ['bottom3', "Now... where to hide this cash..."],
+                        ['hide', "bottom3"],
+                        ['end', "talk1"]
+                    ], true);
+                    this.boxBundle.update();
                 });
+
             }
         }
             this.enabled = true;

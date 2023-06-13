@@ -51,6 +51,24 @@ class Motel extends Phaser.Scene {
         const floor = map.createLayer("Background", motel, -692, -434).setOrigin(0);
         const furniture = map.createLayer("Furniture", motel, -692, -434).setOrigin(0);
         const paintings = map.createLayer("Paintings", motel, -692, -434).setOrigin(0);
+
+        //adding direction text
+        let tutorialConfig = {
+            fontFamily: 'Gothic',
+            fontSize: '25px',
+            //backgroundColor: '#ffffff',
+            color: '#ffffff',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
+
+        this.tutorial = this.add.text(765, 200, "'W', 'A', 'S' and 'D' or '↑', '←', '↓' and '→' to move", tutorialConfig).setOrigin(0.5);
+        this.tutorial2 = this.add.text(765, 230, "click on an INSPECT button to look closer at an object", tutorialConfig).setOrigin(0.5);
+        this.end = this.add.text(765, 230, "Press Space to Continue", tutorialConfig).setOrigin(0.5).setAlpha(0);
         
         this.Marion = this.physics.add.sprite(300, 400, "Marion");
         this.Marion.setSize(35, 150)
@@ -175,6 +193,7 @@ class Motel extends Phaser.Scene {
         
         //enabling overlaps
         this.physics.world.on('overlap', (obj1, obj2, body1, body2)=>{
+            if(enabled){
             if(obj2 === this.desk){
                 this.overlap("desk");
                 console.log(`${obj1.texture.key} body is overlapping this.desk`);
@@ -215,8 +234,10 @@ class Motel extends Phaser.Scene {
                 console.log(`${obj1.texture.key} body is overlapping this.bed`);
                 this.overlap("bed");
             }
+            }
         });
 
+        //adding dialogue box
         this.boxBundle = new dialogBoxBundle(this, ['bottom3', ""], ['end', "talk"]);
         //this.boxBundle
 
@@ -225,6 +246,7 @@ class Motel extends Phaser.Scene {
 
     //directions for overlap occurances
     overlap(item){
+        if(enabled){
         if(item === "desk"){
             if(!desk && creatable){
                 this.deskInspect = new Button(100, centerY - 75, "SanJoseB", "Inspect", this, () => this.dialogue("desk"));
@@ -336,10 +358,14 @@ class Motel extends Phaser.Scene {
             if(closet){ this.closetInspect.hide(); }
             if(bed){ this.bedInspect.hide(); }
         });
+        }
     }
 
     //dialogue selections
     dialogue(selection){
+        this.tutorial.setAlpha(0);
+        this.tutorial2.setAlpha(0);
+        enabled = false;
         if(selection === "desk"){
             console.log("dialogue");
             shown == true;
@@ -442,10 +468,11 @@ class Motel extends Phaser.Scene {
                 ['hide', "bottom3"],
                 ['end', "talk7.5"]
             ], true);
+            exitFlag = true;
             } else {
                 this.boxBundle = new dialogBoxBundle(this, [
                     //['sound', "audio22"],
-                    ['bottom3', "This looks like a good spot to hide my money."],
+                    ['bottom3', "This looks like a good spot to hide the money."],
                     //['sound', "audio23"],
                     ['bottom3', "*Tries to open*"],
                     //['sound', "audio24"],
@@ -491,7 +518,7 @@ class Motel extends Phaser.Scene {
             if(closet) {this.closetInspect.hide(); };
             this.boxBundle = new dialogBoxBundle(this, [
                 //['sound', "audio22"],
-                ['bottom3', "I suppose I could hide my money in here…"],
+                ['bottom3', "I suppose I could hide the money in here…"],
                 //['sound', "audio23"],
                 ['bottom3', "No, it's too open, what if housekeeping finds it."],
                 //['sound', "audio24"],
@@ -504,7 +531,7 @@ class Motel extends Phaser.Scene {
             if(bed) {this.bedInspect.hide(); };
             this.boxBundle = new dialogBoxBundle(this, [
                 //['sound', "audio22"],
-                ['bottom3', "I am very tired, but I can't rest until I find a good place to hide my money."],
+                ['bottom3', "I am very tired, but I can't rest until I find a good place to hide this money."],
                 ['hide', "bottom3"],
                 ['end', "talk10"]
             ], true);
@@ -518,10 +545,10 @@ class Motel extends Phaser.Scene {
             });
     }
 
-    vlean(){
+    /*vlean(){
         
         this.zone.body.touching.none = zoneInspect.destroy();
-    }
+    }*/
 
     /*stop() {
         if (this.physics.collide(this.Marion, this.physics.world.bounds
@@ -530,8 +557,6 @@ class Motel extends Phaser.Scene {
     update() {
 
         //checking collisions
-        this.physics.collide(this.Marion, this.Marionint, /*this.stop(), this.topCollide()*/);
-        this.physics.collide(this.Marion, this.Mariontop);
 
         //checking inspect overlaps
         this.physics.overlap(this.Marion, this.desk);
@@ -578,53 +603,54 @@ class Motel extends Phaser.Scene {
         }
 
         //checking up and down movement and playing corresponding animation and sound
-        if(this.input.keyboard.checkDown(keyW) || this.input.keyboard.checkDown(keyUP) && this.direction.x == 0){
+        if(enabled){
+        if((this.input.keyboard.checkDown(keyW) || this.input.keyboard.checkDown(keyUP)) && this.direction.x == 0){
             this.direction.y = -1;
             this.Marion.flipX = false;
             this.Marion.anims.play("walkUp", true);
             if(!this.Mfootsteps.isPlaying) {
                 this.Mfootsteps.play(sfxConfig);
             }
-        } else if (Phaser.Input.Keyboard.JustUp(keyW) || Phaser.Input.Keyboard.JustUp(keyUP) && this.direction.x == 0){
+        } else if ((Phaser.Input.Keyboard.JustUp(keyW) || Phaser.Input.Keyboard.JustUp(keyUP)) && this.direction.x == 0){
             this.Marion.anims.play("idle", true); 
             if(this.Mfootsteps.isPlaying) {
                 this.Mfootsteps.stop();
             }
-        } else if (this.input.keyboard.checkDown(keyS) || this.input.keyboard.checkDown(keyDOWN) && this.direction.x == 0) {
+        } else if ((this.input.keyboard.checkDown(keyS) || this.input.keyboard.checkDown(keyDOWN)) && this.direction.x == 0) {
             this.direction.y = 1;
             this.Marion.flipX = true;
             this.Marion.anims.play("walkUp", true);
             if(!this.Mfootsteps.isPlaying) {
                 this.Mfootsteps.play(sfxConfig);
             }
-        } else if (Phaser.Input.Keyboard.JustUp(keyS) || Phaser.Input.Keyboard.JustUp(keyDOWN) && this.direction.x == 0){
+        } else if ((Phaser.Input.Keyboard.JustUp(keyS) || Phaser.Input.Keyboard.JustUp(keyDOWN)) && this.direction.x == 0){
             this.Marion.anims.play("idle", true); 
             if(this.Mfootsteps.isPlaying) {
                 this.Mfootsteps.stop();
             }
         }
 
-        //checking left and righ movement
-        if(this.input.keyboard.checkDown(keyA) || this.input.keyboard.checkDown(keyLEFT) && this.direction.y == 0){
+        //checking left and right movement
+        if((this.input.keyboard.checkDown(keyA) || this.input.keyboard.checkDown(keyLEFT)) && this.direction.y == 0){
             this.direction.x = -1;
             this.Marion.flipX = false;
             this.Marion.anims.play("walkR", true);
             if(!this.Mfootsteps.isPlaying) {
                 this.Mfootsteps.play(sfxConfig);
             }
-        } else if (Phaser.Input.Keyboard.JustUp(keyA) || Phaser.Input.Keyboard.JustUp(keyLEFT) && this.direction.y == 0){
+        } else if ((Phaser.Input.Keyboard.JustUp(keyA) || Phaser.Input.Keyboard.JustUp(keyLEFT)) && this.direction.y == 0){
             this.Marion.anims.play("idle", true);
             if(this.Mfootsteps.isPlaying) {
                 this.Mfootsteps.stop();
             }
-        } else if (this.input.keyboard.checkDown(keyD) || this.input.keyboard.checkDown(keyRIGHT) && this.direction.y == 0){
+        } else if ((this.input.keyboard.checkDown(keyD) || this.input.keyboard.checkDown(keyRIGHT)) && this.direction.y == 0){
             this.direction.x = 1;
             this.Marion.flipX = true;
             this.Marion.anims.play("walkR", true);
             if(!this.Mfootsteps.isPlaying) {
                 this.Mfootsteps.play(sfxConfig);
             }
-        } else if (Phaser.Input.Keyboard.JustUp(keyD) || Phaser.Input.Keyboard.JustUp(keyRIGHT) && this.direction.y == 0){
+        } else if ((Phaser.Input.Keyboard.JustUp(keyD) || Phaser.Input.Keyboard.JustUp(keyRIGHT)) && this.direction.y == 0){
             this.Marion.anims.play("idle", true);
             if(this.Mfootsteps.isPlaying) {
                 this.Mfootsteps.stop();
@@ -634,16 +660,27 @@ class Motel extends Phaser.Scene {
         this.direction.normalize();
         this.Marion.setVelocity(150 * this.direction.x, 150 * this.direction.y);
 
+    }
+
        if(this.boxBundle){
             this.boxBundle.update();
+            if(hasKey && exitFlag){
+                enabled = false;
+                this.time.delayedCall(5000, () => {this.end.setAlpha(1);})
+            }
+            if(this.boxBundle.scriptFinished === "talk7.5" && exitFlag){ movingOn = true; };
+            if(hasKey && movingOn){
+                console.log("exit conditions")
+                this.scene.start("cutScene3");
+            }
             if(!(this.boxBundle.nextInstruction === 'hide') && (desk == true)){
                 this.deskCloseUp.setAlpha(0);
                 this.time.delayedCall(100, () => {
-                    console.log("delayed call");
                     this.deskInspect.hide();
                     desk = false;
                     });
             } else if (desk == true) {
+                console.log("in else if")
                 this.deskCloseUp.setAlpha(1);
             } else if(!(this.boxBundle.nextInstruction === 'hide') && (keyDresser == true)){
                 this.keyDresserCloseUp.setAlpha(0);
@@ -656,7 +693,6 @@ class Motel extends Phaser.Scene {
                 this.keyDresserCloseUp.setAlpha(1);
                 this.keyDresser.anims.play("open", true);
             }
-            
         }
     }
 }

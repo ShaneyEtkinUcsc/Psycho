@@ -53,7 +53,7 @@
     }
 
     cycleScript(){
-        console.log(this.activeBox.isTyping + "   " + this.nextInstruction)
+       // console.log(this.activeBox.isTyping + "   " + this.nextInstruction)
 
         // do nothing if text is not finished from current box or if we reached the end of the script   
         if (this.activeBox.isTyping || this.nextInstruction === 'end') return;
@@ -83,7 +83,7 @@
                 this.activeBox.addText(this.script[i][1])
 
             } else if (this.nextInstruction === 'bottom3') { // right is our next dialog sequence
-                console.log("in bottom3");
+                //console.log("in bottom3");
                 currentBox = 'bottom3'; 
                 boxChosen = true;
                 this.activeBox = this.bottomBox3;
@@ -99,6 +99,7 @@
                 }  
                 this.sound = this.scene.sound.add(this.script[i][1]).play(audioConfig);
             } else if (this.nextInstruction === 'hide') {  // hide a box
+                enabled = true;
                 this.script[i][1] === 'left1' ? this.leftBox.hide() : 
                 (this.script[i][1] === 'right1' ? this.rightBox.hide() : 
                 (this.script[i][1] === 'bottom2' ? this.bottomBox.hide() : 

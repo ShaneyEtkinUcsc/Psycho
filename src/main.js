@@ -20,14 +20,14 @@ let config = {
         default: "arcade",
         arcade: {
             //turn on debugging
-            debug: true,
+            //debug: true,
             gravity: {
                 x: 0,
                 y: 0
             }
         }
     },
-    scene: [ Load, Menu, Credits, Help, Intro, Drive, Drive2, Cutscene2, Motel ]
+    scene: [ Load, Menu, Credits, Help, Intro, Drive, Drive2, Cutscene2, Motel, Cutscene3, SplitScream ]
 }
 
 const game = new Phaser.Game(config)
@@ -79,7 +79,10 @@ let scootch_countL = 0;
 let movingRight = false;
 let movingLeft = false;
 let hasKey = false;
-let inspections = 0;
+//pausing movement when text box is on screen
+let enabled = true;
+let movingOn = false;
+let exitFlag = false;
 let shown = true;
 let shownK = true;
 //defining inspection states

@@ -1,0 +1,125 @@
+{
+	"textures": [
+		{
+			"image": "Soundbar.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 680,
+				"h": 1040
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "Soundbar1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 134,
+						"h": 1038
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 134,
+						"h": 1038
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 134,
+						"h": 1038
+					}
+				},
+				{
+					"filename": "Soundbar2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 134,
+						"h": 1038
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 134,
+						"h": 1038
+					},
+					"frame": {
+						"x": 137,
+						"y": 1,
+						"w": 134,
+						"h": 1038
+					}
+				},
+				{
+					"filename": "Soundbar3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 134,
+						"h": 1038
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 134,
+						"h": 1038
+					},
+					"frame": {
+						"x": 273,
+						"y": 1,
+						"w": 134,
+						"h": 1038
+					}
+				},
+				{
+					"filename": "Soundbar4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 134,
+						"h": 1038
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 134,
+						"h": 1038
+					},
+					"frame": {
+						"x": 409,
+						"y": 1,
+						"w": 134,
+						"h": 1038
+					}
+				},
+				{
+					"filename": "Soundbar5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 134,
+						"h": 1038
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 134,
+						"h": 1038
+					},
+					"frame": {
+						"x": 545,
+						"y": 1,
+						"w": 134,
+						"h": 1038
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:6b384770e00f5314e304f21a25c67536:dcc6940ff5498c2a618e083be7eb06b3:9f3dd4b0f7bc2b2d405470b18cbcce65$"
+	}
+}

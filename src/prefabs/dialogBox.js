@@ -40,7 +40,7 @@ class Dialog {
 
         }else if (side == 'bottom3'){
             x = 0;
-            y = 400;
+            y = 600;
             bubbleType = "bottomtxt";
             textOffset = 2;
             arrowOffset.x = 1100;

@@ -172,7 +172,6 @@ class Motel extends Phaser.Scene {
         furniture.setCollisionByProperty({ collides: true});
         this.physics.add.collider(this.Marion, floor);
         this.physics.add.collider(this.Marion, furniture);
-        this.physics.add.collider(this.Marion, paintings);
         
         //enabling overlaps
         this.physics.world.on('overlap', (obj1, obj2, body1, body2)=>{
@@ -344,7 +343,8 @@ class Motel extends Phaser.Scene {
         if(selection === "desk"){
             console.log("dialogue");
             shown == true;
-            if(desk) {this.deskInspect.hide()};
+            /*if(desk) {*/this.deskInspect.hide()/*};*/
+            console.log("this: " + this);
             this.boxBundle = new dialogBoxBundle(this, [
                 //['sound', "audio22"],
                 ['bottom3', "Hello"],
@@ -367,7 +367,7 @@ class Motel extends Phaser.Scene {
         } else if (selection === "paintingS"){
             console.log("dialogue paintingS");
             if(paintingS) {this.paintingSInspect.hide(); };
-            this.boxBundle1 = new dialogBoxBundle(this, [
+            this.boxBundle = new dialogBoxBundle(this, [
                 //['sound', "audio22"],
                 ['bottom3', "Hello"],
                 //['sound', "audio23"],
@@ -531,15 +531,17 @@ class Motel extends Phaser.Scene {
         this.Marion.setVelocity(150 * this.direction.x, 150 * this.direction.y);
 
         //updating text
-        this.boxBundle1.update();
-        //if(this.boxBundle){
+        //if(this.boxBundle1){
+            //this.boxBundle1.update();
+        /*}*/ if(this.boxBundle){
             this.boxBundle.update();
-            /*if(!(this.boxBundle.nextInstruction === 'hide')){
+            if(!(this.boxBundle.nextInstruction === 'hide') && (desk == true)){
                 this.deskCloseUp.setAlpha(0);
-            } else {
+                desk = false;
+            } else if (desk == true) {
                 this.deskCloseUp.setAlpha(1);
-         }*/
-        //}
+         }
+        }
         
     }
 }

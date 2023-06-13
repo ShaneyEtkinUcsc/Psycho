@@ -80,7 +80,7 @@ let movingRight = false;
 let movingLeft = false;
 let hasKey = false;
 let inspections = 0;
-let shown = false;
+let shown = true;
 //defining inspection states
 let creatable = true;
 let desk = false;

@@ -83,6 +83,7 @@
                 this.activeBox.addText(this.script[i][1])
 
             } else if (this.nextInstruction === 'bottom3') { // right is our next dialog sequence
+                console.log("in bottom3");
                 currentBox = 'bottom3'; 
                 boxChosen = true;
                 this.activeBox = this.bottomBox3;

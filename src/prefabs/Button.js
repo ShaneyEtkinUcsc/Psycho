@@ -17,6 +17,6 @@ class Button {
     show() {
         if(creatable){
             this.button.addToDisplayList();
-        }
+        } 
     }
 }

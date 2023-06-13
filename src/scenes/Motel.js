@@ -346,7 +346,7 @@ class Motel extends Phaser.Scene {
             /*if(desk) {*/this.deskInspect.hide()/*};*/
             console.log("this: " + this);
             this.boxBundle = new dialogBoxBundle(this, [
-                //['sound', "audio22"],
+                ['sound', "textScroll"],
                 ['bottom3', "A very detailed description of a crow"],
                 //['sound', "audio23"],
                 ['bottom3', "read in Marion's voice"],
@@ -519,7 +519,7 @@ class Motel extends Phaser.Scene {
 
     vlean(){
         
-        zone.body.touching.none = zoneInspect.destroy();
+        this.zone.body.touching.none = zoneInspect.destroy();
     }
 
     /*stop() {
@@ -655,6 +655,7 @@ class Motel extends Phaser.Scene {
                 this.keyDresserCloseUp.setAlpha(1);
                 this.keyDresser.anims.play("open", true);
             }
+            
         }
     }
 }

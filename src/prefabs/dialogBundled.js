@@ -53,7 +53,7 @@
     }
 
     cycleScript(){
-        //console.log(this.activeBox.isTyping + "   " + this.nextInstruction)
+        console.log(this.activeBox.isTyping + "   " + this.nextInstruction)
 
         // do nothing if text is not finished from current box or if we reached the end of the script   
         if (this.activeBox.isTyping || this.nextInstruction === 'end') return;
@@ -87,8 +87,8 @@
                 currentBox = 'bottom3'; 
                 boxChosen = true;
                 this.activeBox = this.bottomBox3;
-                this.activeBox.addText(this.script[i][1])
-                
+                this.activeBox.addText(this.script[i][1]);
+      
             } else if (this.nextInstruction === 'sound') { // make noise
                 if(i > 0) {
                     this.wasPlaying = this.scene.sound.get(this.script[i - 2][1]);
@@ -96,9 +96,8 @@
                         //console.log("in inner loop ");
                         this.wasPlaying.stop();
                     }
-                }
-                this.scene.sound.add(this.script[i][1]).play(audioConfig);
-
+                }  
+                this.sound = this.scene.sound.add(this.script[i][1]).play(audioConfig);
             } else if (this.nextInstruction === 'hide') {  // hide a box
                 this.script[i][1] === 'left1' ? this.leftBox.hide() : 
                 (this.script[i][1] === 'right1' ? this.rightBox.hide() : 

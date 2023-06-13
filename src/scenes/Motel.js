@@ -102,7 +102,6 @@ class Motel extends Phaser.Scene {
         this.desk = this.physics.add.sprite(80, 350).setOrigin(0.5);
         this.desk.setSize(40, 100);
         this.desk.body.onOverlap = true;
-        this.desk.setImmovable(true);
 
         this.chair1 = this.physics.add.sprite(100, 550).setOrigin(0.5);
         this.chair1.setSize(40, 120);
@@ -537,9 +536,15 @@ class Motel extends Phaser.Scene {
             this.boxBundle.update();
             if(!(this.boxBundle.nextInstruction === 'hide') && (desk == true)){
                 this.deskCloseUp.setAlpha(0);
-                desk = false;
+                this.time.delayedCall(100, () => {
+                    console.log("delayed call");
+                    this.deskInspect.hide();
+                    desk = false;
+                    });
             } else if (desk == true) {
                 this.deskCloseUp.setAlpha(1);
+                
+                
          }
         }
         

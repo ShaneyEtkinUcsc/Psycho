@@ -9,6 +9,9 @@ class Intro extends Phaser.Scene {
     //adding gameOver siren for driving
     this.sound.add("siren");
 
+     //motel scene quick start
+     this.scene.start("motelScene");
+
     //reserving keyspace SPACE
     keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 

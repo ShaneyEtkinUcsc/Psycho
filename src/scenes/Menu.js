@@ -7,6 +7,7 @@ class Menu extends Phaser.Scene {
 
         //drive scene quick start
         //this.scene.start("drive2Scene");
+        
 
 
         var musicConfig = {

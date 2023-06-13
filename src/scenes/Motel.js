@@ -531,14 +531,14 @@ class Motel extends Phaser.Scene {
 
         //updating text
         this.boxBundle1.update();
-        if(this.boxBundle){
+        //if(this.boxBundle){
             this.boxBundle.update();
-            if(!(this.boxBundle.nextInstruction === 'hide')){
+            /*if(!(this.boxBundle.nextInstruction === 'hide')){
                 this.deskCloseUp.setAlpha(0);
             } else {
                 this.deskCloseUp.setAlpha(1);
-         }
-        }
+         }*/
+        //}
         
     }
 }

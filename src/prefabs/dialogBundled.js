@@ -1,7 +1,6 @@
-
- //this class is developed directly from my ARTG 120 game, Quilted
- //and was specifically designed by Alex Groff for dialouge functionality
- //this is used with his full permission to do so
+//this class is developed directly from my ARTG 120 game, Quilted
+//and the base clas was specifically designed by Alex Groff for dialouge functionality
+//this is used with his full permission to do so, , I have overhauled it for this game
 
  class dialogBoxBundle {
     constructor(scene, script, inFocus = false){
@@ -84,6 +83,7 @@
 
             } else if (this.nextInstruction === 'bottom3') { // right is our next dialog sequence
                 //console.log("in bottom3");
+                finishedDialogue = false;
                 currentBox = 'bottom3'; 
                 boxChosen = true;
                 this.activeBox = this.bottomBox3;
@@ -100,6 +100,7 @@
                 this.sound = this.scene.sound.add(this.script[i][1]).play(audioConfig);
             } else if (this.nextInstruction === 'hide') {  // hide a box
                 enabled = true;
+                finishedDialogue = true;
                 this.script[i][1] === 'left1' ? this.leftBox.hide() : 
                 (this.script[i][1] === 'right1' ? this.rightBox.hide() : 
                 (this.script[i][1] === 'bottom2' ? this.bottomBox.hide() : 

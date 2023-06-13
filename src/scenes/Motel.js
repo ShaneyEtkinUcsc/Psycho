@@ -2,6 +2,7 @@ class Motel extends Phaser.Scene {
     constructor() {
         super("motelScene");
     }
+
     create() {
 
         // camera fade in effect
@@ -9,14 +10,12 @@ class Motel extends Phaser.Scene {
 
         console.log("in motelScene");
 
-        console.log(shown);
-
         //adding music
         this.sound.add("hotelMusic")
         
 
-       this.Mfootsteps = this.sound.add("Mfootsfx");
-       //this.Mfootsteps = this.sound.get("Mfootsfx");
+        this.Mfootsteps = this.sound.add("Mfootsfx");
+        //this.Mfootsteps = this.sound.get("Mfootsfx");
 
         var musicConfig = {
             mute: false,
@@ -66,12 +65,27 @@ class Motel extends Phaser.Scene {
             fixedWidth: 0
         }
 
-        this.tutorial = this.add.text(765, 200, "'W', 'A', 'S' and 'D' or '↑', '←', '↓' and '→' to move", tutorialConfig).setOrigin(0.5);
-        this.tutorial2 = this.add.text(765, 230, "click on an INSPECT button to look closer at an object", tutorialConfig).setOrigin(0.5);
-        this.end = this.add.text(765, 230, "Press Space to Continue", tutorialConfig).setOrigin(0.5).setAlpha(0);
+        let endConfig = {
+            fontFamily: 'SanJose',
+            fontSize: '40px',
+            //backgroundColor: '#ffffff',
+            color: '#ffffff',
+            align: 'center',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
+
+        //adding directional text
+        this.tutorial = this.add.text(765, 200, "'W', 'A', 'S' and 'D' or '↑', '←', '↓' and '→' to move", tutorialConfig).setOrigin(0.5).setAlpha(0);
+        this.tutorial2 = this.add.text(765, 230, "click on an INSPECT button to look closer at an object", tutorialConfig).setOrigin(0.5).setAlpha(0);
+        this.end = this.add.text(centerX, centerY, "Press Space to Continue", endConfig).setOrigin(0.5).setAlpha(0).setDepth(600);
         
         //adding Marion
         this.Marion = this.physics.add.sprite(300, 400, "Marion");
+        this.Marion.flipX = true;
         this.Marion.setSize(35, 150)
         this.Marion.setCollideWorldBounds(true);
         this.Marion.setImmovable(true);
@@ -118,27 +132,83 @@ class Motel extends Phaser.Scene {
             repeat: -1
         });
 
-        //adding sound bar animation
-        this.anims.create({
-        key: "soundUp",
-        frames: [
-            {key: "soundBar", frame: "Soundbar1.png"},
-            {key: "soundBar", frame: "Soundbar2.png"},
-            {key: "soundBar", frame: "Soundbar3.png"},
-            {key: "soundBar", frame: "Soundbar4.png"},
-            {key: "soundBar", frame: "Soundbar5.png"},
-        ],
-        frameRate: 12,
-        repeat: -1,
-        yoyo: true,
-    });
+        //adding Norman
+        this.Norman = this.physics.add.sprite(500, 270, "Bates");
+        this.Norman.setSize(35, 150)
+        this.Norman.setCollideWorldBounds(false);
+        this.Norman.setImmovable(true);
+        this.Norman.setDebugBodyColor(0xFACADE);
+        this.Norman.setScale(1.03);
+        this.Norman.setDepth(300);
 
+        //creating Norman's animations
+        this.anims.create({
+            key: "walkN",
+            frames: [
+                {key: "Bates", frame: "Bates1.png"},
+                {key: "Bates", frame: "Bates2.png"},
+                {key: "Bates", frame: "Bates3.png"},
+                {key: "Bates", frame: "Bates4.png"},
+                {key: "Bates", frame: "Bates5.png"},
+                {key: "Bates", frame: "Bates6.png"},
+            ],
+            frameRate: 6,
+            repeat: -1
+        });
+
+        //this.Norman.play("walkN");
+
+        //setting up variables for Norman's walking paths
+        //i got this behavior pattern from
+        //https://codepen.io/samme/pen/pojyPXb
+        this.path;
+        this.graphics1;
+        this.graphics2;
+        this.follower;
+
+        this.graphics1 = this.add.graphics({ lineStyle: { color: 0x666666 } });
+
+        this.path = new Phaser.Curves.Path(500, 260);
+        this.path.lineTo(1400, 260);
+        this.path.draw(this.graphics1);
+
+        this.follower = this.add.follower(this.path, 500, 260, 'Bates')
+        this.follower.setAlpha(0);
 
         //adding UI elements
         this.soundBar = this.add.sprite(1225, 300, "soundBar").setScale(0.25);
-        this.key = this.add.sprite(1225, 100, "key").setScale(0.75);
+        this.key = this.add.sprite(1225, 100, "key").setScale(0.75).setAlpha(0);
 
-        //adding overlap boxes
+        //adding sound bar animations
+        this.anims.create({
+            key: "soundUp",
+            frames: [
+                {key: "soundBar", frame: "Soundbar1.png"},
+                {key: "soundBar", frame: "Soundbar2.png"},
+                {key: "soundBar", frame: "Soundbar3.png"},
+                {key: "soundBar", frame: "Soundbar4.png"},
+                {key: "soundBar", frame: "Soundbar5.png"},
+            ],
+            frameRate: 12,
+            //repeat: -1,
+            //yoyo: true,
+        });
+
+        this.anims.create({
+            key: "soundDown",
+            frames: [
+                {key: "soundBar", frame: "Soundbar5.png"},
+                {key: "soundBar", frame: "Soundbar4.png"},
+                {key: "soundBar", frame: "Soundbar3.png"},
+                {key: "soundBar", frame: "Soundbar2.png"},
+                {key: "soundBar", frame: "Soundbar1.png"},
+            ],
+            frameRate: 12,
+            //repeat: -1,
+            //yoyo: true,
+        });
+
+        //adding overlap boxes for room objects
         this.desk = this.physics.add.sprite(80, 350).setOrigin(0.5);
         this.desk.setSize(40, 100);
         this.desk.body.onOverlap = true;
@@ -162,6 +232,7 @@ class Motel extends Phaser.Scene {
         this.largePainting = this.physics.add.sprite(318, 570).setOrigin(0.5);
         this.largePainting.setSize(175, 35);
         this.largePainting.body.onOverlap = true;
+        this.largePaintingCover = this.add.sprite(318, 580, "painting2").setRotation(3.1415).setOrigin(0.5).setDepth(400).setScale(1.1);
 
         this.bathroomDoor = this.physics.add.sprite(150, 270).setOrigin(0.5);
         this.bathroomDoor.setSize(100, 15);
@@ -202,8 +273,17 @@ class Motel extends Phaser.Scene {
             framerate: 12,
         });
 
-        this.deskCloseUp = this.add.sprite(centerX, centerY - 150, "desk1").setRotation(1.5708).setScale(5).setAlpha(0);
-        this.keyDresserCloseUp = this.add.sprite(centerX, centerY - 150, "desk2C").setScale(2.5).setAlpha(0);
+        //adding closeUp objects for popUp menu
+        this.deskCloseUp = this.add.sprite(centerX, centerY - 150, "desk1").setRotation(1.5708).setScale(5).setAlpha(0).setDepth(300);
+        this.keyDresserCloseUp = this.add.sprite(centerX, centerY - 150, "desk2C").setScale(2.5).setAlpha(0).setDepth(300);
+        this.keyDresserCloseUpO = this.add.sprite(centerX, centerY - 150, "desk2O").setScale(2.5).setAlpha(0).setDepth(301);
+        this.chairCloseUp = this.add.sprite(centerX, centerY - 100, "chair").setScale(3).setAlpha(0).setDepth(300);
+        this.lockedDresserCloseUp = this.add.sprite(centerX, centerY - 100, "desk4").setRotation(3.1415).setScale(5).setAlpha(0).setDepth(300);
+        this.plainDresserCloseUp = this.add.sprite(centerX, centerY - 150, "desk3").setRotation(-1.5708).setScale(2.5).setAlpha(0).setDepth(300);
+        this.smallP1CloseUp = this.add.sprite(centerX - 300, centerY - 100, "smallPaint1").setScale(7).setAlpha(0).setDepth(300);
+        this.smallP2CloseUp = this.add.sprite(centerX, centerY - 100, "smallPaint2").setScale(7).setAlpha(0).setDepth(300);
+        this.smallP3CloseUp = this.add.sprite(centerX + 300, centerY - 100, "smallPaint3").setScale(7).setRotation(3.1415).setAlpha(0).setDepth(300);
+        this.largePCloseUp = this.add.sprite(centerX, centerY - 100, "painting2").setScale(5).setAlpha(0).setDepth(300);
 
        
         //enable collisions
@@ -260,6 +340,40 @@ class Motel extends Phaser.Scene {
 
         //adding dialogue box
         this.boxBundle = new dialogBoxBundle(this, ['bottom3', ""], ['end', "talk"]);
+        this.boxBundle1 = new dialogBoxBundle(this, [
+            //['sound', "audio23"],
+            ['bottom3', "Well, the mattress is soft and there's hangers in the closet,"],
+            //['sound', "audio23"],
+            ['bottom3', "and stationery with the Bates Motel on it in case you want to make your friends back home feel envious."],
+            //['sound', "audio24"],
+            ['bottom3', "And the uh, over there."],
+            //['sound', "audio24"],
+            ['bottom3', "The bathroom?"],
+            //['sound', "audio24"],
+            ['bottom3', "Yeah.  Well, if you want anything just tap on the wall."],
+            //['sound', "audio24"],
+            ['bottom3', "Thank you Mr. Bates."],
+            //['sound', "audio24"],
+            ['bottom3', "Norman Bates."],
+            //['sound', "pause"],
+            ['bottom3', ". . ."],
+            //['sound', "audio24"],
+            ['bottom3', "You're not going to go out again and drive up to the diner are you?"],
+            //['sound', "audio24"],
+            ['bottom3', "No."],
+            //['sound', "audio24"],
+            ['bottom3', "The would you do me a favor, and have dinner with me?"],
+            //['sound', "audio24"],
+            ['bottom3', "Nothing special, just sandwiches and milk, but I'd like it very much if you'de come up to the house."],
+             //['sound', "audio24"],
+            ['bottom3', "I don't set a fancy table, but the kitchen is awful homey."],
+            //['sound', "audio24"],
+            ['bottom3', "I'd like to."],
+            //['sound', "audio24"],
+            ['bottom3', "Alright, yeah, you get yourself settled and take off your wet shoes, and I'll be back as soon as it's ready."],
+            ['hide', "bottom3"],
+            ['end', "Intro"]
+        ], true);
     }
 
     //directions for overlap occurances
@@ -381,12 +495,13 @@ class Motel extends Phaser.Scene {
 
     //dialogue selections
     dialogue(selection){
+        inspected += 1;
         this.tutorial.setAlpha(0);
         this.tutorial2.setAlpha(0);
         enabled = false;
         if(selection === "desk"){
             console.log("dialogue");
-            shown == true;
+            shown = true;
             this.deskInspect.hide()
             this.boxBundle = new dialogBoxBundle(this, [
                 //['sound', ""],
@@ -410,6 +525,7 @@ class Motel extends Phaser.Scene {
             if(chair1) {this.chair1Inspect.hide()};
             if(chair2) {this.chair2Inspect.hide()};
             if(chair3) {this.chair3Inspect.hide()};
+            shownC = true;
             this.boxBundle = new dialogBoxBundle(this, [
                 //['sound', "audio22"],
                 ['bottom3', "It's just a chair..."],
@@ -419,6 +535,7 @@ class Motel extends Phaser.Scene {
 
         } else if (selection === "paintingS"){
             console.log("dialogue paintingS");
+            shownSP = true;
             if(paintingS) {this.paintingSInspect.hide(); };
             this.boxBundle = new dialogBoxBundle(this, [
                 //['sound', "audio22"],
@@ -432,6 +549,7 @@ class Motel extends Phaser.Scene {
             ], true);
         } else if (selection === "paintingL"){
             console.log("dialogue paintingL");
+            shownLP = true;
             if(paintingL) {this.paintingLInspect.hide(); };
             this.boxBundle = new dialogBoxBundle(this, [
                 //['sound', "audio22"],
@@ -472,6 +590,7 @@ class Motel extends Phaser.Scene {
         } else if (selection === "lockedDresser"){
             console.log("locked dresser");
             if(lockedDresser) {this.lockedDresserInspect.hide(); };
+            shownL = true;
             if(hasKey){
             this.boxBundle = new dialogBoxBundle(this, [
                 //['sound', "audio22"],
@@ -500,6 +619,7 @@ class Motel extends Phaser.Scene {
             }
         } else if (selection === "plainDresser"){
             console.log("plain");
+            shownP = true;
             if(plainDresser) {this.plainDresserInspect.hide(); };
             this.boxBundle = new dialogBoxBundle(this, [
                 //['sound', "audio22"],
@@ -516,7 +636,7 @@ class Motel extends Phaser.Scene {
         } else if (selection === "keyDresser"){
             console.log("key");
             hasKey = true;
-            shownK == true;
+            shownK = true;
             this.keyDresserInspect.hide();
             this.boxBundle = new dialogBoxBundle(this, [
                 //['sound', "audio22"],
@@ -563,9 +683,81 @@ class Motel extends Phaser.Scene {
     }
 
     popUp(){
+        if(desk && shown){
+            this.deskCloseUp.setAlpha(1);
+        } else if (keyDresser && shownK){
+            this.keyDresserCloseUp.setAlpha(1);
+            this.time.delayedCall(100, () => {this.keyDresserCloseUpO.setAlpha(1)});
+        } else if ((chair1 || chair2 || chair3) && shownC){
+            this.chairCloseUp.setAlpha(1);
+        } else if (lockedDresser && shownL){
+            this.lockedDresserCloseUp.setAlpha(1);
+        } else if (plainDresser && shownP){
+            this.plainDresserCloseUp.setAlpha(1);
+        } else if (paintingS && shownSP){
+            this.smallP1CloseUp.setAlpha(1);
+            this.smallP2CloseUp.setAlpha(1);
+            this.smallP3CloseUp.setAlpha(1);
+        } else if (paintingL && shownLP){
+            this.largePCloseUp.setAlpha(1);
+        }
     }
 
+
+    popDown(){
+        if(hasKey){
+            this.key.setAlpha(1);
+        }
+        this.deskCloseUp.setAlpha(0);
+        this.keyDresserCloseUp.setAlpha(0);
+        this.keyDresserCloseUpO.setAlpha(0);
+        this.chairCloseUp.setAlpha(0);
+        this.lockedDresserCloseUp.setAlpha(0);
+        this.plainDresserCloseUp.setAlpha(0);
+        this.smallP1CloseUp.setAlpha(0);
+        this.smallP2CloseUp.setAlpha(0);
+        this.smallP3CloseUp.setAlpha(0);
+        this.largePCloseUp.setAlpha(0);
+        shown = false;
+        shownK = false;
+        shownC = false;
+        shownL = false;
+        shownP = false;
+        shownSP = false;
+        shownLP = false;
+       // }
+    }
+
+    NormanDialogueHandler() {
+       
+
+        //start of the game dialogue
+        if((!enabled) && inspected == 0){
+            this.boxBundle1.update();
+            if (this.boxBundle1.scriptFinished === "Intro") {
+                this.boxBundle1.remove();
+                
+                
+            } 
+            if (finishedDialogue == true){
+                this.Norman.setAlpha(0);
+                this.follower.setAlpha(1);
+                this.follower.startFollow({ duration: 5000, });
+                this.follower.flipX = true;
+                this.follower.anims.play('walkN', true);
+                this.time.delayedCall(5000, () => { 
+                    this.tutorial.alpha = 1;
+                    this.tutorial2.alpha = 1;
+                });
+            }
+        }
+            this.enabled = true;
+        }/*(if (enabled){*/
+    
     update() {
+
+        //starting game
+        this.NormanDialogueHandler();
 
         //checking inspect overlaps
         this.physics.overlap(this.Marion, this.desk);
@@ -669,6 +861,12 @@ class Motel extends Phaser.Scene {
             this.direction.normalize();
             this.Marion.setVelocity(150 * this.direction.x, 150 * this.direction.y);
 
+           
+
+            this.popDown();
+
+    } else if (!enabled) {
+        this.popUp();
     }
 
        if(this.boxBundle){
@@ -684,26 +882,7 @@ class Motel extends Phaser.Scene {
                 bgMusic.stop();
                 this.scene.start("cutScene3");
             }
-            if(!(this.boxBundle.nextInstruction === 'hide') && (desk == true)){
-                this.deskCloseUp.setAlpha(0);
-                this.time.delayedCall(100, () => {
-                    this.deskInspect.hide();
-                    desk = false;
-                    });
-            } else if (desk == true) {
-                console.log("in else if")
-                this.deskCloseUp.setAlpha(1);
-            } else if(!(this.boxBundle.nextInstruction === 'hide') && (keyDresser == true)){
-                this.keyDresserCloseUp.setAlpha(0);
-                this.time.delayedCall(100, () => {
-                    console.log("delayed call");
-                    this.keyDresserInspect.hide();
-                    keyDresser = false;
-                });
-            } else if (keyDresser == true) {
-                this.keyDresserCloseUp.setAlpha(1);
-                this.keyDresser.anims.play("open", true);
-            }
+           
         }
     }
 }

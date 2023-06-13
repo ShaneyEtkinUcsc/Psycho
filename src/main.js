@@ -79,12 +79,20 @@ let scootch_countL = 0;
 let movingRight = false;
 let movingLeft = false;
 let hasKey = false;
+let inspected = 0;
 //pausing movement when text box is on screen
-let enabled = true;
+let enabled = false;
 let movingOn = false;
 let exitFlag = false;
+let finishedDialogue = false;
+//defining pop up visibility states
 let shown = true;
 let shownK = true;
+let shownC = true;
+let shownL = true;
+let shownP = true;
+let shownSP = true;
+let shownLP = true;
 //defining inspection states
 let creatable = true;
 let desk = false;
@@ -100,7 +108,6 @@ let plainDresser = false;
 let keyDresser = false;
 let closet = false;
 let bed = false;
-
 
 //split scream defitions
 let dead = false;

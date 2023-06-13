@@ -1,6 +1,6 @@
 //this class is developed directly from my ARTG 120 game, Quilted, 
-//and was specifically designed by Alex Groff for dialouge functionality
-//this is used with his full permission to do so
+//and the base class was specifically designed by Alex Groff for dialouge functionality
+//this is used with his full permission to do so, I have overhauled it for this game
 
 class Dialog {
 

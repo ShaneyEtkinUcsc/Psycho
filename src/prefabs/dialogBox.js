@@ -45,7 +45,7 @@ class Dialog {
             textOffset = 2;
             arrowOffset.x = 1100;
             arrowOffset.y = 200;
-            this.image = scene.add.sprite(0, 400, "bottomtxt").setOrigin(0).setDepth(2000);
+            this.image = scene.add.sprite(0, 480, "bottomtxt").setOrigin(0).setDepth(2000);
 
         } else {
             console.log('Undefined Side on Dialog Box with :' + bodyText)
@@ -76,7 +76,7 @@ class Dialog {
         } else if (side == 'bottom2'){
             this.boxText = scene.add.text(centerX, 650, "", textConfig).setOrigin(0.5).setDepth(2000);
         } else if (side == 'bottom3'){
-            this.boxText = scene.add.text(centerX, 550, "", textConfig).setOrigin(0.5).setDepth(2000);
+            this.boxText = scene.add.text(centerX, 630, "", textConfig).setOrigin(0.5).setDepth(2000);
         }
 
         //adding waiting arrow

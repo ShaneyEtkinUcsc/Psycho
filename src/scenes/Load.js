@@ -119,6 +119,7 @@ class Load extends Phaser.Scene {
         //motel scene assets
         this.load.atlas("Marion", "./assets/art/MotelScene/Marion.png", "./assets/art/MotelScene/Marion.json");
         this.load.atlas("Bates", "./assets/art/MotelScene/Bates.png", "./assets/art/MotelScene/Bates.json");
+        this.load.atlas("soundBar", "./assets/art/MotelScene/Soundbar.png", "./assets/art/MotelScene/SoundBar.json")
 
         this.load.image("MotelMapImage", "./assets/art/MotelScene/MotelSet.png");
         this.load.tilemapTiledJSON("MotelMapJSON", "./assets/art/MotelScene/MotelMap.json");
@@ -137,6 +138,8 @@ class Load extends Phaser.Scene {
         this.load.image("smallPaint2", "./assets/art/MotelScene/SmallPainting_2.png");
         this.load.image("smallPaint3", "./assets/art/MotelScene/SmallPainting_3.png");
         this.load.image("bottomtxt", "./assets/art/MotelScene/textboxbottom.png");
+        this.load.image("key", "./assets/art/MotelScene/key.png");
+        
 
         //temp Motel Road Map for Placement
         //this.load.image("roadMap", "./assets/art/MotelScene/MotelMap.png")

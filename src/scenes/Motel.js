@@ -70,6 +70,7 @@ class Motel extends Phaser.Scene {
         this.tutorial2 = this.add.text(765, 230, "click on an INSPECT button to look closer at an object", tutorialConfig).setOrigin(0.5);
         this.end = this.add.text(765, 230, "Press Space to Continue", tutorialConfig).setOrigin(0.5).setAlpha(0);
         
+        //adding Marion
         this.Marion = this.physics.add.sprite(300, 400, "Marion");
         this.Marion.setSize(35, 150)
         this.Marion.setCollideWorldBounds(true);
@@ -116,6 +117,10 @@ class Motel extends Phaser.Scene {
             frameRate: 12,
             repeat: -1
         });
+
+        //adding UI elements
+        this.soundBar = this.add.sprite(1225, 300, "soundBar").setScale(0.25);
+        this.key = this.add.sprite(1225, 100, "key").setScale(0.75);
 
         //adding overlap boxes
         this.desk = this.physics.add.sprite(80, 350).setOrigin(0.5);
@@ -194,170 +199,167 @@ class Motel extends Phaser.Scene {
         //enabling overlaps
         this.physics.world.on('overlap', (obj1, obj2, body1, body2)=>{
             if(enabled){
-            if(obj2 === this.desk){
-                this.overlap("desk");
-                console.log(`${obj1.texture.key} body is overlapping this.desk`);
-            } else if(obj2 === this.chair1){
-                this.overlap("chair1");
-                console.log(`${obj1.texture.key} body is overlapping this.chair1`);
-            } else if( obj2 === this.chair2){
-                console.log(`${obj1.texture.key} body is overlapping this.chair2`);
-                this.overlap("chair2");
-            } else if( obj2 === this.chair3){
-                console.log(`${obj1.texture.key} body is overlapping this.chair3`);
-                this.overlap("chair3");
-            } else if( obj2 === this.paintingSet){
-                console.log(`${obj1.texture.key} body is overlapping this.paintingSet`);
-                this.overlap("paintingS");
-            } else if( obj2 === this.largePainting){
-                console.log(`${obj1.texture.key} body is overlapping this.largePainting`);
-                this.overlap("paintingL");
-            } else if( obj2 === this.bathroomDoor){
-                console.log(`${obj1.texture.key} body is overlapping this.bathroomDoor`);
-                this.overlap("bathDoor");
-            } else if( obj2 === this.motelDoor){
-                console.log(`${obj1.texture.key} body is overlapping this.motelDoor`);
-                this.overlap("motelDoor");
-            } else if( obj2 === this.lockedDresser){
-                console.log(`${obj1.texture.key} body is overlapping this.lockedDresser`);
-                this.overlap("lockedDresser");
-            } else if( obj2 === this.plainDresser){
-                console.log(`${obj1.texture.key} body is overlapping this.plainDresser`);
-                this.overlap("plainDresser");
-            } else if( obj2 === this.keyDresser){
-                console.log(`${obj1.texture.key} body is overlapping this.keyDresser`);
-                this.overlap("keyDresser");
-            } else if( obj2 === this.closet){
-                console.log(`${obj1.texture.key} body is overlapping this.closet`);
-                this.overlap("closet");
-            } else if (obj2 === this.bed) {
-                console.log(`${obj1.texture.key} body is overlapping this.bed`);
-                this.overlap("bed");
-            }
+                if(obj2 === this.desk){
+                    //console.log(`${obj1.texture.key} body is overlapping this.desk`);
+                    this.overlap("desk");
+                } else if(obj2 === this.chair1){
+                    //console.log(`${obj1.texture.key} body is overlapping this.chair1`);
+                    this.overlap("chair1");
+                } else if( obj2 === this.chair2){
+                    //console.log(`${obj1.texture.key} body is overlapping this.chair2`);
+                    this.overlap("chair2");
+                } else if( obj2 === this.chair3){
+                    //console.log(`${obj1.texture.key} body is overlapping this.chair3`);
+                    this.overlap("chair3");
+                } else if( obj2 === this.paintingSet){
+                    //console.log(`${obj1.texture.key} body is overlapping this.paintingSet`);
+                    this.overlap("paintingS");
+                } else if( obj2 === this.largePainting){
+                    //console.log(`${obj1.texture.key} body is overlapping this.largePainting`);
+                    this.overlap("paintingL");
+                } else if( obj2 === this.bathroomDoor){
+                    //console.log(`${obj1.texture.key} body is overlapping this.bathroomDoor`);
+                    this.overlap("bathDoor");
+                } else if( obj2 === this.motelDoor){
+                    //console.log(`${obj1.texture.key} body is overlapping this.motelDoor`);
+                    this.overlap("motelDoor");
+                } else if( obj2 === this.lockedDresser){
+                    //console.log(`${obj1.texture.key} body is overlapping this.lockedDresser`);
+                    this.overlap("lockedDresser");
+                } else if( obj2 === this.plainDresser){
+                    //console.log(`${obj1.texture.key} body is overlapping this.plainDresser`);
+                    this.overlap("plainDresser");
+                } else if( obj2 === this.keyDresser){
+                    //console.log(`${obj1.texture.key} body is overlapping this.keyDresser`);
+                    this.overlap("keyDresser");
+                } else if( obj2 === this.closet){
+                    //console.log(`${obj1.texture.key} body is overlapping this.closet`);
+                    this.overlap("closet");
+                } else if (obj2 === this.bed) {
+                    //console.log(`${obj1.texture.key} body is overlapping this.bed`);
+                    this.overlap("bed");
+                }
             }
         });
 
         //adding dialogue box
         this.boxBundle = new dialogBoxBundle(this, ['bottom3', ""], ['end', "talk"]);
-        //this.boxBundle
-
-
     }
 
     //directions for overlap occurances
     overlap(item){
         if(enabled){
-        if(item === "desk"){
-            if(!desk && creatable){
-                this.deskInspect = new Button(100, centerY - 75, "SanJoseB", "Inspect", this, () => this.dialogue("desk"));
-                desk = true;
-            } else if(desk){
-                this.deskInspect.show();
-            }
+            if(item === "desk"){
+                if(!desk && creatable){
+                    this.deskInspect = new Button(100, centerY - 75, "SanJoseB", "Inspect", this, () => this.dialogue("desk"));
+                    desk = true;
+                } else if(desk){
+                    this.deskInspect.show();
+                }
             
-        } else if (item === "chair1") {
-            if(!chair1 && creatable){
-                this.chair1Inspect = new Button(100, 500, "SanJoseB", "Inspect", this, () => this.dialogue("chair"));
-                chair1 = true;
-            } else if(chair1){
-                this.chair1Inspect.show();
-            }
-        } else if (item === "chair2"){
-            if(!chair2 && creatable){
-                this.chair2Inspect = new Button(625, 100, "SanJoseB", "Inspect", this, () => this.dialogue("chair"));
-                chair2 = true;
-            } else if(chair2){
-                this.chair2Inspect.show();
-            }
-        } else if (item === "chair3"){
-            if(!chair3 && creatable){
-                this.chair3Inspect = new Button(1100, 125, "SanJoseB", "Inspect", this, () => this.dialogue("chair"));
-                chair3 = true;
-            } else if(chair3){
-                this.chair3Inspect.show();
-            }
-        } else if (item === "paintingS"){
-            if(!paintingS && creatable){
-                this.paintingSInspect = new Button(335, 250, "SanJoseB", "Inspect", this, () => this.dialogue("paintingS"));
-                paintingS = true;
-            } else if(paintingS){
-                this.paintingSInspect.show();
-            }
-        } else if (item === "paintingL"){
-            if(!paintingL && creatable){
-                this.paintingLInspect = new Button(325, 620, "SanJoseB", "Inspect", this, () => this.dialogue("paintingL"));
-                paintingL = true;
-            } else if(paintingL){
-                this.paintingLInspect.show();
-            }
-        } else if (item === "bathDoor"){
-            if(!bathroomDoor && creatable){
-                this.bathDoorInspect = new Button(200, 200, "SanJoseB", "Inspect", this, () => this.dialogue("bathroomDoor"));
-                bathroomDoor = true;
-            } else if(bathroomDoor){
-                this.bathDoorInspect.show();
+            } else if (item === "chair1") {
+                if(!chair1 && creatable){
+                    this.chair1Inspect = new Button(100, 500, "SanJoseB", "Inspect", this, () => this.dialogue("chair"));
+                    chair1 = true;
+                } else if(chair1){
+                    this.chair1Inspect.show();
+                }
+            } else if (item === "chair2"){
+                if(!chair2 && creatable){
+                    this.chair2Inspect = new Button(625, 100, "SanJoseB", "Inspect", this, () => this.dialogue("chair"));
+                    chair2 = true;
+                } else if(chair2){
+                    this.chair2Inspect.show();
+                }
+            } else if (item === "chair3"){
+                if(!chair3 && creatable){
+                    this.chair3Inspect = new Button(1100, 125, "SanJoseB", "Inspect", this, () => this.dialogue("chair"));
+                    chair3 = true;
+                } else if(chair3){
+                    this.chair3Inspect.show();
+                }
+            } else if (item === "paintingS"){
+                if(!paintingS && creatable){
+                    this.paintingSInspect = new Button(335, 250, "SanJoseB", "Inspect", this, () => this.dialogue("paintingS"));
+                    paintingS = true;
+                } else if(paintingS){
+                    this.paintingSInspect.show();
+                }
+            } else if (item === "paintingL"){
+                if(!paintingL && creatable){
+                    this.paintingLInspect = new Button(325, 620, "SanJoseB", "Inspect", this, () => this.dialogue("paintingL"));
+                    paintingL = true;
+                } else if(paintingL){
+                    this.paintingLInspect.show();
+                }
+            } else if (item === "bathDoor"){
+                if(!bathroomDoor && creatable){
+                    this.bathDoorInspect = new Button(200, 200, "SanJoseB", "Inspect", this, () => this.dialogue("bathroomDoor"));
+                    bathroomDoor = true;
+                } else if(bathroomDoor){
+                    this.bathDoorInspect.show();
+                }
+
+            } else if (item === "motelDoor"){
+                if(!motelDoor && creatable){
+                    this.motelDoorInspect = new Button(1200, 250, "SanJoseB", "Inspect", this, () => this.dialogue("motelDoor"));
+                    motelDoor = true;
+                } else if(motelDoor){
+                    this.motelDoorInspect.show();
+                }
+
+            } else if (item === "lockedDresser"){
+                if(!lockedDresser && creatable){
+                    this.lockedDresserInspect = new Button(510, 550, "SanJoseB", "Inspect", this, () => this.dialogue("lockedDresser"));
+                    lockedDresser = true;
+                } else if(lockedDresser){
+                    this.lockedDresserInspect.show();
+                }
+            } else if (item === "plainDresser"){
+                if(!plainDresser && creatable){
+                    this.plainDresserInspect = new Button(1150, 450, "SanJoseB", "Inspect", this, () => this.dialogue("plainDresser"));
+                    plainDresser = true;
+                } else if(plainDresser){
+                    this.plainDresserInspect.show();
+                }
+            } else if (item === "keyDresser"){
+                if(!keyDresser && creatable){
+                    this.keyDresserInspect = new Button(835, 100, "SanJoseB", "Inspect", this, () => this.dialogue("keyDresser"));
+                    keyDresser = true;
+                } else if(keyDresser){
+                    this.keyDresserInspect.show();
+                }
+            } else if (item === "closet"){
+                if(!closet && creatable){
+                    this.closetInspect = new Button(400, 30, "SanJoseB", "Inspect", this, () => this.dialogue("closet"));
+                    closet = true;
+                } else if(closet){
+                    this.closetInspect.show();
+                }
+            } else if (item === "bed"){
+                if(!bed && creatable){
+                    this.bedInspect = new Button(730, 500, "SanJoseB", "Inspect", this, () => this.dialogue("bed"));
+                    bed = true;
+                } else if(bed){
+                    this.bedInspect.show();
+                }
             }
 
-        } else if (item === "motelDoor"){
-            if(!motelDoor && creatable){
-                this.motelDoorInspect = new Button(1200, 250, "SanJoseB", "Inspect", this, () => this.dialogue("motelDoor"));
-                motelDoor = true;
-            } else if(motelDoor){
-                this.motelDoorInspect.show();
-            }
-
-        } else if (item === "lockedDresser"){
-            if(!lockedDresser && creatable){
-                this.lockedDresserInspect = new Button(510, 550, "SanJoseB", "Inspect", this, () => this.dialogue("lockedDresser"));
-                lockedDresser = true;
-            } else if(lockedDresser){
-                this.lockedDresserInspect.show();
-            }
-        } else if (item === "plainDresser"){
-            if(!plainDresser && creatable){
-                this.plainDresserInspect = new Button(1150, 450, "SanJoseB", "Inspect", this, () => this.dialogue("plainDresser"));
-                plainDresser = true;
-            } else if(plainDresser){
-                this.plainDresserInspect.show();
-            }
-        } else if (item === "keyDresser"){
-            if(!keyDresser && creatable){
-                this.keyDresserInspect = new Button(835, 100, "SanJoseB", "Inspect", this, () => this.dialogue("keyDresser"));
-                keyDresser = true;
-            } else if(keyDresser){
-                this.keyDresserInspect.show();
-            }
-        } else if (item === "closet"){
-            if(!closet && creatable){
-                this.closetInspect = new Button(400, 30, "SanJoseB", "Inspect", this, () => this.dialogue("closet"));
-                closet = true;
-            } else if(closet){
-                this.closetInspect.show();
-            }
-        } else if (item === "bed"){
-            if(!bed && creatable){
-                this.bedInspect = new Button(730, 500, "SanJoseB", "Inspect", this, () => this.dialogue("bed"));
-                bed = true;
-            } else if(bed){
-                this.bedInspect.show();
-            }
-        }
-
-        this.time.delayedCall(100, () => {
-            if(desk){ this.deskInspect.hide(); }
-            if(chair1){ this.chair1Inspect.hide(); }
-            if(chair2){ this.chair2Inspect.hide(); }
-            if(chair3){ this.chair3Inspect.hide(); }
-            if(paintingS){ this.paintingSInspect.hide(); }
-            if(paintingL){ this.paintingLInspect.hide(); }
-            if(bathroomDoor){ this.bathDoorInspect.hide(); }
-            if(motelDoor){ this.motelDoorInspect.hide(); }
-            if(lockedDresser){ this.lockedDresserInspect.hide(); }
-            if(plainDresser){ this.plainDresserInspect.hide(); }
-            if(keyDresser){ this.keyDresserInspect.hide(); }
-            if(closet){ this.closetInspect.hide(); }
-            if(bed){ this.bedInspect.hide(); }
-        });
+            this.time.delayedCall(100, () => {
+                if(desk){ this.deskInspect.hide(); }
+                if(chair1){ this.chair1Inspect.hide(); }
+                if(chair2){ this.chair2Inspect.hide(); }
+                if(chair3){ this.chair3Inspect.hide(); }
+                if(paintingS){ this.paintingSInspect.hide(); }
+                if(paintingL){ this.paintingLInspect.hide(); }
+                if(bathroomDoor){ this.bathDoorInspect.hide(); }
+                if(motelDoor){ this.motelDoorInspect.hide(); }
+                if(lockedDresser){ this.lockedDresserInspect.hide(); }
+                if(plainDresser){ this.plainDresserInspect.hide(); }
+                if(keyDresser){ this.keyDresserInspect.hide(); }
+                if(closet){ this.closetInspect.hide(); }
+                if(bed){ this.bedInspect.hide(); }
+            });
         }
     }
 
@@ -369,8 +371,7 @@ class Motel extends Phaser.Scene {
         if(selection === "desk"){
             console.log("dialogue");
             shown == true;
-            /*if(desk) {*/this.deskInspect.hide()/*};*/
-            console.log("this: " + this);
+            this.deskInspect.hide()
             this.boxBundle = new dialogBoxBundle(this, [
                 //['sound', ""],
                 ['bottom3', "Looks like taxidermy. Hmm... it looks like there's a plaque on the base."],
@@ -545,18 +546,10 @@ class Motel extends Phaser.Scene {
             });
     }
 
-    /*vlean(){
-        
-        this.zone.body.touching.none = zoneInspect.destroy();
-    }*/
+    popUp(){
+    }
 
-    /*stop() {
-        if (this.physics.collide(this.Marion, this.physics.world.bounds
-    }*/
-   
     update() {
-
-        //checking collisions
 
         //checking inspect overlaps
         this.physics.overlap(this.Marion, this.desk);
@@ -577,7 +570,8 @@ class Motel extends Phaser.Scene {
         this.direction = new Phaser.Math.Vector2(0);
 
        //using workaround for known phaser3 fadeIn bug
-        //allowing bgMusic to still loop
+       //that prevents bgMusic from looping
+       //I learned this from https://www.html5gamedevs.com/topic/13947-audio-not-looping-in-chrome/
        var musicConfig = {
             mute: false,
             volume: 2,
@@ -596,7 +590,6 @@ class Motel extends Phaser.Scene {
             delay: 0
          }
 
-         
         let bgMusic = this.sound.get("hotelMusic");
          if(!bgMusic.isPlaying) {
             bgMusic.play(musicConfig);
@@ -604,61 +597,61 @@ class Motel extends Phaser.Scene {
 
         //checking up and down movement and playing corresponding animation and sound
         if(enabled){
-        if((this.input.keyboard.checkDown(keyW) || this.input.keyboard.checkDown(keyUP)) && this.direction.x == 0){
-            this.direction.y = -1;
-            this.Marion.flipX = false;
-            this.Marion.anims.play("walkUp", true);
-            if(!this.Mfootsteps.isPlaying) {
-                this.Mfootsteps.play(sfxConfig);
+            if((this.input.keyboard.checkDown(keyW) || this.input.keyboard.checkDown(keyUP)) && this.direction.x == 0){
+                this.direction.y = -1;
+                this.Marion.flipX = false;
+                this.Marion.anims.play("walkUp", true);
+                if(!this.Mfootsteps.isPlaying) {
+                    this.Mfootsteps.play(sfxConfig);
+                }
+            } else if ((Phaser.Input.Keyboard.JustUp(keyW) || Phaser.Input.Keyboard.JustUp(keyUP)) && this.direction.x == 0){
+                this.Marion.anims.play("idle", true); 
+                if(this.Mfootsteps.isPlaying) {
+                    this.Mfootsteps.stop();
+                }
+            } else if ((this.input.keyboard.checkDown(keyS) || this.input.keyboard.checkDown(keyDOWN)) && this.direction.x == 0) {
+                this.direction.y = 1;
+                this.Marion.flipX = true;
+                this.Marion.anims.play("walkUp", true);
+                if(!this.Mfootsteps.isPlaying) {
+                    this.Mfootsteps.play(sfxConfig);
+                }
+            } else if ((Phaser.Input.Keyboard.JustUp(keyS) || Phaser.Input.Keyboard.JustUp(keyDOWN)) && this.direction.x == 0){
+                this.Marion.anims.play("idle", true); 
+                if(this.Mfootsteps.isPlaying) {
+                    this.Mfootsteps.stop();
+                }
             }
-        } else if ((Phaser.Input.Keyboard.JustUp(keyW) || Phaser.Input.Keyboard.JustUp(keyUP)) && this.direction.x == 0){
-            this.Marion.anims.play("idle", true); 
-            if(this.Mfootsteps.isPlaying) {
-                this.Mfootsteps.stop();
-            }
-        } else if ((this.input.keyboard.checkDown(keyS) || this.input.keyboard.checkDown(keyDOWN)) && this.direction.x == 0) {
-            this.direction.y = 1;
-            this.Marion.flipX = true;
-            this.Marion.anims.play("walkUp", true);
-            if(!this.Mfootsteps.isPlaying) {
-                this.Mfootsteps.play(sfxConfig);
-            }
-        } else if ((Phaser.Input.Keyboard.JustUp(keyS) || Phaser.Input.Keyboard.JustUp(keyDOWN)) && this.direction.x == 0){
-            this.Marion.anims.play("idle", true); 
-            if(this.Mfootsteps.isPlaying) {
-                this.Mfootsteps.stop();
-            }
-        }
 
-        //checking left and right movement
-        if((this.input.keyboard.checkDown(keyA) || this.input.keyboard.checkDown(keyLEFT)) && this.direction.y == 0){
-            this.direction.x = -1;
-            this.Marion.flipX = false;
-            this.Marion.anims.play("walkR", true);
-            if(!this.Mfootsteps.isPlaying) {
-                this.Mfootsteps.play(sfxConfig);
+            //checking left and right movement
+            if((this.input.keyboard.checkDown(keyA) || this.input.keyboard.checkDown(keyLEFT)) && this.direction.y == 0){
+                this.direction.x = -1;
+                this.Marion.flipX = false;
+                this.Marion.anims.play("walkR", true);
+                if(!this.Mfootsteps.isPlaying) {
+                    this.Mfootsteps.play(sfxConfig);
+                }
+            } else if ((Phaser.Input.Keyboard.JustUp(keyA) || Phaser.Input.Keyboard.JustUp(keyLEFT)) && this.direction.y == 0){
+                this.Marion.anims.play("idle", true);
+                if(this.Mfootsteps.isPlaying) {
+                    this.Mfootsteps.stop();
+                }
+            } else if ((this.input.keyboard.checkDown(keyD) || this.input.keyboard.checkDown(keyRIGHT)) && this.direction.y == 0){
+                this.direction.x = 1;
+                this.Marion.flipX = true;
+                this.Marion.anims.play("walkR", true);
+                if(!this.Mfootsteps.isPlaying) {
+                    this.Mfootsteps.play(sfxConfig);
+                }
+            } else if ((Phaser.Input.Keyboard.JustUp(keyD) || Phaser.Input.Keyboard.JustUp(keyRIGHT)) && this.direction.y == 0){
+                this.Marion.anims.play("idle", true);
+                if(this.Mfootsteps.isPlaying) {
+                    this.Mfootsteps.stop();
+                }
             }
-        } else if ((Phaser.Input.Keyboard.JustUp(keyA) || Phaser.Input.Keyboard.JustUp(keyLEFT)) && this.direction.y == 0){
-            this.Marion.anims.play("idle", true);
-            if(this.Mfootsteps.isPlaying) {
-                this.Mfootsteps.stop();
-            }
-        } else if ((this.input.keyboard.checkDown(keyD) || this.input.keyboard.checkDown(keyRIGHT)) && this.direction.y == 0){
-            this.direction.x = 1;
-            this.Marion.flipX = true;
-            this.Marion.anims.play("walkR", true);
-            if(!this.Mfootsteps.isPlaying) {
-                this.Mfootsteps.play(sfxConfig);
-            }
-        } else if ((Phaser.Input.Keyboard.JustUp(keyD) || Phaser.Input.Keyboard.JustUp(keyRIGHT)) && this.direction.y == 0){
-            this.Marion.anims.play("idle", true);
-            if(this.Mfootsteps.isPlaying) {
-                this.Mfootsteps.stop();
-            }
-        }
 
-        this.direction.normalize();
-        this.Marion.setVelocity(150 * this.direction.x, 150 * this.direction.y);
+            this.direction.normalize();
+            this.Marion.setVelocity(150 * this.direction.x, 150 * this.direction.y);
 
     }
 
@@ -670,7 +663,9 @@ class Motel extends Phaser.Scene {
             }
             if(this.boxBundle.scriptFinished === "talk7.5" && exitFlag){ movingOn = true; };
             if(hasKey && movingOn){
-                console.log("exit conditions")
+                console.log("exit conditions");
+                this.cameras.main.fadeOut(3000, 0, 0);
+                bgMusic.stop();
                 this.scene.start("cutScene3");
             }
             if(!(this.boxBundle.nextInstruction === 'hide') && (desk == true)){

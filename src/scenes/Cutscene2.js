@@ -102,7 +102,7 @@ class Cutscene2 extends Phaser.Scene {
 
         this.Date2 = this.add.sprite(centerX, centerY, 'date2', 'Date2ndScene9.png').play("date2play");
 
-        this.time.delayedCall(8300, () => {
+        this.time.delayedCall(7500, () => {
             this.scene.start("motelScene");
         })
 

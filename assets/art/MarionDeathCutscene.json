@@ -1,0 +1,188 @@
+{
+	"textures": [
+		{
+			"image": "MarionDeathCutscene.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 92,
+				"h": 1248
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "MarionDeathCutscene1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 90,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 90,
+						"h": 154
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 90,
+						"h": 154
+					}
+				},
+				{
+					"filename": "MarionDeathCutscene2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 90,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 90,
+						"h": 154
+					},
+					"frame": {
+						"x": 1,
+						"y": 157,
+						"w": 90,
+						"h": 154
+					}
+				},
+				{
+					"filename": "MarionDeathCutscene3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 90,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 90,
+						"h": 154
+					},
+					"frame": {
+						"x": 1,
+						"y": 313,
+						"w": 90,
+						"h": 154
+					}
+				},
+				{
+					"filename": "MarionDeathCutscene4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 90,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 90,
+						"h": 154
+					},
+					"frame": {
+						"x": 1,
+						"y": 469,
+						"w": 90,
+						"h": 154
+					}
+				},
+				{
+					"filename": "MarionDeathCutscene5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 90,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 90,
+						"h": 154
+					},
+					"frame": {
+						"x": 1,
+						"y": 625,
+						"w": 90,
+						"h": 154
+					}
+				},
+				{
+					"filename": "MarionDeathCutscene6.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 90,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 90,
+						"h": 154
+					},
+					"frame": {
+						"x": 1,
+						"y": 781,
+						"w": 90,
+						"h": 154
+					}
+				},
+				{
+					"filename": "MarionDeathCutscene7.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 90,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 90,
+						"h": 154
+					},
+					"frame": {
+						"x": 1,
+						"y": 937,
+						"w": 90,
+						"h": 154
+					}
+				},
+				{
+					"filename": "MarionDeathCutscene8.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 90,
+						"h": 154
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 90,
+						"h": 154
+					},
+					"frame": {
+						"x": 1,
+						"y": 1093,
+						"w": 90,
+						"h": 154
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:2d80e813b0bb34280fd8da6ad4c52725:afabcc338ce5d083b127c771d4be27f2:8dbe786f72926e894a435879e2db7c13$"
+	}
+}

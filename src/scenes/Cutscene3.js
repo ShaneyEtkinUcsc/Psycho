@@ -117,11 +117,34 @@ class Cutscene3 extends Phaser.Scene {
             repeat: -1
         })
 
+        //audio configs
+        var soundConfig = {
+            mute: false,
+            volume: 0.3,
+            detune: 0,
+            seek: 0,
+            loop: false,
+            delay: 0,
+            fade: true,
+        };
+
+        //showering background audio
+        this.showering = this.sound.add("showering");
+        this.showering.play(soundConfig);
+        //THE KNIFE music (spooky)
+        this.knife = this.sound.add("knife");
+        this.knife.play(soundConfig);
+
+        //Marion stab anim create
         this.MarionDeath = this.add.sprite(centerX, centerY, 'mariondeath', 'MarionDeathCutscene1.png').play("mariondying");
         this.MarionDeath.setScale(4);
 
+        //delayed call, create date slide and play scream
         this.time.delayedCall(400, () => {
-            this.Date2 = this.add.sprite(centerX, centerY, 'date2', 'Date2ndScene9.png').play("date2play");
+            this.scream = this.sound.add("scream");
+            this.scream.play(soundConfig);
+
+            this.Date2 = this.add.sprite(centerX, centerY, 'date3', 'Date3rdScene9.png').play("date3play");
         })
 
         this.time.delayedCall(8000, () => {

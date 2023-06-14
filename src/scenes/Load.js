@@ -237,8 +237,13 @@ class Load extends Phaser.Scene {
         this.load.audio("sp2", "./assets/sound/MotelScene/ObjectDialogue/sp2.m4a");
         this.load.audio("sp3", "./assets/sound/MotelScene/ObjectDialogue/sp3.m4a");
 
-        //marion death atlas
+        //cutscene 3 audio and atlas
         this.load.atlas("mariondeath", "./assets/art/MarionDeathCutscene.png", "./assets/art/MarionDeathCutscene.json");
+        this.load.audio("showering", "./assets/sound/MotelScene/ShowerSound.mp3");
+        this.load.audio("scream", "./assets/sound/MotelScene/PsychoScream.mp3");
+
+        //THE KNIFE
+        this.load.audio("knife", "./assets/sound/TheKnife.mp3");
     }
 
 

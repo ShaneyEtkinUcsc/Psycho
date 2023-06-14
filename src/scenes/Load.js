@@ -201,11 +201,12 @@ class Load extends Phaser.Scene {
         this.load.audio("audio90", "./assets/sound/MotelScene/SecondaryConversation/audio90.m4a");
 
         //object dialogue
-        this.load.audio("bed","./assets/sound/MotelScene/ObjectDialogue/bed.m4a");
-        this.load.audio("chair","./assets/sound/MotelScene/ObjectDialogue/chair.m4a");
-        this.load.audio("closet1","./assets/sound/MotelScene/ObjectDialogue/closet1.m4a");
-        this.load.audio("closet2","./assets/sound/MotelScene/ObjectDialogue/closet2.m4a");
-        this.load.audio("closet3","./assets/sound/MotelScene/ObjectDialogue/closet3.m4a");
+        this.load.audio("expo", "./assets/sound/MotelScene/exposition.m4a")
+        this.load.audio("bed", "./assets/sound/MotelScene/ObjectDialogue/bed.m4a");
+        this.load.audio("chair", "./assets/sound/MotelScene/ObjectDialogue/chair.m4a");
+        this.load.audio("closet1", "./assets/sound/MotelScene/ObjectDialogue/closet1.m4a");
+        this.load.audio("closet2", "./assets/sound/MotelScene/ObjectDialogue/closet2.m4a");
+        this.load.audio("closet3", "./assets/sound/MotelScene/ObjectDialogue/closet3.m4a");
         this.load.audio("desk1", "./assets/sound/MotelScene/ObjectDialogue/desk1.m4a");
         this.load.audio("desk2", "./assets/sound/MotelScene/ObjectDialogue/desk2.m4a");
         this.load.audio("desk3", "./assets/sound/MotelScene/ObjectDialogue/desk3.m4a");
@@ -220,6 +221,7 @@ class Load extends Phaser.Scene {
         this.load.audio("locked1", "./assets/sound/MotelScene/ObjectDialogue/locked1.m4a");
         this.load.audio("locked2", "./assets/sound/MotelScene/ObjectDialogue/locked2.m4a");
         this.load.audio("locked3", "./assets/sound/MotelScene/ObjectDialogue/locked3.m4a");
+        this.load.audio("locked4", "./assets/sound/MotelScene/ObjectDialogue/locked4.m4a");
         this.load.audio("lp1", "./assets/sound/MotelScene/ObjectDialogue/lp1.m4a");
         this.load.audio("lp2", "./assets/sound/MotelScene/ObjectDialogue/lp2.m4a");
         this.load.audio("lp3", "./assets/sound/MotelScene/ObjectDialogue/lp3.m4a");

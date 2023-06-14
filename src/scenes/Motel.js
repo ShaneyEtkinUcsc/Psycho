@@ -399,7 +399,7 @@ class Motel extends Phaser.Scene {
             ['sound', "audio56"],
             ['bottom3', "Then would you do me a favor, and have dinner with me?"],
             ['sound', "audio57"],
-            ['bottom3', "Nothing special, just sandwiches and milk, but I'd like it very much if you'de come up to the house."],
+            ['bottom3', "Nothing special, just sandwiches and milk, but I'd like it very much if you'd come up to the house."],
             ['sound', "audio58"],
             ['bottom3', "I don't set a fancy table, but the kitchen is awful homey."],
             ['sound', "audio59"],
@@ -632,7 +632,7 @@ class Motel extends Phaser.Scene {
             if(chair3) {this.chair3Inspect.hide()};
             shownC = true;
             this.boxBundle = new dialogBoxBundle(this, [
-                //['sound', "audio22"],
+                ['sound', "chair"],
                 ['bottom3', "It's just a chair..."],
                 ['hide', "bottom3"],
                 ['end', "talk2"]
@@ -852,7 +852,7 @@ class Motel extends Phaser.Scene {
                     this.tutorial.alpha = 1;
                     this.tutorial2.alpha = 1;
                     this.boxBundle = new dialogBoxBundle(this, [
-                        //['sound', ""],
+                        ['sound', "expo"],
                         ['bottom3', "Now... where to hide this cash..."],
                         ['hide', "bottom3"],
                         ['end', "talk1"]
@@ -918,7 +918,7 @@ class Motel extends Phaser.Scene {
        //I learned this from https://www.html5gamedevs.com/topic/13947-audio-not-looping-in-chrome/
        var musicConfig = {
             mute: false,
-            volume: 1,
+            volume: 0.5,
             detune: 0,
             seek: 0,
             loop: true,
@@ -996,8 +996,6 @@ class Motel extends Phaser.Scene {
 
             this.direction.normalize();
             this.Marion.setVelocity(150 * this.direction.x, 150 * this.direction.y);
-
-           
 
             this.popDown();
 

@@ -76,8 +76,6 @@ let scootch_countL = 0;
 
 //motel definitions
 //defining player states
-let movingRight = false;
-let movingLeft = false;
 let hasKey = false;
 let inspected = 0;
 //pausing movement when text box is on screen

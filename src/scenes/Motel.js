@@ -13,9 +13,8 @@ class Motel extends Phaser.Scene {
         //adding music
         this.sound.add("hotelMusic")
         
-
+        //adding sound effect for Marion's feet
         this.Mfootsteps = this.sound.add("Mfootsfx");
-        //this.Mfootsteps = this.sound.get("Mfootsfx");
 
         var musicConfig = {
             mute: false,
@@ -480,7 +479,7 @@ class Motel extends Phaser.Scene {
 
     }
 
-    //directions for overlap occurances
+    //inspect directions for overlap occurances
     overlap(item){
         if(enabled){
             if(item === "desk"){

@@ -149,7 +149,91 @@ class Load extends Phaser.Scene {
         this.load.audio("Mfootsfx", "./assets/sound/MotelScene/carpetFootstep.mp3");
         this.load.audio("lockedDrawer", "./assets/sound/MotelScene/lockedDrawer.mp3");
         this.load.audio("searchingDrawer", "./assets/sound/MotelScene/searchingDrawer.mp3");
+        this.load.audio("drawerUnlock", "./assets/sound/MotelScene/drawerUnlock.mp3");
 
+        //motel scene voice audio
+        //initial conversation block
+        this.load.audio("audio47", "./assets/sound/MotelScene/InitialConversation/audio47.m4a");
+        this.load.audio("audio48", "./assets/sound/MotelScene/InitialConversation/audio48.m4a");
+        this.load.audio("audio49", "./assets/sound/MotelScene/InitialConversation/audio49.m4a");
+        this.load.audio("audio50", "./assets/sound/MotelScene/InitialConversation/audio50.m4a");
+        this.load.audio("audio51", "./assets/sound/MotelScene/InitialConversation/audio51.m4a");
+        this.load.audio("audio52", "./assets/sound/MotelScene/InitialConversation/audio52.m4a");
+        this.load.audio("audio53", "./assets/sound/MotelScene/InitialConversation/audio53.m4a");
+        this.load.audio("audio54", "./assets/sound/MotelScene/InitialConversation/audio54.m4a");
+        this.load.audio("audio55", "./assets/sound/MotelScene/InitialConversation/audio55.m4a");
+        this.load.audio("audio56", "./assets/sound/MotelScene/InitialConversation/audio56.m4a");
+        this.load.audio("audio57", "./assets/sound/MotelScene/InitialConversation/audio57.m4a");
+        this.load.audio("audio58", "./assets/sound/MotelScene/InitialConversation/audio58.m4a");
+        this.load.audio("audio59", "./assets/sound/MotelScene/InitialConversation/audio59.m4a");
+        this.load.audio("audio60", "./assets/sound/MotelScene/InitialConversation/audio60.m4a");
+
+        //secondary conversation block
+        this.load.audio("audio61", "./assets/sound/MotelScene/SecondaryConversation/audio61.m4a");
+        this.load.audio("audio62", "./assets/sound/MotelScene/SecondaryConversation/audio62.m4a");
+        this.load.audio("audio63", "./assets/sound/MotelScene/SecondaryConversation/audio63.m4a");
+        this.load.audio("audio64", "./assets/sound/MotelScene/SecondaryConversation/audio64.m4a");
+        this.load.audio("audio65", "./assets/sound/MotelScene/SecondaryConversation/audio65.m4a");
+        this.load.audio("audio66", "./assets/sound/MotelScene/SecondaryConversation/audio66.m4a");
+        this.load.audio("audio67", "./assets/sound/MotelScene/SecondaryConversation/audio67.m4a");
+        this.load.audio("audio68", "./assets/sound/MotelScene/SecondaryConversation/audio68.m4a");
+        this.load.audio("audio69", "./assets/sound/MotelScene/SecondaryConversation/audio69.m4a");
+        this.load.audio("audio70", "./assets/sound/MotelScene/SecondaryConversation/audio70.m4a");
+        this.load.audio("audio71", "./assets/sound/MotelScene/SecondaryConversation/audio71.m4a");
+        this.load.audio("audio72", "./assets/sound/MotelScene/SecondaryConversation/audio72.m4a");
+        this.load.audio("audio73", "./assets/sound/MotelScene/SecondaryConversation/audio73.m4a");
+        this.load.audio("audio74", "./assets/sound/MotelScene/SecondaryConversation/audio74.m4a");
+        this.load.audio("audio75", "./assets/sound/MotelScene/SecondaryConversation/audio75.m4a");
+        this.load.audio("audio76", "./assets/sound/MotelScene/SecondaryConversation/audio76.m4a");
+        this.load.audio("audio77", "./assets/sound/MotelScene/SecondaryConversation/audio77.m4a");
+        this.load.audio("audio78", "./assets/sound/MotelScene/SecondaryConversation/audio78.m4a");
+        this.load.audio("audio79", "./assets/sound/MotelScene/SecondaryConversation/audio79.m4a");
+        this.load.audio("audio80", "./assets/sound/MotelScene/SecondaryConversation/audio80.m4a");
+        this.load.audio("audio81", "./assets/sound/MotelScene/SecondaryConversation/audio81.m4a");
+        this.load.audio("audio82", "./assets/sound/MotelScene/SecondaryConversation/audio82.m4a");
+        this.load.audio("audio83", "./assets/sound/MotelScene/SecondaryConversation/audio83.m4a");
+        this.load.audio("audio84", "./assets/sound/MotelScene/SecondaryConversation/audio84.m4a");
+        this.load.audio("audio85", "./assets/sound/MotelScene/SecondaryConversation/audio85.m4a");
+        this.load.audio("audio86", "./assets/sound/MotelScene/SecondaryConversation/audio86.m4a");
+        this.load.audio("audio87", "./assets/sound/MotelScene/SecondaryConversation/audio87.m4a");
+        this.load.audio("audio88", "./assets/sound/MotelScene/SecondaryConversation/audio88.m4a");
+        this.load.audio("audio89", "./assets/sound/MotelScene/SecondaryConversation/audio89.m4a");
+        this.load.audio("audio90", "./assets/sound/MotelScene/SecondaryConversation/audio90.m4a");
+
+        //object dialogue
+        this.load.audio("bed","./assets/sound/MotelScene/ObjectDialogue/bed.m4a");
+        this.load.audio("chair","./assets/sound/MotelScene/ObjectDialogue/chair.m4a");
+        this.load.audio("closet1","./assets/sound/MotelScene/ObjectDialogue/closet1.m4a");
+        this.load.audio("closet2","./assets/sound/MotelScene/ObjectDialogue/closet2.m4a");
+        this.load.audio("closet3","./assets/sound/MotelScene/ObjectDialogue/closet3.m4a");
+        this.load.audio("desk1", "./assets/sound/MotelScene/ObjectDialogue/desk1.m4a");
+        this.load.audio("desk2", "./assets/sound/MotelScene/ObjectDialogue/desk2.m4a");
+        this.load.audio("desk3", "./assets/sound/MotelScene/ObjectDialogue/desk3.m4a");
+        this.load.audio("desk4", "./assets/sound/MotelScene/ObjectDialogue/desk4.m4a");
+        this.load.audio("desk5", "./assets/sound/MotelScene/ObjectDialogue/desk5.m4a");
+        this.load.audio("desk6", "./assets/sound/MotelScene/ObjectDialogue/desk6.m4a");
+        this.load.audio("door1", "./assets/sound/MotelScene/ObjectDialogue/door1.m4a");
+        this.load.audio("door2", "./assets/sound/MotelScene/ObjectDialogue/door2.m4a");
+        this.load.audio("key1", "./assets/sound/MotelScene/ObjectDialogue/key1.m4a");
+        this.load.audio("key2", "./assets/sound/MotelScene/ObjectDialogue/key2.m4a");
+        this.load.audio("key3", "./assets/sound/MotelScene/ObjectDialogue/key3.m4a");
+        this.load.audio("locked1", "./assets/sound/MotelScene/ObjectDialogue/locked1.m4a");
+        this.load.audio("locked2", "./assets/sound/MotelScene/ObjectDialogue/locked2.m4a");
+        this.load.audio("locked3", "./assets/sound/MotelScene/ObjectDialogue/locked3.m4a");
+        this.load.audio("lp1", "./assets/sound/MotelScene/ObjectDialogue/lp1.m4a");
+        this.load.audio("lp2", "./assets/sound/MotelScene/ObjectDialogue/lp2.m4a");
+        this.load.audio("lp3", "./assets/sound/MotelScene/ObjectDialogue/lp3.m4a");
+        this.load.audio("lp4", "./assets/sound/MotelScene/ObjectDialogue/lp4.m4a");
+        this.load.audio("lp5", "./assets/sound/MotelScene/ObjectDialogue/lp5.m4a");
+        this.load.audio("lp6", "./assets/sound/MotelScene/ObjectDialogue/lp6.m4a");
+        this.load.audio("plain1", "./assets/sound/MotelScene/ObjectDialogue/plain1.m4a");
+        this.load.audio("plain2", "./assets/sound/MotelScene/ObjectDialogue/plain2.m4a");
+        this.load.audio("plain3", "./assets/sound/MotelScene/ObjectDialogue/plain3.m4a");
+        this.load.audio("plain4", "./assets/sound/MotelScene/ObjectDialogue/plain4.m4a");
+        this.load.audio("shower", "./assets/sound/MotelScene/ObjectDialogue/shower.m4a");
+        this.load.audio("sp1", "./assets/sound/MotelScene/ObjectDialogue/sp1.m4a");
+        this.load.audio("sp2", "./assets/sound/MotelScene/ObjectDialogue/sp2.m4a");
+        this.load.audio("sp3", "./assets/sound/MotelScene/ObjectDialogue/sp3.m4a");
     }
 
 

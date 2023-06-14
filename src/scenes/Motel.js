@@ -141,6 +141,8 @@ class Motel extends Phaser.Scene {
         this.Norman.setScale(1.03);
         this.Norman.setDepth(300);
 
+        this.NormanB = this.physics.add.sprite(1100, 260, "Bates").setScale(1.03).setDepth(300).setAlpha(0);
+
         //creating Norman's animations
         this.anims.create({
             key: "walkN",
@@ -166,14 +168,25 @@ class Motel extends Phaser.Scene {
         this.graphics2;
         this.follower;
 
-        this.graphics1 = this.add.graphics({ lineStyle: { color: 0x666666 } });
-
+        //first movement
+        //this.graphics1 = this.add.graphics({ lineStyle: { color: 0x666666 } });
+    
         this.path = new Phaser.Curves.Path(500, 260);
         this.path.lineTo(1400, 260);
-        this.path.draw(this.graphics1);
+        //this.path.draw(this.graphics1);
 
         this.follower = this.add.follower(this.path, 500, 260, 'Bates')
         this.follower.setAlpha(0);
+
+        //second movement
+        //this.graphics2 = this.add.graphics({ lineStyle: { color: 0xFFFFFF } });
+
+        this.path2 = new Phaser.Curves.Path(1400, 260);
+        this.path2.lineTo (1100, 260);
+        //this.path2.draw(this.graphics2);
+        //this.path2.startPoint(1400, 260);
+        //console.log(this.path2.getEndPoint());
+
 
         //adding UI elements
         this.soundBar = this.add.sprite(1225, 300, "soundBar").setScale(0.25);
@@ -189,10 +202,21 @@ class Motel extends Phaser.Scene {
                 {key: "soundBar", frame: "Soundbar4.png"},
                 {key: "soundBar", frame: "Soundbar5.png"},
             ],
-            frameRate: 12,
+            frameRate: 4,
             //repeat: -1,
             //yoyo: true,
         });
+
+        this.anims.create({
+            key: "UP",
+            frames: [
+                {key: "soundBar", frame: "Soundbar5.png"},
+            ],
+            frameRate: 4,
+            repeat: -1,
+            //yoyo: true,
+        });
+
 
         this.anims.create({
             key: "soundDown",
@@ -203,10 +227,21 @@ class Motel extends Phaser.Scene {
                 {key: "soundBar", frame: "Soundbar2.png"},
                 {key: "soundBar", frame: "Soundbar1.png"},
             ],
-            frameRate: 12,
+            frameRate: 4,
             //repeat: -1,
             //yoyo: true,
         });
+
+        this.anims.create({
+            key: "DOWN",
+            frames: [
+                {key: "soundBar", frame: "Soundbar1.png"},
+            ],
+            frameRate: 4,
+            repeat: -1,
+            //yoyo: true,
+        });
+
 
         //adding overlap boxes for room objects
         this.desk = this.physics.add.sprite(80, 350).setOrigin(0.5);
@@ -341,39 +376,108 @@ class Motel extends Phaser.Scene {
         //adding dialogue box
         this.boxBundle = new dialogBoxBundle(this, ['bottom3', ""], ['end', "talk"]);
         this.boxBundle1 = new dialogBoxBundle(this, [
-            //['sound', "audio23"],
+            ['sound', "audio47"],
             ['bottom3', "Well, the mattress is soft and there's hangers in the closet,"],
-            //['sound', "audio23"],
+            ['sound', "audio48"],
             ['bottom3', "and stationery with the Bates Motel on it in case you want to make your friends back home feel envious."],
-            //['sound', "audio24"],
+            ['sound', "audio49"],
             ['bottom3', "And the uh, over there."],
-            //['sound', "audio24"],
+            ['sound', "audio50"],
             ['bottom3', "The bathroom?"],
-            //['sound', "audio24"],
+            ['sound', "audio51"],
             ['bottom3', "Yeah.  Well, if you want anything just tap on the wall."],
-            //['sound', "audio24"],
+            ['sound', "audio52"],
             ['bottom3', "Thank you Mr. Bates."],
-            //['sound', "audio24"],
+            ['sound', "audio53"],
             ['bottom3', "Norman Bates."],
-            //['sound', "pause"],
+            ['sound', "pause"],
             ['bottom3', ". . ."],
-            //['sound', "audio24"],
+            ['sound', "audio54"],
             ['bottom3', "You're not going to go out again and drive up to the diner are you?"],
-            //['sound', "audio24"],
+            ['sound', "audio55"],
             ['bottom3', "No."],
-            //['sound', "audio24"],
-            ['bottom3', "The would you do me a favor, and have dinner with me?"],
-            //['sound', "audio24"],
+            ['sound', "audio56"],
+            ['bottom3', "Then would you do me a favor, and have dinner with me?"],
+            ['sound', "audio57"],
             ['bottom3', "Nothing special, just sandwiches and milk, but I'd like it very much if you'de come up to the house."],
-             //['sound', "audio24"],
+            ['sound', "audio58"],
             ['bottom3', "I don't set a fancy table, but the kitchen is awful homey."],
-            //['sound', "audio24"],
+            ['sound', "audio59"],
             ['bottom3', "I'd like to."],
-            //['sound', "audio24"],
+            ['sound', "audio60"],
             ['bottom3', "Alright, yeah, you get yourself settled and take off your wet shoes, and I'll be back as soon as it's ready."],
             ['hide', "bottom3"],
             ['end', "Intro"]
         ], true);
+
+        //adding Norman's return dialogue
+        this.NormanComeBack = new dialogBoxBundle(this, [
+            ['sound', "audio61"],
+            ['bottom3', "I'm sorry, mother, my mother, she isn't quite herself today... I asked her, you know about dinner and she was very upset..."],
+            ['sound', "audio62"],
+            ['bottom3', "You shouldn't have bothered, I really don't have much of an appetite."],
+            ['sound', "audio63"],
+            ['bottom3', "Oh I'm sorry..."],
+            ['sound', "audio64"],
+            ['bottom3', "I wish you could apologize for other people."],
+            ['sound', "audio65"],
+            ['bottom3', "Oh don't worry about it. But as long as you fixed us supper, we may as well eat it."],
+            ['sound', "audio66"],
+            ['bottom3', "It might be nicer, and uh warmer in the office."],
+            ['sound', "audio67"],
+            ['bottom3', "Perhaps. If you don't mind, I have a question."],
+            ['sound', "audio68"],
+            ['bottom3', "Of course, what troubles you?"],
+            ['sound', "audio69"],
+            ['bottom3', "Nothing troubles me, but I was curious about the decorum you have."],
+            ['sound', "audio70"],
+            ['bottom3', "Ah, you like it! My hobby is stuffing things, you know, taxidermy?"],
+            ['sound', "audio71"],
+            ['bottom3', "And I guess I'd rather stuff birds, because I hate the way that beasts look when they are stuffed."],
+            ['sound', "audio72"],
+            ['bottom3', "I think only birds look well stuffed because... well, they are passive to begin with."],
+            ['sound', "audio73"],
+            ['bottom3', "It's a strange hobby. Curious."],
+            ['sound', "audio74"],
+            ['bottom3', "Uncommon too."],
+            ['sound', "audio75"],
+            ['bottom3', "Oh, I'd imagine so."],
+            ['sound', "audio76"],
+            ['bottom3', "A man should have a hobby."],
+            ['sound', "audio77"],
+            ['bottom3', "Oh, it's more than a hobby. A hobby is supposed to pass the time, not fill it."],
+            ['sound', "audio78"],
+            ['bottom3', "Is your time so empty?"],
+            ['sound', "audio79"],
+            ['bottom3', "No, well, I... I keep myself busy with this motel."],
+            ['sound', "audio80"],
+            ['bottom3', "You've never had an empty moment in your life, have you?"],
+            ['sound', "audio81"],
+            ['bottom3', "Only my share."],
+            ['sound', "audio82"],
+            ['bottom3', "Where are you going?"],
+            ['sound', "pause"],
+            ['bottom3', ". . ."],
+            ['sound', "audio83"],
+            ['bottom3', "I didn't mean to pry."],
+            ['sound', "audio84"],
+            ['bottom3', "I'm looking for my own private island."],
+            ['sound', "audio85"],
+            ['bottom3', "What are you running away from?"],
+            ['sound', "audio86"],
+            ['bottom3', "Why do you ask that?"],
+            ['sound', "audio87"],
+            ['bottom3', "People never run away from anything."],
+            ['sound', "audio88"],
+            ['bottom3', "You know what I think?"],
+            ['sound', "audio89"],
+            ['bottom3', "I think that we are all in our private traps, clamped in them, and none of us can ever get out..."],
+            ['sound', "audio90"],
+            ['bottom3', "But never mind that. I'll be in my office when you are ready to eat."],
+            ['hide', "bottom3"],
+            ['end', "Intro"]
+        ], true);
+
     }
 
     //directions for overlap occurances
@@ -496,6 +600,7 @@ class Motel extends Phaser.Scene {
     //dialogue selections
     dialogue(selection){
         inspected += 1;
+        console.log("inspected: " + inspected);
         this.tutorial.setAlpha(0);
         this.tutorial2.setAlpha(0);
         enabled = false;
@@ -504,17 +609,17 @@ class Motel extends Phaser.Scene {
             shown = true;
             this.deskInspect.hide()
             this.boxBundle = new dialogBoxBundle(this, [
-                //['sound', ""],
+                ['sound', "desk1"],
                 ['bottom3', "Looks like taxidermy. Hmm... it looks like there's a plaque on the base."],
-                //['sound', "audio23"],
+                ['sound', "desk2"],
                 ['bottom3', "It reads: Corvus brachyrhynchos."],
-                //['sound', "audio24"],
+                ['sound', "desk3"],
                 ['bottom3', "And it looks like there's a description too."],
-                //['sound', "audio25"],
-                ['bottom3', "\"Corvus brachyrhynchos, or better known as the American Crow is a familiar bird across the expanse of the United States.\" "],
-                //['sound', "audio25"],
+                ['sound', "desk4"],
+                ['bottom3', "\"Corvus brachyrhynchos, or better known as the American Crow, is a familiar bird across the expanse of the United States.\" "],
+                ['sound', "desk5"],
                 ['bottom3', "\"They are large, all-black birds known for their intelligence.\" "],
-                //['sound', "audio25"],
+                ['sound', "desk6"],
                 ['bottom3', "\"Despite their tendency to eat roadkill, carrion is only a very small part of their diet.\" "],
                 ['hide', "bottom3"],
                 ['end', "talk1"]
@@ -538,12 +643,12 @@ class Motel extends Phaser.Scene {
             shownSP = true;
             if(paintingS) {this.paintingSInspect.hide(); };
             this.boxBundle = new dialogBoxBundle(this, [
-                //['sound', "audio22"],
+                ['sound', "sp1"],
                 ['bottom3', "It looks like a set of bird paintings."],
-                //['sound', "audio23"],
+                ['sound', "sp2"],
                 ['bottom3', "They have little plaques next to each of them."],
-                //['sound', "audio24"],
-                ['bottom3', "They read, left to right: \"Gymnogyps californianus, California Condor\", \"Nyctibius grandis, Great Potoo\", \"Cygnus olor, Mute Swan\""],
+                ['sound', "sp3"],
+                ['bottom3', "They read, left to right: \"Gymnogyps californianus, California Condor\", \"Nyctibius grandis, Great Potoo\", \"Cygnus olor, Mute Swan\"."],
                 ['hide', "bottom3"],
                 ['end', "talk3"]
             ], true);
@@ -552,17 +657,17 @@ class Motel extends Phaser.Scene {
             shownLP = true;
             if(paintingL) {this.paintingLInspect.hide(); };
             this.boxBundle = new dialogBoxBundle(this, [
-                //['sound', "audio22"],
-                ['bottom3', "This is a very elaborate painting; it looks like it has a plaque with it as well."],
-                //['sound', "audio23"],
+                ['sound', "lp1"],
+                ['bottom3', "This is a very elaborate painting. It looks like it has a plaque with it as well."],
+                ['sound', "lp2"],
                 ['bottom3', "It reads: \"Balaeniceps rex.\""],
-                //['sound', "audio24"],
+                ['sound', "lp3"],
                 ['bottom3', "With the following description: \"Balaeniceps rex, widely known as The Shoebill, is native to the deep marshes of Africa.\""],
-                //['sound', "audio25"],
+                ['sound', "lp4"],
                 ['bottom3', "\"Referred to frequently as the \"Death Pelican\", these solo birds are patient killers,\""], 
-                //['sound', "audio25"],
+                ['sound', "lp5"],
                 ['bottom3', "\"and will often wait motionless for hours before striking their prey.\""], 
-                //['sound', "audio25"],
+                ['sound', "lp6"],
                 ['bottom3', "\"When they move into action, they are known to strike with a force strong enough to decapitate prey.\""], 
                 ['hide', "bottom3"],
                 ['end', "talk4"]
@@ -571,7 +676,7 @@ class Motel extends Phaser.Scene {
             console.log("dialogue bath");
             if(bathroomDoor) {this.bathDoorInspect.hide(); };
             this.boxBundle = new dialogBoxBundle(this, [
-                //['sound', "audio22"],
+                ['sound', "shower"],
                 ['bottom3', "I will shower later, but I can't until I find a hiding place for this money."],
                 ['hide', "bottom3"],
                 ['end', "talk5"]
@@ -580,9 +685,9 @@ class Motel extends Phaser.Scene {
             console.log("dialogue moteldoor");
             if(motelDoor) { this.motelDoorInspect.hide(); };
             this.boxBundle = new dialogBoxBundle(this, [
-                //['sound', "audio22"],
-                ['bottom3', "Strange. It looks like the manager left my door open when he left."],
-                //['sound', "audio23"],
+                ['sound', "door1"],
+                ['bottom3', "Strange. It looks like Mr. Bates left my door open when he left."],
+                ['sound', "door2"],
                 ['bottom3', "I will shut it in a moment."],
                 ['hide', "bottom3"],
                 ['end', "talk6"]
@@ -593,13 +698,13 @@ class Motel extends Phaser.Scene {
             shownL = true;
             if(hasKey){
             this.boxBundle = new dialogBoxBundle(this, [
-                //['sound', "audio22"],
+                ['sound', "locked1"],
                 ['bottom3', "I wonder if that key I found is to this dresser."],
-                //['sound', "audio23"],
+                ['sound', "lockedDrawer"],
                 ['bottom3', "*Tries to open*"],
-                //['sound', "audio24"],
+                ['sound', "drawerUnlock"],
                 ['bottom3', "*Click*"],
-                //['sound', "audio25"],
+                ['sound', "locked2"],
                 ['bottom3', "Yes! Looks like I found the key."],
                 ['hide', "bottom3"],
                 ['end', "talk7.5"]
@@ -607,11 +712,11 @@ class Motel extends Phaser.Scene {
             exitFlag = true;
             } else {
                 this.boxBundle = new dialogBoxBundle(this, [
-                    //['sound', "audio22"],
+                    ['sound', "locked3"],
                     ['bottom3', "This looks like a good spot to hide the money."],
-                    //['sound', "audio23"],
+                    ['sound', "lockedDrawer"],
                     ['bottom3', "*Tries to open*"],
-                    //['sound', "audio24"],
+                    ['sound', "locked4"],
                     ['bottom3', "Looks like its locked. Maybe the key is around this room somewhere."],
                     ['hide', "bottom3"],
                     ['end', "talk7"]
@@ -622,13 +727,13 @@ class Motel extends Phaser.Scene {
             shownP = true;
             if(plainDresser) {this.plainDresserInspect.hide(); };
             this.boxBundle = new dialogBoxBundle(this, [
-                //['sound', "audio22"],
+                ['sound', "plain1"],
                 ['bottom3', "It's an empty drawer, except for what looks like a crumpled piece of paper…"],
-                //['sound', "audio23"],
+                ['sound', "plain2"],
                 ['bottom3', "Oh wait, this actually looks like a photograph."],
-                //['sound', "audio24"],
+                ['sound', "plain3"],
                 ['bottom3', "Huh, seems to be a wedding photo of sorts. They seem like a happy couple."],
-                //['sound', "audio25"],
+                ['sound', "plain4"],
                 ['bottom3', "I wonder who would leave something like this behind."],
                 ['hide', "bottom3"],
                 ['end', "talk8"]
@@ -639,13 +744,13 @@ class Motel extends Phaser.Scene {
             shownK = true;
             this.keyDresserInspect.hide();
             this.boxBundle = new dialogBoxBundle(this, [
-                //['sound', "audio22"],
+                ['sound', "key1"],
                 ['bottom3', "It looks empty…"],
-                //['sound', "audio23"],
+                ['sound', "key2"],
                 ['bottom3', "Wait a second, there's something lodged in the side of this drawer."],
-                //['sound', "audio24"],
+                ['sound', "searchingDrawer"],
                 ['bottom3', "*Shuffles*"],
-                //['sound', "audio25"],
+                ['sound', "key3"],
                 ['bottom3', "It looks like a key! Maybe I can use this."],
                 ['hide', "bottom3"],
                 ['end', "talk9"]
@@ -654,11 +759,11 @@ class Motel extends Phaser.Scene {
             console.log("closet party");
             if(closet) {this.closetInspect.hide(); };
             this.boxBundle = new dialogBoxBundle(this, [
-                //['sound', "audio22"],
+                ['sound', "closet1"],
                 ['bottom3', "I suppose I could hide the money in here…"],
-                //['sound', "audio23"],
+                ['sound', "closet2"],
                 ['bottom3', "No, it's too open, what if housekeeping finds it."],
-                //['sound', "audio24"],
+                ['sound', "closet3"],
                 ['bottom3', "I need to find a better spot."],
                 ['hide', "bottom3"],
                 ['end', "talk7"]
@@ -667,7 +772,7 @@ class Motel extends Phaser.Scene {
             console.log("sleepy time");
             if(bed) {this.bedInspect.hide(); };
             this.boxBundle = new dialogBoxBundle(this, [
-                //['sound', "audio22"],
+                ['sound', "bed"],
                 ['bottom3', "I am very tired, but I can't rest until I find a good place to hide this money."],
                 ['hide', "bottom3"],
                 ['end', "talk10"]
@@ -729,8 +834,6 @@ class Motel extends Phaser.Scene {
     }
 
     NormanDialogueHandler() {
-       
-
         //start of the game dialogue
         if((!enabled) && inspected == 0){
             this.boxBundle1.update();
@@ -758,9 +861,34 @@ class Motel extends Phaser.Scene {
                 });
 
             }
+            //this.enabled = true;
+        } else if (enabled && inspected == 4) { //after the player inspects two objects
+                this.time.delayedCall(500, () => {
+                this.soundBar.play("soundUp", true);
+                this.soundBar.play("UP", true);
+                this.NormanB.setAlpha(1);
+                enabled = false;
+                this.boxBundle = this.NormanComeBack;
+                this.boxBundle.update();
+                if (this.boxBundle.scriptFinished === "Intro1") {
+                    this.boxBundle.remove();
+                    this.time.delayedCall(5000, () => {
+                        enabled = true;
+                        inspected += 1;
+                    });
+                } 
+                if (finishedDialogue == true){
+                    console.log(this.finishedDialogue);
+                    this.NormanB.setAlpha(0);
+                    enabled = true;
+                    inspected += 1;
+                    this.soundBar.play("DOWN", true);
+                }
+            });
+            console.log(inspected);
+
         }
-            this.enabled = true;
-        }/*(if (enabled){*/
+    } 
     
     update() {
 
@@ -790,7 +918,7 @@ class Motel extends Phaser.Scene {
        //I learned this from https://www.html5gamedevs.com/topic/13947-audio-not-looping-in-chrome/
        var musicConfig = {
             mute: false,
-            volume: 2,
+            volume: 1,
             detune: 0,
             seek: 0,
             loop: true,
@@ -799,7 +927,7 @@ class Motel extends Phaser.Scene {
 
          var sfxConfig = {
             mute: false,
-            volume: 0.05,
+            volume: 0.025,
             detune: 0,
             seek: 0,
             loop: true,

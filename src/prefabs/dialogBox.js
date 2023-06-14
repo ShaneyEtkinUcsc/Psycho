@@ -81,7 +81,7 @@ class Dialog {
 
         //adding waiting arrow
         this.waitArrow = scene.add.sprite(x + arrowOffset.x, y + arrowOffset.y, "triangle").setOrigin(0.5);
-        this.waitArrow.setDepth(100).removeFromDisplayList();
+        this.waitArrow.setDepth(2005).removeFromDisplayList();
 
         this.x = x;
         this.y = y;

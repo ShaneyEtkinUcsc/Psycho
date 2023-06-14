@@ -27,7 +27,7 @@ let config = {
             }
         }
     },
-    scene: [ Load, Menu, Credits, Help, Intro, Drive, Drive2, Cutscene2, Motel, Cutscene3, SplitScream ]
+    scene: [ Load, Menu, Credits, Help, Intro, Drive, Drive2, Pause1, Cutscene2, Motel, Cutscene3, SplitScream ]
 }
 
 const game = new Phaser.Game(config)

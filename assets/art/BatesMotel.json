@@ -1,0 +1,188 @@
+{
+	"textures": [
+		{
+			"image": "BatesMotel.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1920,
+				"h": 114
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "BatesMotel1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 238,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 238,
+						"h": 112
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 238,
+						"h": 112
+					}
+				},
+				{
+					"filename": "BatesMotel2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 238,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 238,
+						"h": 112
+					},
+					"frame": {
+						"x": 241,
+						"y": 1,
+						"w": 238,
+						"h": 112
+					}
+				},
+				{
+					"filename": "BatesMotel3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 238,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 238,
+						"h": 112
+					},
+					"frame": {
+						"x": 481,
+						"y": 1,
+						"w": 238,
+						"h": 112
+					}
+				},
+				{
+					"filename": "BatesMotel4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 238,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 238,
+						"h": 112
+					},
+					"frame": {
+						"x": 721,
+						"y": 1,
+						"w": 238,
+						"h": 112
+					}
+				},
+				{
+					"filename": "BatesMotel5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 238,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 238,
+						"h": 112
+					},
+					"frame": {
+						"x": 961,
+						"y": 1,
+						"w": 238,
+						"h": 112
+					}
+				},
+				{
+					"filename": "BatesMotel6.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 238,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 238,
+						"h": 112
+					},
+					"frame": {
+						"x": 1201,
+						"y": 1,
+						"w": 238,
+						"h": 112
+					}
+				},
+				{
+					"filename": "BatesMotel7.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 238,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 238,
+						"h": 112
+					},
+					"frame": {
+						"x": 1441,
+						"y": 1,
+						"w": 238,
+						"h": 112
+					}
+				},
+				{
+					"filename": "BatesMotel8.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 238,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 238,
+						"h": 112
+					},
+					"frame": {
+						"x": 1681,
+						"y": 1,
+						"w": 238,
+						"h": 112
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:0a5732393e966f5b32b4bfc19177e779:6d19ed1d1c2a4660a3a918d953a226bb:b164394f6faeab83c0031893af41dcfa$"
+	}
+}

@@ -100,7 +100,44 @@ class Cutscene2 extends Phaser.Scene {
             repeat: 0
         })
 
-        this.Date2 = this.add.sprite(centerX, centerY, 'date2', 'Date2ndScene9.png').play("date2play");
+        // Marion Death animation config
+        this.anims.create({
+            key: 'DrivingUp',
+            frames: [
+                {key: 'batesSign', frame: "BatesMotel1.png"},
+                {key: 'batesSign', frame: "BatesMotel2.png"},
+                {key: 'batesSign', frame: "BatesMotel3.png"},
+                {key: 'batesSign', frame: "BatesMotel4.png"},
+                {key: 'batesSign', frame: "BatesMotel5.png"},
+                {key: 'batesSign', frame: "BatesMotel6.png"},
+                {key: 'batesSign', frame: "BatesMotel7.png"},
+                {key: 'batesSign', frame: "BatesMotel8.png"},
+            ],
+            frameRate: 8,
+            repeat: 0
+        })
+
+        //audio configs
+        var driveConfig = {
+            mute: false,
+            volume: 0.3,
+            detune: 0,
+            seek: 0,
+            loop: false,
+            delay: 0,
+            fade: true,
+        };
+
+        //Marion stab anim create
+        this.Sign = this.add.sprite(centerX, centerY, 'batesSign', 'BatesMotel1.png').play("DrivingUp");
+        this.Sign.setScale(4);
+
+        this.Driving = this.sound.add("drivingUp");
+        this.Driving.play(driveConfig);
+
+        this.time.delayedCall(400, () => {
+            this.Date2 = this.add.sprite(centerX, centerY, 'date2', 'Date2ndScene9.png').play("date2play");
+        })
 
         this.time.delayedCall(7500, () => {
             this.scene.start("motelScene");

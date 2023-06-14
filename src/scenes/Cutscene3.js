@@ -144,7 +144,7 @@ class Cutscene3 extends Phaser.Scene {
             this.scream = this.sound.add("scream");
             this.scream.play(soundConfig);
 
-            this.Date2 = this.add.sprite(centerX, centerY, 'date3', 'Date3rdScene9.png').play("date3play");
+            this.Date3 = this.add.sprite(centerX, centerY, 'date3', 'Date3rdScene9.png').play("date3play");
         })
 
         this.time.delayedCall(8000, () => {

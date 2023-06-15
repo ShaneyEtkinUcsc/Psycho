@@ -345,7 +345,9 @@ class Drive extends Phaser.Scene {
                         bgMusic.stop();
                           // camera fade in effect
                         this.cameras.main.fadeOut(2000, 0, 0);
-                        this.scene.start("cutScene2");
+                        this.time.delayedCall(2000, () => {
+                            this.scene.start("cutScene2");
+                        });
                     });
                 }
             }
@@ -406,7 +408,7 @@ class Drive extends Phaser.Scene {
         if(this.tutorial){
             this.tutorial.destroy();
         }
-        this.add.text(centerX, centerY, "GAME OVER", gameOverConfig).setOrigin(0.5);
+        this.add.text(centerX, centerY, "GAME OVER", gameOverConfig).setOrigin(0.5).setDepth(2000);
         this.add.text(centerX, centerY + 50, "Press S to restart", gameOverConfig).setOrigin(0.5);
 
     }
@@ -485,9 +487,7 @@ class Drive extends Phaser.Scene {
                 this.reset();
             }
         }
-    }
+    }  
 
-    
-    
 
 }

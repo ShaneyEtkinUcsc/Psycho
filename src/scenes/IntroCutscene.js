@@ -13,7 +13,7 @@ class Intro extends Phaser.Scene {
      //this.scene.start("cutScene2");
 
      //temporarily testing pause
-     this.pauseKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
+     //this.pauseKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
 
     //reserving keyspace SPACE
     keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -200,11 +200,11 @@ class Intro extends Phaser.Scene {
 
     update() { 
 
-        if (Phaser.Input.Keyboard.JustDown(this.pauseKey)) {
+        /*if (Phaser.Input.Keyboard.JustDown(this.pauseKey)) {
             // .pause will stop the update step but still render the scene
             // .launch will launch the target scene and run it in parallel with the invoking scene
             this.scene.pause().launch('pauseScene1')
-        }
+        }*/
     
      
         this.time.delayedCall(8300, () => {

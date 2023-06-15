@@ -8,6 +8,9 @@ The phaser components we used in this game are:
  - animation manager
  - tweens
  - tilemaps
+
+We hope you enjoy!
+
 */
 
 console.log("in main");
@@ -39,7 +42,7 @@ let config = {
             }
         }
     },
-    scene: [ Load, Menu, Credits, Help, Intro, Drive, Drive2, Pause1, Cutscene2, Motel, Cutscene3, SplitScream ]
+    scene: [ Load, Menu, Credits, Help, Intro, Drive, Drive2, Pardon, Cutscene2, Motel, Cutscene3, SplitScream ]
 }
 
 const game = new Phaser.Game(config)

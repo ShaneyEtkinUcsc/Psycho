@@ -79,7 +79,7 @@ class Motel extends Phaser.Scene {
 
         //adding directional text
         this.tutorial = this.add.text(765, 200, "'W', 'A', 'S' and 'D' or '↑', '←', '↓' and '→' to move", tutorialConfig).setOrigin(0.5).setAlpha(0);
-        this.tutorial2 = this.add.text(765, 230, "click on an INSPECT button to look closer at an object", tutorialConfig).setOrigin(0.5).setAlpha(0);
+        this.tutorial2 = this.add.text(765, 230, "Click on an INSPECT button to look closer at an object", tutorialConfig).setOrigin(0.5).setAlpha(0);
         this.end = this.add.text(centerX, centerY, "Press Space to Continue", endConfig).setOrigin(0.5).setAlpha(0).setDepth(600);
         
         //adding Marion
@@ -861,8 +861,8 @@ class Motel extends Phaser.Scene {
 
             }
             //this.enabled = true;
-        } else if (enabled && inspected == 4) { //after the player inspects two objects
-                this.time.delayedCall(500, () => {
+        } else if (enabled && inspected == 4) { //after the player inspects four objects
+                this.time.delayedCall(200, () => {
                 this.soundBar.play("soundUp", true);
                 this.soundBar.play("UP", true);
                 this.NormanB.setAlpha(1);
@@ -1013,7 +1013,10 @@ class Motel extends Phaser.Scene {
                 console.log("exit conditions");
                 this.cameras.main.fadeOut(3000, 0, 0);
                 bgMusic.stop();
-                this.scene.start("cutScene3");
+                this.time.delayedCall(3000, () => {
+                    this.scene.start("cutScene3");
+                });
+               
             }
            
         }

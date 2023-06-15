@@ -51,8 +51,8 @@ class Drive2 extends Phaser.Scene {
        
         //adding random position arrays for random generator to use
         this.position = [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5];
-        this.driftLeft = [-20, -30, -40, -50, -60, -70, -80, -100 -150, -160];
-        this.driftRight = [20, 30, 40, 50, 60, 70, 80, 100, 150, 160];
+        this.driftLeft = [-30, -40, -50, -60, -70, -80, -90, -100 -150, -160];
+        this.driftRight = [30, 40, 50, 60, 70, 80, 90, 100, 150, 160];
 
         //adding look back indicator
         let checkConfig = {

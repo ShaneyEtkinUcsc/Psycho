@@ -113,6 +113,7 @@
                 this.tweenImageAlpha(tempImage, 1);
 
             } else if (this.nextInstruction === 'end') {
+                this.scene.sound.stop();
                 return; // our script is DONE!
 
             } else {

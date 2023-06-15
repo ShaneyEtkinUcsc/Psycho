@@ -248,6 +248,10 @@ class Load extends Phaser.Scene {
 
         //THE KNIFE
         this.load.audio("knife", "./assets/sound/TheKnife.mp3");
+
+        //temporary ending screen
+        this.load.image("tempEnd", "./assets/art/DeathScreen.png");
+
     }
 
 

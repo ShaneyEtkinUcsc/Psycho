@@ -1,3 +1,15 @@
+/*
+Game by ANNA SCHULTZ and SHANEY ETKIN
+
+The phaser components we used in this game are:
+ - arcade physics
+ - cameras
+ - text objects and interactable buttons
+ - animation manager
+ - tweens
+ - tilemaps
+*/
+
 console.log("in main");
 
 let config = {

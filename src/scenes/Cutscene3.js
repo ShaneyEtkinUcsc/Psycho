@@ -148,8 +148,13 @@ class Cutscene3 extends Phaser.Scene {
         })
 
         this.time.delayedCall(8000, () => {
-            this.scene.start("splitScream");
+            this.cameras.main.fadeOut(2000, 0, 0);
+            this.time.delayedCall(2000, () => {
+                this.scene.start("pardonScene");
+            //this.scene.start("splitScream");
+            });
         })
 
     }
+    
 }
